@@ -30,8 +30,8 @@
     <body>
 	     <img src="/home/alena/Desktop/Lebenslauf/codecentric-ag.gif" style="float:all;padding:0 5px 5px 30px;" />
 	<ul> 
-	  <form class="lebenslauf" action="" method="post" name="lebenslauf">
-      </form>
+	  <form class="lebenslauf" action="result" method="post" name="lebenslauf">
+      
     <h2>Zur Person</h2> 
       <table name="table_1">         
           <tr>
@@ -348,12 +348,14 @@
         <table name="table_7">
               <tr>
                   <td width="25%">  
-         <button class="download" type="button">Download PDF-File</button></td>
+        <input type="submit" value="Download PDF File"/>
+                  </td>
                   <td width="25%"></td>
                   <td width="25%"></td>
                   <td width="25%"></td>
               </tr>
         </table>
+          </form>
       </ul>
     </body>
 </html>

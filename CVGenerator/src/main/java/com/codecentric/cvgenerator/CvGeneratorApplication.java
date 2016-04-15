@@ -10,3 +10,4 @@ public class CvGeneratorApplication {
 		SpringApplication.run(CvGeneratorApplication.class, args);
 	}
 }
+
