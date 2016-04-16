@@ -22,7 +22,7 @@ public class CreatePDF {
 	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_SMALL = new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.BOLD);
 	private static int  STRING_END = 57;
-    private static User user;
+    private User user;
 	/**
 	 * @param args
 	 */
@@ -31,7 +31,7 @@ public class CreatePDF {
 		 this.user = user;
 	}
 	
-	public static Document createPDF(String file) {
+	public Document createPDF(String file) {
 
 		Document document = null;
 
@@ -62,7 +62,7 @@ public class CreatePDF {
 
 	}
 
-	private static void addMetaData(Document document) {
+	private void addMetaData(Document document) {
 		document.addTitle("Generate PDF report");
 		document.addSubject("Generate PDF report");
 		document.addAuthor("Java Honk");
@@ -71,7 +71,7 @@ public class CreatePDF {
 		
 	}
 
-	private static void addPerson(Document document)
+	private void addPerson(Document document)
 			throws DocumentException {
 
 		Paragraph preface = new Paragraph();
@@ -98,7 +98,7 @@ public class CreatePDF {
 
 	}
 	
-	private static void addAusbildung(Document document)
+	private void addAusbildung(Document document)
 			throws DocumentException {
 		
 		Paragraph preface = new Paragraph();
@@ -113,7 +113,7 @@ public class CreatePDF {
 		
 	}
 	
-	private static void addBeruf(Document document)
+	private void addBeruf(Document document)
 	        throws DocumentException{
 		
 		Paragraph preface = new Paragraph();
@@ -128,7 +128,7 @@ public class CreatePDF {
 	 }
 	
 	
-	private static void addFachkenntnisse(Document document)
+	private void addFachkenntnisse(Document document)
 			throws DocumentException {
 		
 		Paragraph preface = new Paragraph();
@@ -145,7 +145,7 @@ public class CreatePDF {
 		document.add(preface);
 	}
 	
-	private static void addProjecte(Document document)
+	private void addProjecte(Document document)
 	       throws DocumentException {
 		
 		Paragraph preface = new Paragraph();

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-    <meta charset="utf-8">
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <title>HTML5 Lebenslauf</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
       <style type="text/css">
@@ -63,7 +63,7 @@
                    <div class="small-12 columns">
 		           <label for="geburtsdatum"></label></td>
              <td width="25%">
-                   <input type="date" name="geburtsdatum" placeholder="DD-MM-YYYY" />
+                   <input type="date"  name="geburtsdatum" placeholder="DD-MM-YYYY" />
                    </div>
              </td>
              <td width="25%"></td>
@@ -138,7 +138,7 @@
   function go() {
   var papaTr = document.getElementById('popo').parentNode 
   var sd = document.createElement('tr'); 
-  sd.innerHTML = '<td width="25%"><div class="row"><div class="small-12 columns"><label for="datum_1"></label><input type="date" id="datum_1" name="datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>          <td width="25%">        <label for="datum_2"></label>        <input type="date" id="datum_2" name="datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="stelle"></label><input type="text" name="stelle" placeholder="Ausbildungs-, Studiumsstelle" ></td><td width="25%"><label for="ort"></label><input type="text" name="ort" placeholder="Ort" ></td></div></td>';
+  sd.innerHTML = '<td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_datum_1"></label><input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>          <td width="25%">        <label for="ausbildung_datum_2"></label>        <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><input type="text" name="ausbildung_stelle" placeholder="Ausbildungs-, Studiumsstelle" ></td><td width="25%"><label for="ausbildung_ort"></label><input type="text" name="ausbildung_ort" placeholder="Ort" ></td></div></td>';
   cnt = papaTr.childElementCount - 1 
   papaTr.insertBefore(sd, papaTr.children[cnt]) 
   }
@@ -148,17 +148,17 @@
                <td width="25%">
                     <div class="row">
                     <div class="small-12 columns">
-                    <label for="datum_1"></label>
-                    <input type="date" id="datum_1" name="datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>
+                    <label for="ausbildung_datum_1"></label>
+                    <input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>
                <td width="25%">
-                    <label for="datum_2"></label>
-                    <input type="date" id="datum_2" name="datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td>
+                    <label for="ausbildung_datum_2"></label>
+                    <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td>
                <td width="25%">
-                    <label for="stelle"></label>
-                    <input type="text" name="stelle" placeholder="Ausbildungs-, Studiumsstelle" ></td>
+                    <label for="ausbildung_stelle"></label>
+                    <input type="text" name="ausbildung_stelle" placeholder="Ausbildungs-, Studiumsstelle" ></td>
                <td width="25%">
-                    <label for="ort"></label>
-                    <input type="text" name="ort" placeholder="Ort" ></td>    
+                    <label for="ausbildung_ort"></label>
+                    <input type="text" name="ausbildung_ort" placeholder="Ort" ></td>    
                     </div>
                </td>
              </tr>
@@ -178,7 +178,7 @@
   function go_1() {
   var papaTr = document.getElementById('popo1').parentNode 
   var sd = document.createElement('tr'); 
-  sd.innerHTML ='<td width="25%"><div class="row"><div class="small-12 columns"><label for="datum_1"></label><input type="date" id="datum_1" name="datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="datum_2"></label><input type="date" id="datum_2" name="datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="stelle"></label><input type="text" name="stelle" placeholder="Arbeitsstelle" ></td><td width="25%"><label for="ort"></label><input type="text" name="ort" placeholder="Ort" ></td></div></td>';
+  sd.innerHTML ='<td width="25%"><div class="row"><div class="small-12 columns"><label for="beruf_datum_1"></label><input type="date" id="beruf_datum_1" name="beruf_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_datum_2"></label><input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><input type="text" name="beruf_stelle" placeholder="Arbeitsstelle" ></td><td width="25%"><label for="beruf_ort"></label><input type="text" name="beruf_ort" placeholder="Ort" ></td></div></td>';
   cnt = papaTr.childElementCount - 1 
   papaTr.insertBefore(sd, papaTr.children[cnt]) 
 }
@@ -188,17 +188,17 @@
                 <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="datum_1"></label>
-                     <input type="date" id="datum_1" name="datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>
+                     <label for="beruf_datum_1"></label>
+                     <input type="date" id="beruf_datum_1" name="beruf_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>
                 <td width="25%">
-                     <label for="datum_2"></label>
-                     <input type="date" id="datum_2" name="datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td>
+                     <label for="beruf_datum_2"></label>
+                     <input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td>
                 <td width="25%">
-                     <label for="stelle"></label>
-                     <input type="text" name="stelle" placeholder="Arbeitsstelle" ></td>
+                     <label for="beruf_stelle"></label>
+                     <input type="text" name="beruf_stelle" placeholder="Arbeitsstelle" ></td>
                 <td width="25%">
-                     <label for="ort"></label>
-                     <input type="text" name="ort" placeholder="Ort" ></td>    
+                     <label for="beruf_ort"></label>
+                     <input type="text" name="beruf_ort" placeholder="Ort" ></td>    
                      </div>
                 </td>
              </tr>
@@ -224,7 +224,7 @@
   function go_2() {
   var papaTr = document.getElementById('popo2').parentNode 
   var sd = document.createElement('tr'); 
-  sd.innerHTML ='<td width="25%"><div class="row"><div class="small-12 columns"><label for="gebiet"></label><input type="text" name="gebiet" placeholder="Gebiet" /></td></div><td width="25%"><div class="row"><div class="small-12 columns"><label for="kenntnisse"></label><input type="text" name="kenntnisse" placeholder="Kenntnisse" /></td></div><td width="25%"></td><td width="25%"></td></tr>';
+  sd.innerHTML ='<td width="25%"><div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><input type="text" name="fach_gebiet" placeholder="Gebiet" /></td></div><td width="25%"><div class="row"><div class="small-12 columns"><label for="fach_kenntnisse"></label><input type="text" name="fach_kenntnisse" placeholder="Kenntnisse" /></td></div><td width="25%"></td><td width="25%"></td></tr>';
   cnt = papaTr.childElementCount - 1 
   papaTr.insertBefore(sd, papaTr.children[cnt])
 }
@@ -234,15 +234,15 @@
                 <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-		             <label for="gebiet"></label>
-		             <input type="text" name="gebiet" placeholder="Gebiet" />
+		             <label for="fach_gebiet"></label>
+		             <input type="text" name="fach_gebiet" placeholder="Gebiet" />
 		        </td>        
                      </div>
                 <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-		             <label for="kenntnisse"></label>
-		             <input type="text" name="kenntnisse" placeholder="Kenntnisse" />
+		             <label for="fach_kenntnisse"></label>
+		             <input type="text" name="fach_kenntnisse" placeholder="Kenntnisse" />
 		        </td>        
                      </div>
                 <td width="25%"></td>
@@ -275,7 +275,7 @@
   anzahl = anzahl + 1;
   var papaTable = document.getElementById('popo3-0').parentNode
   var sd = document.createElement('div');
-  sd.innerHTML ='<table id="popo3-' + anzahl +'" name="table_5"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="datum_3"></label><input type="date" id="datum_3" name="datum_3" placeholder="Datum, MM-YYYY" ></td></div><td width="25%"><div class="row"><div class="small-12 columns"><label for="kunde">Kunde</label></td><td width="25%"><input type="text" name="kunde" /></td></div><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="thematik">Thematik</label></td><td width="25%"><input type="text" name="thematik" /></div></td><td width="25%"></td></tr><tr><td width="25%"><div class="row"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="rolle">Rolle</label></td> <td width="25%"><input type="text" name="rolle" /></div></td><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"><label for="technologie">Technologie</label></td><td width="25%"><input type="text" name="technologie" /></div></td><td width="25%"></td></tr></table>';
+  sd.innerHTML ='<table id="popo3-' + anzahl +'" name="table_5"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Datum, MM-YYYY" ></td></div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum2"></label><input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Datum, MM-YYYY" ></td></div><td width="25%"></td></div><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label></td><td width="25%"><input type="text" name="projekte_kunde" /></div></td><td width="25%"></td></tr>     <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label></td><td width="25%"><input type="text" name="projekte_thematik" /></div></td><td width="25%"></td></tr><tr><td width="25%"><div class="row"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projecte_rolle">Rolle</label></td> <td width="25%"><input type="text" name="projecte_rolle" /></div></td><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"><label for="technologie">Technologie</label></td><td width="25%"><input type="text" name="technologie" /></div></td><td width="25%"></td></tr></table>';
   cnt = papaTable.childElementCount -2
   papaTable.insertBefore(sd, papaTable.children[cnt])
 }
@@ -285,18 +285,34 @@
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="datum_3"></label>
-                     <input type="date" id="datum_3" name="datum_3" placeholder="Datum, MM-YYYY" ></td>
+                     <label for="projekte_datum1"></label>
+                     <input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Datum, MM-YYYY" ></td>
                      </div>
+                    
+                     <td width="25%">
+                     <div class="row">
+                     <div class="small-12 columns">
+                     <label for="projekte_datum2"></label>
+                     <input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Datum, MM-YYYY" ></td>
+                     </div>
+                 
+                     </td>
+                     <td width="25%"></td>
+                     </td>
+                     </div>
+                 <td width="25%"></td>
+              </tr>
+               <tr>
+                 <td width="25%"></td>
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="kunde">Kunde</label>
+                     <label for="projekte_kunde">Kunde</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="kunde" />
-                 </td>
+                     <input type="text" name="projekte_kunde" />
                      </div>
+                 </td>
                  <td width="25%"></td>
               </tr>
               <tr>
@@ -304,10 +320,10 @@
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="thematik">Thematik</label>
+                     <label for="projekte_thematik">Thematik</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="thematik" />
+                     <input type="text" name="projekte_thematik" />
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -318,10 +334,10 @@
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="rolle">Rolle</label>
+                     <label for="projecte_rolle">Rolle</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="rolle" />
+                     <input type="text" name=projecte_rolle" />
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -331,9 +347,9 @@
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="technologie">Technologie</label></td>
+                     <label for="projecte_technologie">Technologie</label></td>
                  <td width="25%">
-                     <input type="text" name="technologie" />
+                     <input type="text" name="projecte_technologie" />
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -360,7 +376,7 @@
                   <td width="25%"></td>
                   <td width="25%"></td>
               </tr>
-        </table>
+            </table>
           </form>
       </ul>
     </body>

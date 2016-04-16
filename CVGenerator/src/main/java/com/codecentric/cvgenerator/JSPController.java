@@ -20,11 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class JSPController {
-    private User user;
+   
 	
 	@RequestMapping("/home")
     public ModelAndView jspSpringboot() {
-		user = new User();
+		
 		ModelAndView modelAndView = new ModelAndView("jsp-spring-boot");
 	  
 	  return modelAndView;
@@ -39,7 +39,8 @@ public class JSPController {
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
         
-	    CreatePDF createPDF = new CreatePDF(user); 
+	    CreatePDF create_document = new CreatePDF(userID); 
+	   
 	    
 	    String fileName = "JavaHonk.pdf";
 	    response.setContentType("application/pdf");
@@ -47,7 +48,7 @@ public class JSPController {
 
 	    try {
 
-	        CreatePDF.createPDF(temperotyFilePath+"\\"+fileName);
+	        create_document.createPDF(temperotyFilePath+"\\"+fileName);
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
 	        OutputStream os = response.getOutputStream();
