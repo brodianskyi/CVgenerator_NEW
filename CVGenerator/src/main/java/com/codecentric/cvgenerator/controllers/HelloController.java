@@ -1,4 +1,4 @@
-package com.codecentric.cvgenerator;
+package com.codecentric.cvgenerator.controllers;
 
 import java.util.HashMap;
 import java.util.Map;

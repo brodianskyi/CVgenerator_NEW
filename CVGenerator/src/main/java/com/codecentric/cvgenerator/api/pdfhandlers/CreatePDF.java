@@ -1,4 +1,4 @@
-package com.codecentric.cvgenerator;
+package com.codecentric.cvgenerator.api.pdfhandlers;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.codecentric.cvgenerator.api.entities.User;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -49,6 +50,8 @@ public class CreatePDF {
 			addBeruf(document);
 			
 			addFachkenntnisse(document);
+			
+			addProjecte(document);
 
 			document.close();
 

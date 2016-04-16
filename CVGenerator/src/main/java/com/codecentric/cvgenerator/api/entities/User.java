@@ -1,4 +1,4 @@
-package com.codecentric.cvgenerator;
+package com.codecentric.cvgenerator.api.entities;
 
 public class User {
     

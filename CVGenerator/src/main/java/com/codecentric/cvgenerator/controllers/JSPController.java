@@ -1,4 +1,4 @@
-package com.codecentric.cvgenerator;
+package com.codecentric.cvgenerator.controllers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.codecentric.cvgenerator.api.entities.User;
+import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
 
 @Controller
 public class JSPController {
