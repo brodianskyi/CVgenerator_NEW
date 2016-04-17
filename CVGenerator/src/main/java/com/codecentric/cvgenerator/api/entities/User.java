@@ -28,13 +28,26 @@ public class User {
     private String projekte_datum2;
     private String projekte_kunde;
     private String projekte_thematik;
-    private String projecte_rolle;
-    private String projecte_technologie;
+    private String projekte_rolle;
+    private String projekte_technologie;
+
 
     
     
     
-    public String getAusbildung_datum_1() {
+    public String getProjekte_technologie() {
+		return projekte_technologie;
+	}
+	public void setProjekte_technologie(String projekte_technologie) {
+		this.projekte_technologie = projekte_technologie;
+	}
+	public String getProjekte_rolle() {
+		return projekte_rolle;
+	}
+	public void setProjekte_rolle(String projekte_rolle) {
+		this.projekte_rolle = projekte_rolle;
+	}
+	public String getAusbildung_datum_1() {
 		return ausbildung_datum_1;
 	}
 	public void setAusbildung_datum_1(String ausbildung_datum_1) {
@@ -119,18 +132,7 @@ public class User {
 	public void setProjekte_thematik(String projekte_thematik) {
 		this.projekte_thematik = projekte_thematik;
 	}
-	public String getProjecte_rolle() {
-		return projecte_rolle;
-	}
-	public void setProjecte_rolle(String projecte_rolle) {
-		this.projecte_rolle = projecte_rolle;
-	}
-	public String getProjecte_technologie() {
-		return projecte_technologie;
-	}
-	public void setProjecte_technologie(String projecte_technologie) {
-		this.projecte_technologie = projecte_technologie;
-	}
+	
 	public String getVorname() {
 		return vorname;
 	}

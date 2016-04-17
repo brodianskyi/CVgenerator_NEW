@@ -2,8 +2,6 @@ package com.codecentric.cvgenerator.api.pdfhandlers;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -13,8 +11,12 @@ import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.utils.stringutils.StringTokenizer;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class CreatePDF {
@@ -45,11 +47,11 @@ public class CreatePDF {
 
 			addPerson(document);
 
-			addAusbildung(document);
+		//	addAusbildung(document);
 			
-			addBeruf(document);
+		//	addBeruf(document);
 			
-			addFachkenntnisse(document);
+		//	addFachkenntnisse(document);
 			
 			addProjecte(document);
 
@@ -76,8 +78,9 @@ public class CreatePDF {
 
 	private void addPerson(Document document)
 			throws DocumentException {
-
-		Paragraph preface = new Paragraph();
+		
+        
+        Paragraph preface = new Paragraph();
 		creteEmptyLine(preface, 1);
 		preface.add(new Paragraph("Zur Person", TIME_ROMAN));
 
@@ -140,7 +143,7 @@ public class CreatePDF {
 		Map<Integer, String> map_for_beruf_datum2 = stringTokenizer.getCommaValues(user.getBeruf_datum_2());
 		Map<Integer, String> map_for_ort = stringTokenizer.getCommaValues(user.getBeruf_ort());
 		Map<Integer, String> map_for_stelle = stringTokenizer.getCommaValues(user.getBeruf_stelle());
-        
+    /*    
 		for(int i=1;i < map_for_beruf_datum1.size()+1;i++){
 		preface.add(new Paragraph(map_for_beruf_datum1.get(i)+ " - "+ map_for_beruf_datum2.get(i) +
 				"          " + map_for_ort.get(i),TIME_ROMAN_SMALL));
@@ -148,7 +151,7 @@ public class CreatePDF {
 		preface.add(new Paragraph(
 	    "                  " + map_for_stelle.get(i), TIME_ROMAN_SMALL));
 		document.add(preface);
-		}
+		} */
 	 }
 	
 	
@@ -158,8 +161,8 @@ public class CreatePDF {
 		Paragraph preface = new Paragraph();
 		creteEmptyLine(preface, 1);
 		
-		Map<Integer, String> map_for_fach_gebiet = stringTokenizer.getCommaValues(user.getBeruf_datum_1());
-		Map<Integer, String> map_for_fach_kenntnisse = stringTokenizer.getCommaValues(user.getBeruf_datum_2());
+		Map<Integer, String> map_for_fach_gebiet = stringTokenizer.getCommaValues(user.getFach_gebiet());
+		Map<Integer, String> map_for_fach_kenntnisse = stringTokenizer.getCommaValues(user.getFach_kenntnisse());
 		
 		preface.add(new Paragraph("Fachkenntnisse", TIME_ROMAN));
 		
@@ -167,6 +170,7 @@ public class CreatePDF {
 		for(int i=1;i < map_for_fach_gebiet.size()+1;i++){
 		preface.add(new Paragraph(map_for_fach_gebiet.get(i)
 				+ "         " + map_for_fach_kenntnisse.get(i) , TIME_ROMAN_SMALL));
+		creteEmptyLine(preface, 1);
 		}
 		
 		document.add(preface);
@@ -179,24 +183,32 @@ public class CreatePDF {
 		creteEmptyLine(preface, 1);
 		preface.add(new Paragraph("Projekte(Auszug)", TIME_ROMAN));
 		creteEmptyLine(preface, 1);
+	
+		Map<Integer, String> map_for_projekt_datum1 = stringTokenizer.getCommaValues(user.getProjekte_datum1());
+			
 		
-		Map<Integer, String> map_for_datum1 = stringTokenizer.getCommaValues(user.getProjekte_datum1());
-		Map<Integer, String> map_for_datum2 = stringTokenizer.getCommaValues(user.getProjekte_datum2());
+		Map<Integer, String> map_for_projekt_datum2 = stringTokenizer.getCommaValues(user.getProjekte_datum2());
         Map<Integer, String> map_for_kunde = stringTokenizer.getCommaValues(user.getProjekte_kunde());
-		Map<Integer, String> map_for_thematik = stringTokenizer.getCommaValues(user.getProjekte_thematik());
-		Map<Integer, String> map_for_rolle = stringTokenizer.getCommaValues(user.getProjecte_rolle());
-		Map<Integer, String> map_for_technologie = stringTokenizer.getCommaValues(user.getProjecte_technologie());
+     	Map<Integer, String> map_for_thematik = stringTokenizer.getCommaValues(user.getProjekte_thematik());
+     	
+     	Map<Integer, String> map_for_rolle = stringTokenizer.getCommaValues(user.getProjekte_rolle());
+     	Map<Integer, String> map_for_technologie = stringTokenizer.getCommaValues(user.getProjekte_technologie());
+     
+     	
+	//	 for (Map.Entry<Integer, String> entry : map_for_rolle.entrySet()) {
+	//	      logger.info("Pasha value" + entry.getKey()+" : "+entry.getValue());
+	//	    }
 		
-		for(int i=1;i < map_for_datum1.size()+1;i++){
-		preface.add(new Paragraph(map_for_datum1.get(i) + " - "
+  /*		for(int i=1;i < map_for_project_datum1.size()+1;i++){
+		preface.add(new Paragraph(map_for_project_datum1.get(i) + " - "
 				+ "      " + "Kunde" + map_for_kunde.get(i) , TIME_ROMAN_SMALL));
-		preface.add(new Paragraph(map_for_datum2.get(i)  
+		preface.add(new Paragraph(map_for_project_datum2.get(i)  
 				+ "      " + "Thematik" + map_for_thematik.get(i) , TIME_ROMAN_SMALL));
 		preface.add(new Paragraph("Rolle" 
 				+ "      " + map_for_rolle.get(i) , TIME_ROMAN_SMALL));
 		preface.add(new Paragraph("Technologie" 
 				+ "      " + map_for_technologie.get(i) , TIME_ROMAN_SMALL));
-		}
+		} */
 		document.add(preface);
 		
 	}

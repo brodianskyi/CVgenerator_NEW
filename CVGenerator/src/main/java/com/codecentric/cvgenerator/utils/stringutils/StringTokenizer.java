@@ -25,7 +25,7 @@ public class StringTokenizer {
 		   map.put(count, result);
 		}while (str.indexOf(CommaToken)> 0);
 		   for (Map.Entry<Integer, String> entry : map.entrySet()) {
-		      logger.info("Vlue of my map in method" + entry.getKey()+" : "+entry.getValue());
+		      logger.info("Value of my map in method" + entry.getKey()+" : "+entry.getValue());
 		    }
 	 } else map.put(1, str);
    	   

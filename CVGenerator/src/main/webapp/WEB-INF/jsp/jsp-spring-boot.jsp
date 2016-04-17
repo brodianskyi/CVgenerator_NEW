@@ -275,7 +275,7 @@
   anzahl = anzahl + 1;
   var papaTable = document.getElementById('popo3-0').parentNode
   var sd = document.createElement('div');
-  sd.innerHTML ='<table id="popo3-' + anzahl +'" name="table_5"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Datum, MM-YYYY" ></td></div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum2"></label><input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Datum, MM-YYYY" ></td></div><td width="25%"></td></div><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label></td><td width="25%"><input type="text" name="projekte_kunde" /></div></td><td width="25%"></td></tr>     <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label></td><td width="25%"><input type="text" name="projekte_thematik" /></div></td><td width="25%"></td></tr><tr><td width="25%"><div class="row"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projecte_rolle">Rolle</label></td> <td width="25%"><input type="text" name="projecte_rolle" /></div></td><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"><label for="technologie">Technologie</label></td><td width="25%"><input type="text" name="technologie" /></div></td><td width="25%"></td></tr></table>';
+  sd.innerHTML ='<table id="popo3-' + anzahl +'" name="table_5"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Datum, MM-YYYY" ></td></div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum2"></label><input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Datum, MM-YYYY" ></td></div><td width="25%"></td></div><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label></td><td width="25%"><input type="text" name="projekte_kunde" /></div></td><td width="25%"></td></tr>     <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label></td><td width="25%"><input type="text" name="projekte_thematik" /></div></td><td width="25%"></td></tr>   <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_rolle">Rolle</label></td><td width="25%"><input type="text" name="projekte_rolle" /></div></td><td width="25%"></td></tr>    <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_technologie">Technologie</label></td><td width="25%"><input type="text" name="projekte_technologie" /></div></td><td width="25%"></td></tr>    </table>';
   cnt = papaTable.childElementCount -2
   papaTable.insertBefore(sd, papaTable.children[cnt])
 }
@@ -328,32 +328,32 @@
                  </td>
                  <td width="25%"></td>
               </tr>
-              <tr>
-                 <td width="25%">
-                     <div class="row"></td>
+               <tr>
+                 <td width="25%"></td>
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="projecte_rolle">Rolle</label>
+                     <label for="projekte_rolle">Rolle</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name=projecte_rolle" />
+                     <input type="text" name="projekte_rolle" />
                      </div>
                  </td>
                  <td width="25%"></td>
               </tr>
-              <tr>
+                <tr>
                  <td width="25%"></td>
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
-                     <label for="projecte_technologie">Technologie</label></td>
+                     <label for="projekte_technologie">Technologie</label>
+                 </td>
                  <td width="25%">
-                     <input type="text" name="projecte_technologie" />
+                     <input type="text" name="projekte_technologie" />
                      </div>
                  </td>
                  <td width="25%"></td>
-             </tr>
+              </tr>
         </table>
         <table name="table_6">
              <tr>
