@@ -215,12 +215,7 @@
          </table>	   
     <h2>Fachkenntnisse</h2> 
  <script>
-  
-  function remove_2() {
-  
-  var sd = document.getElementById('popo2'); 
-  sd.removeChild(sd.innerHTML[]);
-}	 
+  	 
   function go_2() {
   var papaTr = document.getElementById('popo2').parentNode 
   var sd = document.createElement('tr'); 
@@ -252,7 +247,7 @@
 		        <td width="25%"> 
 		  <button class="plus" type="button" onclick="go_2()">Add
 		  </button>
-		  <button class="delete" type="button" onclick="remove_3()">Delete
+		  <button class="delete" type="button" onclick="remove_2()">Delete
 		  </button></td>
 		        <td width="25%"></td>
                 <td width="25%"></td>
