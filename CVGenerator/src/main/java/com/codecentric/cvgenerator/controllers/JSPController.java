@@ -1,4 +1,4 @@
-package com.codecentric.cvgenerator;
+package com.codecentric.cvgenerator.controllers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,19 +12,28 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.codecentric.cvgenerator.api.entities.User;
+import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
+
 @Controller
 public class JSPController {
-    private User user;
+	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
+     
+   
 	
 	@RequestMapping("/home")
     public ModelAndView jspSpringboot() {
-		user = new User();
+		 logger.info("Hey man if you see this !!!");
+		 
+		 
 		ModelAndView modelAndView = new ModelAndView("jsp-spring-boot");
 	  
 	  return modelAndView;
@@ -35,11 +44,13 @@ public class JSPController {
     public void result(@ModelAttribute("user")User userID,
     		HttpServletRequest request,
     		HttpServletResponse response) throws IOException {
+		
 	  final ServletContext servletContext = request.getSession().getServletContext();
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
         
-	    CreatePDF createPDF = new CreatePDF(user); 
+	    CreatePDF create_document = new CreatePDF(userID); 
+	    
 	    
 	    String fileName = "JavaHonk.pdf";
 	    response.setContentType("application/pdf");
@@ -47,7 +58,7 @@ public class JSPController {
 
 	    try {
 
-	        CreatePDF.createPDF(temperotyFilePath+"\\"+fileName);
+	        create_document.createPDF(temperotyFilePath+"\\"+fileName);
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
 	        OutputStream os = response.getOutputStream();

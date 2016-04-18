@@ -28,8 +28,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
-		<dependency>
+	
+	   <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -48,7 +48,12 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.0.6</version>
 		</dependency>
-        
+
+         <dependency>
+         	<groupId>org.apache.ant</groupId>
+         	<artifactId>ant</artifactId>
+         	<version>1.9.4</version>
+         </dependency>
 	</dependencies>
 	
 	<build>
