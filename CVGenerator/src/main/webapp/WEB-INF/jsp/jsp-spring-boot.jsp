@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <meta charset="utf-8">
     <title>HTML5 Lebenslauf</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
       <style type="text/css">
@@ -23,12 +24,25 @@
          body{ background-color:#FCFEFC; color:#000000; }
    
          img{ 
-   
+			 
+         #goto_top {
+		 padding:8px 13px; 
+		 background:#c0c0c0; 
+		 font:bold 16px verdana, arial, helvetica, sans-serif; 
+		 text-shadow:0 2px 0 #008000; color:#fff; 
+		 position:fixed; 
+		 z-index:-1; 
+		 top:0; left:0; width:30%; height:100%; 
+		 cursor:pointer; 
+		 display:none; 
+		 border:0px;}
+		 
+		
        </style>
   
 </head>
     <body>
-	     <img src="/home/alena/Desktop/Lebenslauf/codecentric-ag.gif" style="float:all;padding:0 5px 5px 30px;" />
+	     <img src="/home/alena/Desktop/codecentric-ag.gif" style="float:all;padding:0 5px 5px 30px;" />
 	<ul> 
 	  <form class="lebenslauf" action="result" method="post" name="lebenslauf">
       
@@ -195,12 +209,11 @@
                      <input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td>
                 <td width="25%">
                      <label for="beruf_stelle"></label>
-                     <input type="text" name="beruf_stelle" placeholder="Arbeitsstelle" ></td>
+                     <textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td>
                 <td width="25%">
                      <label for="beruf_ort"></label>
-                     <input type="text" name="beruf_ort" placeholder="Ort" ></td>    
-                     </div>
-                </td>
+                     <textarea class="span8" type="text" placeholder="Ort" name="beruf_ort" rows="1" cols="31"></textarea></td>    
+                     </div>  
              </tr>
              <tr id="popo1">
 		        <td width="25%"> 
@@ -219,7 +232,7 @@
   function go_2() {
   var papaTr = document.getElementById('popo2').parentNode 
   var sd = document.createElement('tr'); 
-  sd.innerHTML ='<td width="25%"><div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><input type="text" name="fach_gebiet" placeholder="Gebiet" /></td></div><td width="25%"><div class="row"><div class="small-12 columns"><label for="fach_kenntnisse"></label><input type="text" name="fach_kenntnisse" placeholder="Kenntnisse" /></td></div><td width="25%"></td><td width="25%"></td></tr>';
+  sd.innerHTML ='<tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr>';
   cnt = papaTr.childElementCount - 1 
   papaTr.insertBefore(sd, papaTr.children[cnt])
 }
@@ -230,16 +243,16 @@
                      <div class="row">
                      <div class="small-12 columns">
 		             <label for="fach_gebiet"></label>
-		             <input type="text" name="fach_gebiet" placeholder="Gebiet" />
+		             <textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea>
 		        </td>        
                      </div>
                 <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
 		             <label for="fach_kenntnisse"></label>
-		             <input type="text" name="fach_kenntnisse" placeholder="Kenntnisse" />
+		             <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31"></textarea>
 		        </td>        
-                     </div>
+                     </div>    
                 <td width="25%"></td>
                 <td width="25%"></td>
              </tr>
@@ -270,55 +283,44 @@
   anzahl = anzahl + 1;
   var papaTable = document.getElementById('popo3-0').parentNode
   var sd = document.createElement('div');
-  sd.innerHTML ='<table id="popo3-' + anzahl +'" name="table_5"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Datum, MM-YYYY" ></td></div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_datum2"></label><input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Datum, MM-YYYY" ></td></div><td width="25%"></td></div><td width="25%"></td></tr><tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label></td><td width="25%"><input type="text" name="projekte_kunde" /></div></td><td width="25%"></td></tr>     <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label></td><td width="25%"><input type="text" name="projekte_thematik" /></div></td><td width="25%"></td></tr>   <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_rolle">Rolle</label></td><td width="25%"><input type="text" name="projekte_rolle" /></div></td><td width="25%"></td></tr>    <tr><td width="25%"></td><td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_technologie">Technologie</label></td><td width="25%"><input type="text" name="projekte_technologie" /></div></td><td width="25%"></td></tr>    </table>';
+  sd.innerHTML ='<table id="popo3-' + anzahl +'" name="table_5"><tr> <td width="25%"><div class="row"> <div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="datum_3" placeholder="Anfang, MM-YYYY" ></td> </div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label> </td><td width="25%"><textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea>  </div></td><td width="25%"></td> </tr><tr><td width="25%"><div class="row"><div class="small-12 columns"> <label for="projekte_datum1"></label> <input type="date" id="projekte_datum1" name="datum_4" placeholder="Endung, MM-YYYY" ></td></div> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label> </td> <td width="25%"> <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31"></textarea> </div></td><td width="25%"></td> </tr> <tr><td width="25%"></td> <td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_rolle">Rolle</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31"></textarea>  </div> </td> <td width="25%"></td> </tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_technologie">Technologie</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31"></textarea></div> </td><td width="25%"></td></tr></table>';
   cnt = papaTable.childElementCount -2
   papaTable.insertBefore(sd, papaTable.children[cnt])
 }
  </script>
           <table id="popo3-0" name="table_5">
-              <tr>
+               <tr>
                  <td width="25%">
-                     <div class="row">
+                    <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Datum, MM-YYYY" ></td>
-                     </div>
-                    
-                     <td width="25%">
-                     <div class="row">
-                     <div class="small-12 columns">
-                     <label for="projekte_datum2"></label>
-                     <input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Datum, MM-YYYY" ></td>
-                     </div>
-                 
-                     </td>
-                     <td width="25%"></td>
-                     </td>
-                     </div>
-                 <td width="25%"></td>
-              </tr>
-               <tr>
-                 <td width="25%"></td>
+                     <input type="date" id="projekte_datum1" name="datum_3" placeholder="Anfang, MM-YYYY" ></td>
+                     </div> 
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_kunde">Kunde</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="projekte_kunde" />
+                     <textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
               </tr>
               <tr>
-                 <td width="25%"></td>
+                 <td width="25%">
+					 <div class="row">
+                     <div class="small-12 columns">
+                     <label for="projekte_datum1"></label>
+                     <input type="date" id="projekte_datum1" name="datum_4" placeholder="Endung, MM-YYYY" ></td>
+                     </div>
                  <td width="25%">
                      <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_thematik">Thematik</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="projekte_thematik" />
+                     <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31"></textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -331,7 +333,7 @@
                      <label for="projekte_rolle">Rolle</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="projekte_rolle" />
+                     <textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31"></textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -344,7 +346,7 @@
                      <label for="projekte_technologie">Technologie</label>
                  </td>
                  <td width="25%">
-                     <input type="text" name="projekte_technologie" />
+                     <textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31"></textarea>
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -374,5 +376,8 @@
             </table>
           </form>
       </ul>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js">
+ </script>
+          <div id="goto_top">Up</div>
     </body>
 </html>
