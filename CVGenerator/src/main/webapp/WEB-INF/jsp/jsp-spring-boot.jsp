@@ -25,23 +25,70 @@
    
          img{ 
 			 
-         #goto_top {
-		 padding:8px 13px; 
-		 background:#c0c0c0; 
-		 font:bold 16px verdana, arial, helvetica, sans-serif; 
-		 text-shadow:0 2px 0 #008000; color:#fff; 
-		 position:fixed; 
-		 z-index:-1; 
-		 top:0; left:0; width:30%; height:100%; 
-		 cursor:pointer; 
-		 display:none; 
-		 border:0px;}
-		 
-		
+		 #message a
+		 {
+		 /* display: block before hiding */
+		 display: block;
+		 display: none;
+		 /* link is above all other elements */
+		 z-index: 999;
+		 /* link doesn't hide text behind it */
+		 opacity: .8;
+		 /* link stays at same place on page */
+		 position: fixed;
+		 /* link goes at the bottom of the page */
+		 top: 100%;
+		 margin-top: -80px; /* = height + preferred bottom margin */
+		 /* link is centered */
+		 left: 50%;
+		 margin-left: -160px; /* = half of width */
+		 /* round the corners (to your preference) */
+		 -moz-border-radius: 24px;
+		 -webkit-border-radius: 24px;
+		 /* make it big and easy to see (size, style to preferences) */
+		 width: 300px;
+		 line-height: 48px;
+		 height: 48px;
+		 padding: 10px;
+		 background-color: #000;
+		 font-size: 24px;
+		 text-align: center;
+		 color: #fff;
+	     }
+	     
        </style>
+       
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+	/* set variables locally for increased performance */
+	var scroll_timer;
+	var displayed = false;
+	var $message = $('#message a');
+	var $window = $(window);
+	var top = $(document.body).children(0).position().top;
+	/* react to scroll event on window */
+	$window.scroll(function () {
+	window.clearTimeout(scroll_timer);
+	scroll_timer = window.setTimeout(function () {
+	if($window.scrollTop() <= top)
+	{
+	displayed = false;
+	$message.fadeOut(500);
+	}
+	else if(displayed == false)
+	{
+	displayed = true;
+	$message.stop(true, true).show().click(function () { $message.fadeOut(500); });
+	}
+	}, 100);
+	});
+});
+</script>
   
 </head>
     <body>
+	   <div id="top"></div>
 	     <img src="/home/alena/Desktop/codecentric-ag.gif" style="float:all;padding:0 5px 5px 30px;" />
 	<ul> 
 	  <form class="lebenslauf" action="result" method="post" name="lebenslauf">
@@ -54,7 +101,7 @@
                  <div class="small-12 columns">
 		         <label for="name"></label></td>
              <td width="25%">
-                 <input type="text" name="name" />
+                 <textarea class="span8" type="text" name="name" rows="1" cols="17"></textarea>
                  </div>
              </td>
              <td width="25%"></td>
@@ -66,7 +113,7 @@
                   <div class="small-12 columns">
 		          <label for="vorname"></label></td>
              <td width="25%">
-                  <input type="text" name="vorname" />
+                  <textarea class="span8" type="text" name="vorname" rows="1" cols="17"></textarea>
                   </div>
              </td>
              <td width="25%"></td>
@@ -77,7 +124,7 @@
                    <div class="small-12 columns">
 		           <label for="geburtsdatum"></label></td>
              <td width="25%">
-                   <input type="date"  name="geburtsdatum" placeholder="DD-MM-YYYY" />
+                   <input type="date"  name="geburtsdatum" placeholder="DD-MM-YYYY" cols="17" />
                    </div>
              </td>
              <td width="25%"></td>
@@ -89,7 +136,7 @@
                    <div class="small-12 columns">
 		           <label for="wohnort"></label></td>
              <td width="25%">
-                   <input type="text" name="wohnort" />
+                   <textarea class="span8" type="text" name="wohnort" rows="1" cols="17"></textarea>
                    </div>
               </td>
               <td width="25%"></td>
@@ -101,7 +148,7 @@
                    <div class="small-12 columns">
 		           <label for="nationalitaet"></label></td>
                <td width="25%">
-                   <input type="text" name="nationalitaet" />
+                   <textarea class="span8" type="text" name="nationalitaet" rows="1" cols="17"></textarea> 
                    </div>
                </td>
                <td width="25%"></td>
@@ -113,7 +160,7 @@
                    <div class="small-12 columns">
 		           <label for="sprachen"></label></td>
                <td width="25%">
-                   <input type="text" name="sprachen" />
+                   <textarea class="span8" type="text" name="sprachen" rows="1" cols="17"></textarea> 
 		       <td width="25%"></td>
 		       <td width="25%"></td>
 	        </tr>
@@ -128,7 +175,7 @@
                    <div class="small-12 columns">
 		           <label for="telefon"></label></td>
                <td width="25%">
-                   <input type="text" name="telefon" />
+                   <textarea class="span8" type="text" name="telefon" rows="1" cols="17"></textarea> 
                    </div>
                </td>
                <td width="25%"></td>
@@ -140,7 +187,7 @@
                    <div class="small-12 columns">
 		           <label for="email"></label></td>
                <td width="25%">
-                   <input type="text" name="email" />
+                   <textarea class="span8" type="text" name="email" rows="1" cols="17"></textarea>
                    </div>
                </td>
                <td width="25%"></td>
@@ -150,12 +197,13 @@
     <h2>Ausbildung/Universität</h2> 
  <script>
   function go() {
-  var papaTr = document.getElementById('popo').parentNode 
-  var sd = document.createElement('tr'); 
-  sd.innerHTML = '<td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_datum_1"></label><input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td>          <td width="25%">        <label for="ausbildung_datum_2"></label>        <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><input type="text" name="ausbildung_stelle" placeholder="Ausbildungs-, Studiumsstelle" ></td><td width="25%"><label for="ausbildung_ort"></label><input type="text" name="ausbildung_ort" placeholder="Ort" ></td></div></td>';
-  cnt = papaTr.childElementCount - 1 
-  papaTr.insertBefore(sd, papaTr.children[cnt]) 
-  }
+	var papaTr = document.getElementById('popo').parentNode 
+	var sd = document.createElement('tr'); 
+	sd.innerHTML = '<tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_datum_1"></label><input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_datum_2"></label><input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> <td width="25%"><label for="ausbildung_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    </div></td></tr>';
+	cnt = papaTr.childElementCount - 1 
+	papaTr.insertBefore(sd, papaTr.children[cnt]) 
+}
+
  </script>
         <table name="table_2">          
             <tr>
@@ -169,10 +217,10 @@
                     <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td>
                <td width="25%">
                     <label for="ausbildung_stelle"></label>
-                    <input type="text" name="ausbildung_stelle" placeholder="Ausbildungs-, Studiumsstelle" ></td>
+                    <textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> 
                <td width="25%">
                     <label for="ausbildung_ort"></label>
-                    <input type="text" name="ausbildung_ort" placeholder="Ort" ></td>    
+                    <textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    
                     </div>
                </td>
              </tr>
@@ -180,7 +228,7 @@
 		       <td width="25%"> 
 		  <button class="plus" type="button" onclick="go()">Add
 		  </button>
-		  <button class="delete" type="button" onclick="deleteTr()">Delete
+		  <button class="delete" type="button" onclick="cleanRows()">Delete
 		  </button></td>
 		       <td width="25%"></td>
                <td width="25%"></td>
@@ -192,7 +240,7 @@
   function go_1() {
   var papaTr = document.getElementById('popo1').parentNode 
   var sd = document.createElement('tr'); 
-  sd.innerHTML ='<td width="25%"><div class="row"><div class="small-12 columns"><label for="beruf_datum_1"></label><input type="date" id="beruf_datum_1" name="beruf_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_datum_2"></label><input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><input type="text" name="beruf_stelle" placeholder="Arbeitsstelle" ></td><td width="25%"><label for="beruf_ort"></label><input type="text" name="beruf_ort" placeholder="Ort" ></td></div></td>';
+  sd.innerHTML ='<tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="beruf_datum_1"></label><input type="date" id="beruf_datum_1" name="beruf_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_datum_2"></label><input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td><td width="25%"> <label for="beruf_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="beruf_ort" rows="1" cols="31"></textarea></td>  </div></tr>';
   cnt = papaTr.childElementCount - 1 
   papaTr.insertBefore(sd, papaTr.children[cnt]) 
 }
@@ -312,7 +360,7 @@
 					 <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input type="date" id="projekte_datum1" name="datum_4" placeholder="Endung, MM-YYYY" ></td>
+                     <input type="date" id="projekte_datum2" name="datum_4" placeholder="Endung, MM-YYYY" ></td>
                      </div>
                  <td width="25%">
                      <div class="row">
@@ -376,8 +424,6 @@
             </table>
           </form>
       </ul>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js">
- </script>
-          <div id="goto_top">Up</div>
+    <div id="message"><a href="#top">Scroll to top</a></div>     
     </body>
 </html>
