@@ -2,6 +2,8 @@ package com.codecentric.cvgenerator.api.pdfhandlers;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -11,19 +13,18 @@ import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.utils.stringutils.StringTokenizer;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class CreatePDF {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	public static final String IMAGE = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
 	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_SMALL = new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.BOLD);
 	private StringTokenizer stringTokenizer = new StringTokenizer();
@@ -36,7 +37,7 @@ public class CreatePDF {
 		 this.user = user;
 	}
 	
-	public Document createPDF(String file) {
+	public Document createPDF(String file) throws MalformedURLException, IOException {
 
 		Document document = null;
 
@@ -79,10 +80,13 @@ public class CreatePDF {
 	}
 
 	private void addPerson(Document document)
-			throws DocumentException {
+			throws DocumentException, MalformedURLException, IOException {
 		
         Paragraph preface = new Paragraph();
-		creteEmptyLine(preface, 1);
+        Image image = Image.getInstance(IMAGE);
+        image.setAbsolutePosition(70, 650);
+		document.add(image);
+        creteEmptyLine(preface, 1);
 		preface.add(new Paragraph("     Zur Person", TIME_ROMAN));
         creteEmptyLine(preface, 1);
         
@@ -107,6 +111,8 @@ public class CreatePDF {
 	 
 		document.add(preface);
 		document.add(table);
+
+		
 		
 
 	}
