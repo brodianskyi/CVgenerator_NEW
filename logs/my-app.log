@@ -1,0 +1,146 @@
+2016-04-16T19:32:02,264 INFO  [codecentric.cvgenerator.CvGeneratorApplication] [main] Starting CvGeneratorApplication on rody-Latitude-3550 with PID 11493 (/home/rody/CVgenerator_NEW/CVGenerator/target/classes started by rody in /home/rody/CVgenerator_NEW/CVGenerator)
+2016-04-16T19:32:02,265 INFO  [codecentric.cvgenerator.CvGeneratorApplication] [main] No active profile set, falling back to default profiles: default
+2016-04-16T19:32:02,343 INFO  [context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [main] Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4d465b11: startup date [Sat Apr 16 19:32:02 CEST 2016]; root of context hierarchy
+2016-04-16T19:32:02,355 INFO  [internal.util.Version] [background-preinit] HV000001: Hibernate Validator 5.2.4.Final
+2016-04-16T19:32:03,002 INFO  [factory.support.DefaultListableBeanFactory] [main] Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-04-16T19:32:03,598 INFO  [embedded.tomcat.TomcatEmbeddedServletContainer] [main] Tomcat initialized with port(s): 8080 (http)
+2016-04-16T19:32:03,610 INFO  [catalina.core.StandardService] [main] Starting service Tomcat
+2016-04-16T19:32:03,611 INFO  [catalina.core.StandardEngine] [main] Starting Servlet Engine: Apache Tomcat/8.0.32
+2016-04-16T19:32:03,955 INFO  [jasper.servlet.TldScanner] [localhost-startStop-1] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2016-04-16T19:32:03,962 INFO  [[Tomcat].[localhost].[/]] [localhost-startStop-1] Initializing Spring embedded WebApplicationContext
+2016-04-16T19:32:03,962 INFO  [web.context.ContextLoader] [localhost-startStop-1] Root WebApplicationContext: initialization completed in 1629 ms
+2016-04-16T19:32:04,281 INFO  [context.embedded.ServletRegistrationBean] [localhost-startStop-1] Mapping servlet: 'dispatcherServlet' to [/]
+2016-04-16T19:32:04,285 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-04-16T19:32:04,286 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-04-16T19:32:04,286 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-04-16T19:32:04,286 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'requestContextFilter' to: [/*]
+2016-04-16T19:32:04,570 INFO  [method.annotation.RequestMappingHandlerAdapter] [main] Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4d465b11: startup date [Sat Apr 16 19:32:02 CEST 2016]; root of context hierarchy
+2016-04-16T19:32:04,621 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.codecentric.cvgenerator.controllers.JSPController.jspSpringboot()
+2016-04-16T19:32:04,621 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/result],methods=[POST]}" onto public void com.codecentric.cvgenerator.controllers.JSPController.result(com.codecentric.cvgenerator.api.entities.User,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2016-04-16T19:32:04,622 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/jsontest]}" onto public java.util.Map<java.lang.String, java.lang.String> com.codecentric.cvgenerator.controllers.HelloController.callSomething()
+2016-04-16T19:32:04,622 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/]}" onto public java.lang.String com.codecentric.cvgenerator.controllers.HelloController.index()
+2016-04-16T19:32:04,624 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-04-16T19:32:04,625 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-04-16T19:32:04,649 INFO  [servlet.handler.SimpleUrlHandlerMapping] [main] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-16T19:32:04,649 INFO  [servlet.handler.SimpleUrlHandlerMapping] [main] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-16T19:32:04,680 INFO  [servlet.handler.SimpleUrlHandlerMapping] [main] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-16T19:32:04,782 INFO  [export.annotation.AnnotationMBeanExporter] [main] Registering beans for JMX exposure on startup
+2016-04-16T19:32:04,813 INFO  [coyote.http11.Http11NioProtocol] [main] Initializing ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:04,819 INFO  [coyote.http11.Http11NioProtocol] [main] Starting ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:04,821 ERROR [coyote.http11.Http11NioProtocol] [main] Failed to start end point associated with ProtocolHandler ["http-nio-8080"]
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[?:1.8.0_77]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[?:1.8.0_77]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[?:1.8.0_77]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[?:1.8.0_77]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[?:1.8.0_77]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:765) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:473) [tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:986) [tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:147) [tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:239) [tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:194) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:151) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:293) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:141) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541) [spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1191) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1180) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at com.codecentric.cvgenerator.CvGeneratorApplication.main(CvGeneratorApplication.java:10) [classes/:?]
+2016-04-16T19:32:04,824 ERROR [catalina.core.StandardService] [main] Failed to start connector [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:153) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:239) [tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:194) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:151) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:293) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:141) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541) [spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1191) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1180) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at com.codecentric.cvgenerator.CvGeneratorApplication.main(CvGeneratorApplication.java:10) [classes/:?]
+Caused by: org.apache.catalina.LifecycleException: service.getName(): "Tomcat";  Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:993) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:147) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	... 13 more
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[?:1.8.0_77]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[?:1.8.0_77]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[?:1.8.0_77]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[?:1.8.0_77]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[?:1.8.0_77]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:340) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:765) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:473) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:986) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:147) ~[tomcat-embed-core-8.0.32.jar:8.0.32]
+	... 13 more
+2016-04-16T19:32:04,844 INFO  [coyote.http11.Http11NioProtocol] [main] Pausing ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:04,844 INFO  [catalina.core.StandardService] [main] Stopping service Tomcat
+2016-04-16T19:32:04,855 INFO  [catalina.util.LifecycleBase] [main] The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2016-04-16T19:32:04,856 INFO  [coyote.http11.Http11NioProtocol] [main] Stopping ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:04,856 INFO  [coyote.http11.Http11NioProtocol] [main] Destroying ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:04,864 ERROR [springframework.boot.SpringApplication] [main] Application startup failed
+org.springframework.boot.context.embedded.EmbeddedServletContainerException: Unable to start embedded Tomcat servlet container
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:165) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:293) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:141) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541) ~[spring-context-4.2.5.RELEASE.jar:4.2.5.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:766) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.createAndRefreshContext(SpringApplication.java:361) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1191) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1180) [spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	at com.codecentric.cvgenerator.CvGeneratorApplication.main(CvGeneratorApplication.java:10) [classes/:?]
+Caused by: java.lang.IllegalStateException: Tomcat connector in failed state
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:159) ~[spring-boot-1.3.3.RELEASE.jar:1.3.3.RELEASE]
+	... 10 more
+2016-04-16T19:32:04,868 INFO  [boot.logging.ClasspathLoggingApplicationListener] [main] Application failed to start with classpath: [file:/home/rody/CVgenerator_NEW/CVGenerator/target/classes/, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.3.3.RELEASE/spring-boot-starter-web-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.3.3.RELEASE/spring-boot-starter-tomcat-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/apache/tomcat/embed/tomcat-embed-logging-juli/8.0.32/tomcat-embed-logging-juli-8.0.32.jar, file:/home/rody/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.0.32/tomcat-embed-websocket-8.0.32.jar, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot-starter-validation/1.3.3.RELEASE/spring-boot-starter-validation-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar, file:/home/rody/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar, file:/home/rody/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar, file:/home/rody/.m2/repository/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar, file:/home/rody/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.6.5/jackson-databind-2.6.5.jar, file:/home/rody/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.6.5/jackson-annotations-2.6.5.jar, file:/home/rody/.m2/repository/org/springframework/spring-web/4.2.5.RELEASE/spring-web-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/spring-aop/4.2.5.RELEASE/spring-aop-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar, file:/home/rody/.m2/repository/org/springframework/spring-beans/4.2.5.RELEASE/spring-beans-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/spring-context/4.2.5.RELEASE/spring-context-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/spring-expression/4.2.5.RELEASE/spring-expression-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot-starter/1.3.3.RELEASE/spring-boot-starter-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot/1.3.3.RELEASE/spring-boot-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.3.3.RELEASE/spring-boot-autoconfigure-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/springframework/spring-core/4.2.5.RELEASE/spring-core-4.2.5.RELEASE.jar, file:/home/rody/.m2/repository/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar, file:/home/rody/.m2/repository/org/springframework/boot/spring-boot-starter-log4j2/1.3.3.RELEASE/spring-boot-starter-log4j2-1.3.3.RELEASE.jar, file:/home/rody/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.4.1/log4j-slf4j-impl-2.4.1.jar, file:/home/rody/.m2/repository/org/slf4j/slf4j-api/1.7.16/slf4j-api-1.7.16.jar, file:/home/rody/.m2/repository/org/apache/logging/log4j/log4j-api/2.4.1/log4j-api-2.4.1.jar, file:/home/rody/.m2/repository/org/apache/logging/log4j/log4j-core/2.4.1/log4j-core-2.4.1.jar, file:/home/rody/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.16/jcl-over-slf4j-1.7.16.jar, file:/home/rody/.m2/repository/org/slf4j/jul-to-slf4j/1.7.16/jul-to-slf4j-1.7.16.jar, file:/home/rody/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.6.0-rc4/jackson-dataformat-yaml-2.6.0-rc4.jar, file:/home/rody/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.6.5/jackson-core-2.6.5.jar, file:/home/rody/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/8.0.32/tomcat-embed-jasper-8.0.32.jar, file:/home/rody/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.0.32/tomcat-embed-core-8.0.32.jar, file:/home/rody/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.0.32/tomcat-embed-el-8.0.32.jar, file:/home/rody/.m2/repository/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2.jar, file:/home/rody/.m2/repository/javax/servlet/jstl/1.2/jstl-1.2.jar, file:/home/rody/.m2/repository/com/itextpdf/itextpdf/5.0.6/itextpdf-5.0.6.jar, file:/home/rody/.m2/repository/org/bouncycastle/bcmail-jdk14/1.38/bcmail-jdk14-1.38.jar, file:/home/rody/.m2/repository/org/bouncycastle/bcprov-jdk14/1.38/bcprov-jdk14-1.38.jar, file:/home/rody/.m2/repository/org/bouncycastle/bctsp-jdk14/1.38/bctsp-jdk14-1.38.jar, file:/home/rody/.m2/repository/org/apache/ant/ant/1.9.4/ant-1.9.4.jar, file:/home/rody/.m2/repository/org/apache/ant/ant-launcher/1.9.4/ant-launcher-1.9.4.jar]
+2016-04-16T19:32:14,091 INFO  [codecentric.cvgenerator.CvGeneratorApplication] [main] Starting CvGeneratorApplication on rody-Latitude-3550 with PID 11534 (/home/rody/CVgenerator_NEW/CVGenerator/target/classes started by rody in /home/rody/CVgenerator_NEW/CVGenerator)
+2016-04-16T19:32:14,092 INFO  [codecentric.cvgenerator.CvGeneratorApplication] [main] No active profile set, falling back to default profiles: default
+2016-04-16T19:32:14,146 INFO  [internal.util.Version] [background-preinit] HV000001: Hibernate Validator 5.2.4.Final
+2016-04-16T19:32:14,185 INFO  [context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [main] Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4d465b11: startup date [Sat Apr 16 19:32:14 CEST 2016]; root of context hierarchy
+2016-04-16T19:32:14,803 INFO  [factory.support.DefaultListableBeanFactory] [main] Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-04-16T19:32:15,487 INFO  [embedded.tomcat.TomcatEmbeddedServletContainer] [main] Tomcat initialized with port(s): 8080 (http)
+2016-04-16T19:32:15,508 INFO  [catalina.core.StandardService] [main] Starting service Tomcat
+2016-04-16T19:32:15,509 INFO  [catalina.core.StandardEngine] [main] Starting Servlet Engine: Apache Tomcat/8.0.32
+2016-04-16T19:32:15,911 INFO  [jasper.servlet.TldScanner] [localhost-startStop-1] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2016-04-16T19:32:15,915 INFO  [[Tomcat].[localhost].[/]] [localhost-startStop-1] Initializing Spring embedded WebApplicationContext
+2016-04-16T19:32:15,916 INFO  [web.context.ContextLoader] [localhost-startStop-1] Root WebApplicationContext: initialization completed in 1744 ms
+2016-04-16T19:32:16,249 INFO  [context.embedded.ServletRegistrationBean] [localhost-startStop-1] Mapping servlet: 'dispatcherServlet' to [/]
+2016-04-16T19:32:16,253 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'characterEncodingFilter' to: [/*]
+2016-04-16T19:32:16,254 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2016-04-16T19:32:16,254 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2016-04-16T19:32:16,254 INFO  [context.embedded.FilterRegistrationBean] [localhost-startStop-1] Mapping filter: 'requestContextFilter' to: [/*]
+2016-04-16T19:32:16,561 INFO  [method.annotation.RequestMappingHandlerAdapter] [main] Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4d465b11: startup date [Sat Apr 16 19:32:14 CEST 2016]; root of context hierarchy
+2016-04-16T19:32:16,652 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/home]}" onto public org.springframework.web.servlet.ModelAndView com.codecentric.cvgenerator.controllers.JSPController.jspSpringboot()
+2016-04-16T19:32:16,653 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/result],methods=[POST]}" onto public void com.codecentric.cvgenerator.controllers.JSPController.result(com.codecentric.cvgenerator.api.entities.User,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2016-04-16T19:32:16,654 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/jsontest]}" onto public java.util.Map<java.lang.String, java.lang.String> com.codecentric.cvgenerator.controllers.HelloController.callSomething()
+2016-04-16T19:32:16,655 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/]}" onto public java.lang.String com.codecentric.cvgenerator.controllers.HelloController.index()
+2016-04-16T19:32:16,657 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-04-16T19:32:16,658 INFO  [method.annotation.RequestMappingHandlerMapping] [main] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-04-16T19:32:16,687 INFO  [servlet.handler.SimpleUrlHandlerMapping] [main] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-16T19:32:16,688 INFO  [servlet.handler.SimpleUrlHandlerMapping] [main] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-16T19:32:16,726 INFO  [servlet.handler.SimpleUrlHandlerMapping] [main] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-16T19:32:16,844 INFO  [export.annotation.AnnotationMBeanExporter] [main] Registering beans for JMX exposure on startup
+2016-04-16T19:32:16,871 INFO  [coyote.http11.Http11NioProtocol] [main] Initializing ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:16,879 INFO  [coyote.http11.Http11NioProtocol] [main] Starting ProtocolHandler ["http-nio-8080"]
+2016-04-16T19:32:16,883 INFO  [util.net.NioSelectorPool] [main] Using a shared selector for servlet write/read
+2016-04-16T19:32:16,905 INFO  [embedded.tomcat.TomcatEmbeddedServletContainer] [main] Tomcat started on port(s): 8080 (http)
+2016-04-16T19:32:16,910 INFO  [codecentric.cvgenerator.CvGeneratorApplication] [main] Started CvGeneratorApplication in 3.132 seconds (JVM running for 3.896)
+2016-04-16T19:32:27,373 INFO  [[Tomcat].[localhost].[/]] [http-nio-8080-exec-1] Initializing Spring FrameworkServlet 'dispatcherServlet'
+2016-04-16T19:32:27,373 INFO  [web.servlet.DispatcherServlet] [http-nio-8080-exec-1] FrameworkServlet 'dispatcherServlet': initialization started
+2016-04-16T19:32:27,383 INFO  [web.servlet.DispatcherServlet] [http-nio-8080-exec-1] FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
+2016-04-16T19:46:55,948 INFO  [boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] [RMI TCP Connection(2)-127.0.0.1] Application shutdown requested.
+2016-04-16T19:46:55,948 INFO  [context.embedded.AnnotationConfigEmbeddedWebApplicationContext] [RMI TCP Connection(2)-127.0.0.1] Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4d465b11: startup date [Sat Apr 16 19:32:14 CEST 2016]; root of context hierarchy
+2016-04-16T19:46:55,950 INFO  [export.annotation.AnnotationMBeanExporter] [RMI TCP Connection(2)-127.0.0.1] Unregistering JMX-exposed beans on shutdown

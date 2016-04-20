@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.utils.stringutils.StringTokenizer;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
@@ -18,17 +20,23 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class CreatePDF {
+public class CreatePDF extends PdfPageEventHelper {
+	//BaseColor.CYAN 
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	public static final String IMAGE = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
+	public static final String IMAGE_CODECENTRIC = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
+	public static final String IMAGE_MAIN = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf1.jpg";
 	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
-	private static Font TIME_ROMAN_SMALL = new Font(Font.FontFamily.TIMES_ROMAN, 15, Font.BOLD);
+	private static Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
+	private static Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
 	private StringTokenizer stringTokenizer = new StringTokenizer();
     private User user;
+    private int pagenumber;
 	/**
 	 * @param args
 	 */
@@ -37,17 +45,40 @@ public class CreatePDF {
 		 this.user = user;
 	}
 	
+	
+	public void onEndPage(PdfWriter writer,Document document){
+	
+      try {
+    	    pagenumber++;
+    	    Image image = Image.getInstance(IMAGE_CODECENTRIC);
+			image.setAbsolutePosition(330, 720);
+			image.scaleToFit(200, 200);
+		if (pagenumber > 1){
+			document.add(image);
+		}	
+		} catch (BadElementException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public Document createPDF(String file) throws MalformedURLException, IOException {
 
 		Document document = null;
 
 		try {
 			document = new Document(PageSize.A4, 20, 20, 130, 50);
-			PdfWriter.getInstance(document, new FileOutputStream(file));
+			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
+			writer.setPageEvent(this);
 			document.open();
-
+			
 			addMetaData(document);
 
+			addTitleCV(document,writer);
+			
 			addPerson(document);
 
 			addAusbildung(document);
@@ -57,7 +88,8 @@ public class CreatePDF {
 			addFachkenntnisse(document);
 			
 			addProjecte(document);
-
+		
+		
 			document.close();
 
 		} catch (FileNotFoundException e) {
@@ -70,6 +102,42 @@ public class CreatePDF {
 
 	}
 
+    private void addTitleCV(Document document,PdfWriter writer) throws MalformedURLException, IOException, DocumentException {
+    	PdfContentByte canvas = writer.getDirectContentUnder();
+    	PdfPTable table = new PdfPTable(3);
+	    table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
+	    table.setWidthPercentage(100f);
+	    table.setSpacingBefore(400f);
+	    table.setSpacingAfter(500f);
+	    TIME_ROMAN_BIG.setColor(BaseColor.WHITE);
+	    TIME_ROMAN_MAIN.setColor(BaseColor.WHITE);
+	    table.addCell(new Paragraph(" John Smith", TIME_ROMAN_BIG));
+	    table.addCell("");
+	    table.addCell("");
+	    createEmptyCell(table,1);
+	    table.addCell(new Paragraph(" Senior IT Consultant", TIME_ROMAN_MAIN));
+	    table.addCell("");
+	    table.addCell("");
+
+	    createEmptyCell(table,3);
+	    table.addCell(new Paragraph(" codecentric AG | 10.02.2016", TIME_ROMAN_MAIN));
+	    table.addCell("");
+	    table.addCell("");
+	    float[] columnWidths = new float[]{80f,10f,10f};
+	    table.setWidths(columnWidths); 
+	    document.add(new Paragraph(" ", TIME_ROMAN));
+	  //  document.add(table);
+    	 Image image = Image.getInstance(IMAGE_MAIN);
+         image.setAbsolutePosition(0, 0);
+    	 try {
+    		 canvas.addImage(image);
+    		 document.add(table);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+	
 	private void addMetaData(Document document) {
 		document.addTitle("Generate PDF report");
 		document.addSubject("Generate PDF report");
@@ -79,14 +147,14 @@ public class CreatePDF {
 		
 	}
 
+	
 	private void addPerson(Document document)
 			throws DocumentException, MalformedURLException, IOException {
 		
+		document.newPage();
         Paragraph preface = new Paragraph();
-        Image image = Image.getInstance(IMAGE);
-        image.setAbsolutePosition(70, 650);
-		document.add(image);
         creteEmptyLine(preface, 1);
+        TIME_ROMAN.setColor(BaseColor.CYAN);
 		preface.add(new Paragraph("     Zur Person", TIME_ROMAN));
         creteEmptyLine(preface, 1);
         
@@ -255,11 +323,12 @@ public class CreatePDF {
 		for (int i = 0; i < number; i++) {
 			paragraph.add(new Paragraph(" "));
 		}
-	}
-	
+	}	
+	private void createEmptyCell(PdfPTable table, int number){
+			for(int i = 0 ; i < number * 3 ; i++)
+			table.addCell(" ");
+		}
+  }
 	
 	
 
-	
-
-}
