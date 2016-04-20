@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>HTML5 Lebenslauf</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
+    
       <style type="text/css">
          table {
          width: 300px;
@@ -228,6 +229,8 @@
                     </div>
                </td>
              </tr>
+         </table>
+         <table name="table_2_0">
              <tr id="popo">
 		       <td width="25%"> 
 		  <button class="plus" type="button" onclick="go()">Add
@@ -267,6 +270,8 @@
                      <textarea class="span8" type="text" placeholder="Ort" name="beruf_ort" rows="1" cols="31"></textarea></td>    
                      </div>  
              </tr>
+         </table>
+         <table name="table_3_0">
              <tr id="popo1">
 		        <td width="25%"> 
 		  <button class="plus" type="button" onclick="go_1()">Add
@@ -308,6 +313,8 @@
                 <td width="25%"></td>
                 <td width="25%"></td>
              </tr>
+         </table>
+         <table name="table_4_0">
              <tr id="popo2">
 		        <td width="25%"> 
 		  <button class="plus" type="button" onclick="go_2()">Add
