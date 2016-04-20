@@ -201,15 +201,31 @@
         </table>         
     <h2>Ausbildung/Universität</h2> 
  <script>
+ 
+    var anzahl = 0;
+    function remove_0() {
+ 
+    var popo0 = document.getElementById('popo0new-' + anzahl);
+    //var sd = document.createElement('table_2');
+ 
+    popo0.remove();
+    anzahl = anzahl -1;
+}
   function go() {
-	var papaTr = document.getElementById('popo').parentNode 
-	var sd = document.createElement('tr'); 
-	sd.innerHTML = '<tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_datum_1"></label><input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_datum_2"></label><input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> <td width="25%"><label for="ausbildung_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    </div></td></tr>';
-	cnt = papaTr.childElementCount - 1 
-	papaTr.insertBefore(sd, papaTr.children[cnt]) 
+	  
+ 
+	anzahl = anzahl + 1; 
+  
+	var papaTable = document.getElementById('popo0-parent') 
+	var sd = document.createElement('div'); 
+	sd.innerHTML = '<table id="popo0new-'+ anzahl +'" name="table_2"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_datum_1"></label><input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_datum_2"></label><input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> <td width="25%"><label for="ausbildung_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    </div></td></tr></table>';
+	cnt = papaTable.childElementCount - 2 
+	console.log(papaTable)
+	papaTable.appendChild(sd)
 }
 
  </script>
+    <div id="popo0-parent">
         <table name="table_2">          
             <tr>
                <td width="25%">
@@ -230,12 +246,13 @@
                </td>
              </tr>
          </table>
+     </div>
          <table name="table_2_0">
-             <tr id="popo">
+             <tr>
 		       <td width="25%"> 
 		  <button class="plus" type="button" onclick="go()">Add
 		  </button>
-		  <button class="delete" type="button" onclick="cleanRows()">Delete
+		  <button class="delete" type="button" onclick="remove_0()">Delete
 		  </button></td>
 		       <td width="25%"></td>
                <td width="25%"></td>
@@ -244,14 +261,30 @@
          </table>  
     <h2>Berufserfahrung</h2> 
  <script>
+ 
+ var anzahl = 0;
+ function remove_1() {
+ 
+ var popo1 = document.getElementById('popo1new-' + anzahl);
+ //var sd = document.createElement('table_3');
+ 
+ popo1.remove();
+ anzahl = anzahl -1;
+}
   function go_1() {
-  var papaTr = document.getElementById('popo1').parentNode 
-  var sd = document.createElement('tr'); 
-  sd.innerHTML ='<tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="beruf_datum_1"></label><input type="date" id="beruf_datum_1" name="beruf_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_datum_2"></label><input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td><td width="25%"> <label for="beruf_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="beruf_ort" rows="1" cols="31"></textarea></td>  </div></tr>';
-  cnt = papaTr.childElementCount - 1 
-  papaTr.insertBefore(sd, papaTr.children[cnt]) 
+	 
+  
+  anzahl = anzahl + 1;  
+	  
+  var papaTable = document.getElementById('popo1-parent') 
+  var sd = document.createElement('div'); 
+  sd.innerHTML ='<table id="popo1new-'+ anzahl +'" name="table_3"><tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="beruf_datum_1"></label><input type="date" id="beruf_datum_1" name="beruf_datum_1" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_datum_2"></label><input type="date" id="beruf_datum_2" name="beruf_datum_2" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td><td width="25%"> <label for="beruf_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="beruf_ort" rows="1" cols="31"></textarea></td>  </div></tr></table>';
+  cnt = papaTable.childElementCount - 2 
+  console.log(papaTable)
+  papaTable.appendChild(sd)
 }
  </script>
+     <div id="popo1-parent">
          <table name="table_3">          
              <tr>
                 <td width="25%">
@@ -271,12 +304,13 @@
                      </div>  
              </tr>
          </table>
+     </div>
          <table name="table_3_0">
-             <tr id="popo1">
+             <tr>
 		        <td width="25%"> 
 		  <button class="plus" type="button" onclick="go_1()">Add
 		  </button>
-		  <button class="delete" type="button" onclick="deleteTr()">Delete
+		  <button class="delete" type="button" onclick="remove_1()">Delete
 		  </button></td>
 		        <td width="25%"></td>
                 <td width="25%"></td>
@@ -285,16 +319,32 @@
          </table>	   
     <h2>Fachkenntnisse</h2> 
  <script>
+ 
+ var anzahl = 0;
+ function remove_2() {
+ 
+ var popo2 = document.getElementById('popo2new-' + anzahl);
+ //var sd = document.createElement('table_4');
+ 
+ popo2.remove();
+ anzahl = anzahl -1;
+}
   	 
   function go_2() {
-  var papaTr = document.getElementById('popo2').parentNode 
-  var sd = document.createElement('tr'); 
-  sd.innerHTML ='<tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr>';
-  cnt = papaTr.childElementCount - 1 
-  papaTr.insertBefore(sd, papaTr.children[cnt])
+	  
+  anzahl = anzahl + 1;  
+  
+  var papaTable = document.getElementById('popo2-parent') 
+  var sd = document.createElement('div'); 
+  sd.innerHTML ='<table id="popo2new-'+ anzahl +'" name="table_4"><tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr></table>';
+  cnt = papaTable.childElementCount - 2 
+  console.log(papaTable)
+  papaTable.appendChild(sd)
 }
+       
  </script>
-         <table name="table_4"> 
+ <div id="popo2-parent">
+         <table id="popo2-0" name="table_4"> 
              <tr>
                 <td width="25%">
                      <div class="row">
@@ -314,8 +364,9 @@
                 <td width="25%"></td>
              </tr>
          </table>
+            </div> 
          <table name="table_4_0">
-             <tr id="popo2">
+             <tr>
 		        <td width="25%"> 
 		  <button class="plus" type="button" onclick="go_2()">Add
 		  </button>
@@ -325,7 +376,8 @@
                 <td width="25%"></td>
                 <td width="25%"></td> 
 	         </tr>
-         </table>	   
+         </table>	
+        
 	<h2>Projekte</h2>
  <script>
   var anzahl = 0;
