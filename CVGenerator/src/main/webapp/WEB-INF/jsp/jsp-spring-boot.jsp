@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-   
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta charset="utf-8">
     <title>HTML5 Lebenslauf</title>
     <link rel="stylesheet" media="screen" href="styles.css" >
@@ -19,7 +19,11 @@
    
          h2{ color:#0DECDC }  
    
-         button{ color:#0DECDC }
+         button{ 
+         color: #0DECDC;
+         width: 10em;  
+         height: 2em;
+          }
    
          body{ background-color:#FCFEFC; color:#000000; }
    
@@ -89,7 +93,7 @@
 </head>
     <body>
 	   <div id="top"></div>
-	     <img src="/home/alena/Desktop/codecentric-ag.gif" style="float:all;padding:0 5px 5px 30px;" />
+	     <img src="/resources/images/codecentric-ag.gif" style="float:all;padding:0 5px 5px 30px;" />
 	<ul> 
 	  <form class="lebenslauf" action="result" method="post" name="lebenslauf">
       
@@ -403,7 +407,7 @@
         <table name="table_6">
              <tr>
                  <td width="25%">
-         <button class="plus" type="button" onclick="go_3()">Add
+         <button class="plus" type="button"  onclick="go_3()">Add
          </button>
          <button class="delete" type="button" onclick="remove_3()">Delete
          </button>
