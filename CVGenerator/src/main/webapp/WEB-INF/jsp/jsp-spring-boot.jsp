@@ -283,6 +283,7 @@
   console.log(papaTable)
   papaTable.appendChild(sd)
 }
+  
  </script>
      <div id="popo1-parent">
          <table name="table_3">          
