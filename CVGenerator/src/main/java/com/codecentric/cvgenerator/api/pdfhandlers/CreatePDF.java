@@ -29,8 +29,8 @@ public class CreatePDF extends PdfPageEventHelper {
 	//BaseColor.CYAN 
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	public static final String IMAGE_CODECENTRIC = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
-	public static final String IMAGE_MAIN = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf1.jpg";
+	public static final String IMAGE_CODECENTRIC = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
+	public static final String IMAGE_MAIN = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf2.png";
 	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
@@ -111,7 +111,7 @@ public class CreatePDF extends PdfPageEventHelper {
 	    table.setSpacingAfter(500f);
 	    TIME_ROMAN_BIG.setColor(BaseColor.WHITE);
 	    TIME_ROMAN_MAIN.setColor(BaseColor.WHITE);
-	    table.addCell(new Paragraph(" John Smith", TIME_ROMAN_BIG));
+	    table.addCell(new Paragraph(" Pavel Brodyanskiy", TIME_ROMAN_BIG));
 	    table.addCell("");
 	    table.addCell("");
 	    createEmptyCell(table,1);
