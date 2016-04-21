@@ -18,7 +18,7 @@ public class User {
     
     private String beruf_datum_1;
     private String beruf_datum_2;
-    private String beruf_ort;
+    private String beruf_position;
     private String beruf_stelle;
     
     private String fach_gebiet;
@@ -84,11 +84,11 @@ public class User {
 	public void setBeruf_datum_2(String beruf_datum_2) {
 		this.beruf_datum_2 = beruf_datum_2;
 	}
-	public String getBeruf_ort() {
-		return beruf_ort;
+	public String getBeruf_position() {
+		return beruf_position;
 	}
-	public void setBeruf_ort(String beruf_ort) {
-		this.beruf_ort = beruf_ort;
+	public void setBeruf_position(String beruf_position) {
+		this.beruf_position = beruf_position;
 	}
 	public String getBeruf_stelle() {
 		return beruf_stelle;
