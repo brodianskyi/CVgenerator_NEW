@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -29,8 +32,9 @@ public class CreatePDF extends PdfPageEventHelper {
 	//BaseColor.CYAN 
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	public static final String IMAGE_CODECENTRIC = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
-	public static final String IMAGE_MAIN = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf1.jpg";
+	public static final String IMAGE_CODECENTRIC = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
+	public static final String IMAGE_MAIN = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf3.png";
+	public static final String IMAGE_CODECENTRIC_BOTTOM_SMALL = "/home/pavel/git/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf0.png";
 	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
@@ -46,8 +50,8 @@ public class CreatePDF extends PdfPageEventHelper {
 	}
 	
 	
-	public void onEndPage(PdfWriter writer,Document document){
-	
+	public void onStartPage(PdfWriter writer,Document document){
+		
       try {
     	    pagenumber++;
     	    Image image = Image.getInstance(IMAGE_CODECENTRIC);
@@ -55,7 +59,16 @@ public class CreatePDF extends PdfPageEventHelper {
 			image.scaleToFit(200, 200);
 		if (pagenumber > 1){
 			document.add(image);
-		}	
+			Paragraph preface = new Paragraph();
+		    creteEmptyLine(preface, 7);
+		    document.add(preface);
+			
+		}else{
+			    Image image_small_title = Image.getInstance(IMAGE_CODECENTRIC_BOTTOM_SMALL);
+				image_small_title.setAbsolutePosition(360, 720);
+				image_small_title.scaleToFit(200, 200);
+				document.add(image_small_title);
+		}
 		} catch (BadElementException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,7 +83,8 @@ public class CreatePDF extends PdfPageEventHelper {
 		Document document = null;
 
 		try {
-			document = new Document(PageSize.A4, 20, 20, 130, 50);
+		//	document = new Document(PageSize.A4, 20, 20, 130, 50);
+			document = new Document(PageSize.A4);
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
 			writer.setPageEvent(this);
 			document.open();
@@ -111,24 +125,28 @@ public class CreatePDF extends PdfPageEventHelper {
 	    table.setSpacingAfter(500f);
 	    TIME_ROMAN_BIG.setColor(BaseColor.WHITE);
 	    TIME_ROMAN_MAIN.setColor(BaseColor.WHITE);
-	    table.addCell(new Paragraph(" John Smith", TIME_ROMAN_BIG));
+	    table.addCell(new Paragraph(" " + user.getVorname() + " " + user.getName(), TIME_ROMAN_BIG));
 	    table.addCell("");
 	    table.addCell("");
 	    createEmptyCell(table,1);
-	    table.addCell(new Paragraph(" Senior IT Consultant", TIME_ROMAN_MAIN));
+	    table.addCell(new Paragraph( stringTokenizer.getCommaValues(" " + user.getBeruf_position()).get(1), TIME_ROMAN_MAIN));
 	    table.addCell("");
 	    table.addCell("");
-
-	    createEmptyCell(table,3);
-	    table.addCell(new Paragraph(" codecentric AG | 10.02.2016", TIME_ROMAN_MAIN));
+	    
+	    DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+	    Date date = new Date();
+	    
+        createEmptyCell(table,3);
+	    table.addCell(new Paragraph(" codecentric AG | " + dateFormat.format(date), TIME_ROMAN_MAIN));
 	    table.addCell("");
 	    table.addCell("");
 	    float[] columnWidths = new float[]{80f,10f,10f};
 	    table.setWidths(columnWidths); 
 	    document.add(new Paragraph(" ", TIME_ROMAN));
-	  //  document.add(table);
+
     	 Image image = Image.getInstance(IMAGE_MAIN);
          image.setAbsolutePosition(0, 0);
+         image.scaleToFit(1610, 870);
     	 try {
     		 canvas.addImage(image);
     		 document.add(table);
@@ -172,7 +190,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		table.addCell(user.getTelefon());
 		
 		table.addCell("Email");
-		table.addCell(user.getTelefon());
+		table.addCell(user.getEmail());
 		
 		float[] columnWidths = new float[] {30f, 50f};
 		table.setWidths(columnWidths);
@@ -190,7 +208,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		
 		Paragraph preface = new Paragraph();
 	    creteEmptyLine(preface, 1);
-		preface.add(new Paragraph("     Ausbildung und Berufserfahrung", TIME_ROMAN));
+		preface.add(new Paragraph("     Ausbildung/Universität", TIME_ROMAN));
 		creteEmptyLine(preface, 1);
 		
 		PdfPTable table = new PdfPTable(2);
@@ -205,9 +223,9 @@ public class CreatePDF extends PdfPageEventHelper {
 		for(int i = 1 ; i < map_for_datum1.size() + 1; i++)
 		{
 			table.addCell(map_for_datum1.get(i) + " / " + map_for_datum2.get(i));
-			table.addCell(map_for_ort.get(i));
-			table.addCell("");
 			table.addCell(map_for_stelle.get(i));
+			table.addCell("");
+			table.addCell(map_for_ort.get(i));
 		 }
 		float[] columnWidths = new float[] {30f, 50f};
 		table.setWidths(columnWidths);
@@ -221,6 +239,8 @@ public class CreatePDF extends PdfPageEventHelper {
 		
 		Paragraph preface = new Paragraph();
         creteEmptyLine(preface, 1);
+        preface.add(new Paragraph("     Berufserfahrung", TIME_ROMAN));
+		creteEmptyLine(preface, 1);
         
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(90);
@@ -228,13 +248,13 @@ public class CreatePDF extends PdfPageEventHelper {
         
     	Map<Integer, String> map_for_beruf_datum1 = stringTokenizer.getCommaValues(user.getBeruf_datum_1());
 		Map<Integer, String> map_for_beruf_datum2 = stringTokenizer.getCommaValues(user.getBeruf_datum_2());
-		Map<Integer, String> map_for_ort = stringTokenizer.getCommaValues(user.getBeruf_ort());
+		Map<Integer, String> map_for_position = stringTokenizer.getCommaValues(user.getBeruf_position());
 		Map<Integer, String> map_for_stelle = stringTokenizer.getCommaValues(user.getBeruf_stelle());
         
 		for(int i = 1 ; i < map_for_beruf_datum1.size()+1 ; i++)
 		{
 			table.addCell(map_for_beruf_datum1.get(i) + " / " + map_for_beruf_datum2.get(i));
-			table.addCell(map_for_ort.get(i));
+			table.addCell(map_for_position.get(i));
 			table.addCell("");
 			table.addCell(map_for_stelle.get(i));
 		}
