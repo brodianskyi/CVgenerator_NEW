@@ -5,7 +5,7 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta charset="utf-8">
     <title>HTML5 Lebenslauf</title>
-    <link rel="stylesheet" media="screen" href="styles.css" >
+    
     
       <style type="text/css">
          table {
@@ -61,9 +61,14 @@
 		 color: #fff;
 	     }
 	     
+	     textarea{
+	     width:400px;
+	     height:200px;
+	     }
+	     
        </style>
        
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="/home/alena/Desktop/Lebenslauf/jquery/jquery.min.test.js"></script>
 <script type="text/javascript">
 	$(function () {
 	/* set variables locally for increased performance */
@@ -90,7 +95,16 @@
 	});
 });
 </script>
-  
+
+<script type="text/javascript" src="/home/alena/Desktop/Lebenslauf/jquery/jquery-1.4.2.test.js"></script>
+<script type="text/javascript" src="/home/alena/Desktop/Lebenslauf/jquery/autoresize.jquery.test.js"></script>
+
+<script type="text/javascript">
+jQuery(function()
+{
+jQuery('textarea').autoResize();	    
+});
+	</script> 
 </head>
     <body>
 	   <div id="top"></div>
@@ -165,7 +179,7 @@
                    <div class="small-12 columns">
 		           <label for="sprachen"></label></td>
                <td width="25%">
-                   <textarea class="span8" type="text" name="sprachen" rows="1" cols="17">Russisch, Deutsch, Englisch</textarea> 
+                   <textarea class="span8" type="text" name="sprachen" rows="1" cols="17" >Russisch, Deutsch, Englisch</textarea> 
 		       <td width="25%"></td>
 		       <td width="25%"></td>
 	        </tr>

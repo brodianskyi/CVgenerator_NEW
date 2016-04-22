@@ -61,9 +61,15 @@
 		 color: #fff;
 	     }
 	     
+	     textarea{
+	     width:400px;
+	     height:70px;
+	     color: #0DECDC;
+	     }
+	     
        </style>
        
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript" src="jquery/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function () {
 	/* set variables locally for increased performance */
@@ -90,6 +96,15 @@
 	});
 });
 </script>
+<script src="jquery/jquery-1.4.2.js"></script>
+<script src="jquery/autoresize.jquery.js"></script>
+
+<script>
+jQuery(function()
+{
+jQuery('textarea').autoResize();	    
+});
+</script> 
   
 </head>
     <body>
@@ -118,7 +133,7 @@
                   <div class="small-12 columns">
 		          <label for="vorname"></label></td>
              <td width="25%">
-                  <textarea class="span8" type="text" name="vorname" rows="1" cols="17"></textarea>
+                  <textarea class="span8" type="text" name="vorname" rows="1" cols="17" ></textarea>
                   </div>
              </td>
              <td width="25%"></td>
@@ -165,7 +180,7 @@
                    <div class="small-12 columns">
 		           <label for="sprachen"></label></td>
                <td width="25%">
-                   <textarea class="span8" type="text" name="sprachen" rows="1" cols="17"></textarea> 
+                   <textarea class="span8" type="text" name="sprachen" rows="1" cols="17" title="Füllen Sie diese Feld durch das Komma aus"></textarea> 
 		       <td width="25%"></td>
 		       <td width="25%"></td>
 	        </tr>
@@ -337,7 +352,7 @@
   
   var papaTable = document.getElementById('popo2-parent') 
   var sd = document.createElement('div'); 
-  sd.innerHTML ='<table id="popo2new-'+ anzahl +'" name="table_4"><tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr></table>';
+  sd.innerHTML ='<table id="popo2new-'+ anzahl +'" name="table_4"><tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr></table>';
   cnt = papaTable.childElementCount - 2 
   console.log(papaTable)
   papaTable.appendChild(sd)
@@ -358,7 +373,7 @@
                      <div class="row">
                      <div class="small-12 columns">
 		             <label for="fach_kenntnisse"></label>
-		             <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31"></textarea>
+		             <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>
 		        </td>        
                      </div>    
                 <td width="25%"></td>
@@ -395,7 +410,7 @@
   anzahl = anzahl + 1;
   var papaTable = document.getElementById('popo3-0').parentNode
   var sd = document.createElement('div');
-  sd.innerHTML ='<table id="popo3new-' + anzahl +'" name="table_5"><tr> <td width="25%"><div class="row"> <div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Anfang, MM-YYYY" ></td> </div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label> </td><td width="25%"><textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea>  </div></td><td width="25%"></td> </tr><tr><td width="25%"><div class="row"><div class="small-12 columns"> <label for="projekte_datum2"></label> <input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Endung, MM-YYYY" ></td></div> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label> </td> <td width="25%"> <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31"></textarea> </div></td><td width="25%"></td> </tr> <tr><td width="25%"></td> <td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_rolle">Rolle</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31"></textarea>  </div> </td> <td width="25%"></td> </tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_technologie">Technologie</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31"></textarea></div> </td><td width="25%"></td></tr></table>';
+  sd.innerHTML ='<table id="popo3new-' + anzahl +'" name="table_5"><tr> <td width="25%"><div class="row"> <div class="small-12 columns"><label for="projekte_datum1"></label><input type="date" id="projekte_datum1" name="projekte_datum1" placeholder="Anfang, MM-YYYY" ></td> </div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label> </td><td width="25%"><textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea>  </div></td><td width="25%"></td> </tr><tr><td width="25%"><div class="row"><div class="small-12 columns"> <label for="projekte_datum2"></label> <input type="date" id="projekte_datum2" name="projekte_datum2" placeholder="Endung, MM-YYYY" ></td></div> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label> </td> <td width="25%"> <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </div></td><td width="25%"></td> </tr> <tr><td width="25%"></td> <td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_rolle">Rolle</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>  </div> </td> <td width="25%"></td> </tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_technologie">Technologie</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea></div> </td><td width="25%"></td></tr></table>';
   cnt = papaTable.childElementCount -2
   papaTable.insertBefore(sd, papaTable.children[cnt])
 }
@@ -432,7 +447,7 @@
                      <label for="projekte_thematik">Thematik</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31"></textarea> 
+                     <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -445,7 +460,7 @@
                      <label for="projekte_rolle">Rolle</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31"></textarea> 
+                     <textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -458,7 +473,7 @@
                      <label for="projekte_technologie">Technologie</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31"></textarea>
+                     <textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>
                      </div>
                  </td>
                  <td width="25%"></td>
