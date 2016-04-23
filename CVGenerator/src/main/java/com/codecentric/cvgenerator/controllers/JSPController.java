@@ -34,7 +34,7 @@ public class JSPController {
 		 logger.info("Hey man if you see this !!!");
 		 
 		 
-		ModelAndView modelAndView = new ModelAndView("jsp-spring-boot");
+		ModelAndView modelAndView = new ModelAndView("test");
 	  
 	  return modelAndView;
 	}
