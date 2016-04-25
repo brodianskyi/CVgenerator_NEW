@@ -179,7 +179,7 @@ jQuery('textarea').autoResize();
                    <div class="small-12 columns">
 		           <label for="sprachen"></label></td>
                <td width="25%">
-                   <textarea class="span8" type="text" name="sprachen" rows="1" cols="17" >Russisch, Deutsch, Englisch</textarea> 
+                   <textarea class="span8" type="text" name="sprachen" rows="2" cols="17" >Russisch, Deutsch, Englisch</textarea> 
 		       <td width="25%"></td>
 		       <td width="25%"></td>
 	        </tr>
@@ -270,7 +270,7 @@ jQuery('textarea').autoResize();
                     <input type="text" id="ausbildung_datum_2" name="ausbildung_datum_2"  value="26/07/2009"></td>
                <td width="25%">
                     <label for="ausbildung_stelle"></label>
-                    <textarea class="span8" type="text"  name="ausbildung_stelle" rows="1" cols="31">Bachelor-Studium der Wirtschaftsinformatik</textarea></td> 
+                    <textarea class="span8" type="text"  name="ausbildung_stelle" rows="2" cols="31">Bachelor-Studium der Wirtschaftsinformatik</textarea></td> 
                <td width="25%">
                     <label for="ausbildung_ort"></label>
                     <textarea class="span8" type="text"  name="ausbildung_ort" rows="1" cols="31">HS Karlsruhe</textarea></td>    
@@ -288,7 +288,7 @@ jQuery('textarea').autoResize();
                     <input type="text" id="ausbildung_datum_2" name="ausbildung_datum_2"  value="26/07/2012"></td>
                <td width="25%">
                     <label for="ausbildung_stelle"></label>
-                    <textarea class="span8" type="text"  name="ausbildung_stelle" rows="1" cols="31">Master-Studium der Wirtschaftsinformatik</textarea></td> 
+                    <textarea class="span8" type="text"  name="ausbildung_stelle" rows="2" cols="31">Master-Studium der Wirtschaftsinformatik</textarea></td> 
                <td width="25%">
                     <label for="ausbildung_ort"></label>
                     <textarea class="span8" type="text"  name="ausbildung_ort" rows="1" cols="31">HS Karlsruhe</textarea></td>    
@@ -442,7 +442,7 @@ jQuery('textarea').autoResize();
                      <div class="row">
                      <div class="small-12 columns">
 		             <label for="fach_kenntnisse"></label>
-		             <textarea id="kenntnisse" class="span8" type="text"  name="fach_kenntnisse" rows="1" cols="31">Eclipse, Subversion, Git, Junit, TestNG, Ant, Maven, OpenESB, Oracle Warehouse Builder (OWB), Oracle Business Intelligence, Enterprise Edition (OBIEE), Intalio BPMS, RapidMiner, Dozer, OpenEJB, Jira, Vagrant, Puppet, The Foreman, Logstash, Ansible</textarea>
+		             <textarea id="kenntnisse" class="span8" type="text"  name="fach_kenntnisse" rows="8" cols="31">Eclipse, Subversion, Git, Junit, TestNG, Ant, Maven, OpenESB, Oracle Warehouse Builder (OWB), Oracle Business Intelligence, Enterprise Edition (OBIEE), Intalio BPMS, RapidMiner, Dozer, OpenEJB, Jira, Vagrant, Puppet, The Foreman, Logstash, Ansible</textarea>
 		        </td>        
                      </div>    
                 <td width="25%"></td>
@@ -460,7 +460,7 @@ jQuery('textarea').autoResize();
                      <div class="row">
                      <div class="small-12 columns">
 		             <label for="fach_kenntnisse"></label>
-		             <textarea id="kenntnisse" class="span8" type="text"  name="fach_kenntnisse" rows="1" cols="31">Java (JavaEE, JPA, Hibernate, JSF, Richfaces), PHP (Symfony), C#SQL, XML, Business Process Model and Notation (BPMN), BusinessProcess Execution Language (BPEL), Eclipse RCP</textarea>
+		             <textarea id="kenntnisse" class="span8" type="text"  name="fach_kenntnisse" rows="6" cols="31">Java (JavaEE, JPA, Hibernate, JSF, Richfaces), PHP (Symfony), C#SQL, XML, Business Process Model and Notation (BPMN), BusinessProcess Execution Language (BPEL), Eclipse RCP</textarea>
 		        </td>        
                      </div>    
                 <td width="25%"></td>
@@ -552,7 +552,7 @@ jQuery('textarea').autoResize();
                      <label for="projekte_thematik">Thematik</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31">Ermittlung und Verbesserung der Zustellungsquote für “Overnight-Bestellungen” innerhalb des zugesichertenZeitfensters sowie aufbau eines Echtzeit-Monitorings für Overnight-Bestellungen</textarea> 
+                     <textarea class="span8" type="text" name="projekte_thematik" rows="7" cols="31">Ermittlung und Verbesserung der Zustellungsquote für “Overnight-Bestellungen” innerhalb des zugesichertenZeitfensters sowie aufbau eines Echtzeit-Monitorings für Overnight-Bestellungen</textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -616,7 +616,7 @@ jQuery('textarea').autoResize();
                      <label for="projekte_thematik">Thematik</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31">Aufbau einer Integrationsplattform auf Basis von MuleESB, Darauf aufbauend Implementierung eines Identity Management Systems</textarea> 
+                     <textarea class="span8" type="text" name="projekte_thematik" rows="5" cols="31">Aufbau einer Integrationsplattform auf Basis von MuleESB, Darauf aufbauend Implementierung eines Identity Management Systems</textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -629,7 +629,7 @@ jQuery('textarea').autoResize();
                      <label for="projekte_rolle">Rolle</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31">Consultant (Technisch), Integrationsentwickler</textarea> 
+                     <textarea class="span8" type="text" name="projekte_rolle" rows="2" cols="31">Consultant (Technisch), Integrationsentwickler</textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -662,7 +662,7 @@ jQuery('textarea').autoResize();
                      <label for="projekte_kunde">Kunde</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31">Schwäbisch Hall Kredit Services (SHKS)</textarea> 
+                     <textarea class="span8" type="text" name="projekte_kunde" rows="2" cols="31">Schwäbisch Hall Kredit Services (SHKS)</textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
@@ -680,7 +680,7 @@ jQuery('textarea').autoResize();
                      <label for="projekte_thematik">Thematik</label>
                  </td>
                  <td width="25%">
-                     <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31">Beratung beim Aufbau einer Integrationsplattform auf Basis von MuleESB</textarea> 
+                     <textarea class="span8" type="text" name="projekte_thematik" rows="3" cols="31">Beratung beim Aufbau einer Integrationsplattform auf Basis von MuleESB</textarea> 
                      </div>
                  </td>
                  <td width="25%"></td>
