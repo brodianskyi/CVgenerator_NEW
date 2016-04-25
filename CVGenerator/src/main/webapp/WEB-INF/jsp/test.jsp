@@ -194,7 +194,7 @@ jQuery('textarea').autoResize();
                    <div class="small-12 columns">
 		           <label for="telefon"></label></td>
                <td width="25%">
-                   <textarea class="span8" type="text" name="telefon" rows="1" cols="17">017204255541, 01725589854</textarea> 
+                   <textarea class="span8" type="text" name="telefon" rows="2" cols="17">017204255541, 01725589854</textarea> 
                    </div>
                </td>
                <td width="25%"></td>
@@ -382,7 +382,7 @@ jQuery('textarea').autoResize();
                      <input type="date" id="beruf_datum_2" name="beruf_datum_2" ></td>
                 <td width="25%">
                      <label for="beruf_stelle"></label>
-                     <textarea class="span8" type="text"  name="beruf_stelle" rows="1" cols="31">Forschungszentrum für Informatik(FZI)</textarea></td>
+                     <textarea class="span8" type="text"  name="beruf_stelle" rows="2" cols="31">Forschungszentrum für Informatik(FZI)</textarea></td>
                 <td width="25%">
                      <label for="beruf_position"></label>
                      <textarea class="span8" type="text"  name="beruf_position" rows="1" cols="31">Angestellter</textarea></td>    
