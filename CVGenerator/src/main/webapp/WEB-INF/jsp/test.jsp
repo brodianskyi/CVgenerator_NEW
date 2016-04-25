@@ -143,7 +143,7 @@ jQuery('textarea').autoResize();
                    <div class="small-12 columns">
 		           <label for="geburtsdatum"></label></td>
              <td width="25%">
-                   <input type="text"  name="geburtsdatum" cols="17" value="19/01/1991" />
+                   <input type="date"  name="geburtsdatum" cols="17" />
                    </div>
              </td>
              <td width="25%"></td>
@@ -246,10 +246,10 @@ jQuery('textarea').autoResize();
                     <div class="row">
                     <div class="small-12 columns">
                     <label for="ausbildung_datum_1"></label>
-                    <input type="text" id="ausbildung_datum_1" name="ausbildung_datum_1"  value="10/09/1998"></td>
+                    <input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1" ></td>
                <td width="25%">
                     <label for="ausbildung_datum_2"></label>
-                    <input type="text" id="ausbildung_datum_2" name="ausbildung_datum_2"  value="26/07/2004"></td>
+                    <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2" ></td>
                <td width="25%">
                     <label for="ausbildung_stelle"></label>
                     <textarea class="span8" type="text"  name="ausbildung_stelle" rows="1" cols="31">Ausbildung zum IT-Systemkaufmann</textarea></td> 
@@ -264,10 +264,10 @@ jQuery('textarea').autoResize();
                     <div class="row">
                     <div class="small-12 columns">
                     <label for="ausbildung_datum_1"></label>
-                    <input type="text" id="ausbildung_datum_1" name="ausbildung_datum_1"  value="10/09/2004"></td>
+                    <input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1"></td>
                <td width="25%">
                     <label for="ausbildung_datum_2"></label>
-                    <input type="text" id="ausbildung_datum_2" name="ausbildung_datum_2"  value="26/07/2009"></td>
+                    <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2"></td>
                <td width="25%">
                     <label for="ausbildung_stelle"></label>
                     <textarea class="span8" type="text"  name="ausbildung_stelle" rows="2" cols="31">Bachelor-Studium der Wirtschaftsinformatik</textarea></td> 
@@ -282,10 +282,10 @@ jQuery('textarea').autoResize();
                     <div class="row">
                     <div class="small-12 columns">
                     <label for="ausbildung_datum_1"></label>
-                    <input type="text" id="ausbildung_datum_1" name="ausbildung_datum_1"  value="10/09/2009"></td>
+                    <input type="date" id="ausbildung_datum_1" name="ausbildung_datum_1"></td>
                <td width="25%">
                     <label for="ausbildung_datum_2"></label>
-                    <input type="text" id="ausbildung_datum_2" name="ausbildung_datum_2"  value="26/07/2012"></td>
+                    <input type="date" id="ausbildung_datum_2" name="ausbildung_datum_2"></td>
                <td width="25%">
                     <label for="ausbildung_stelle"></label>
                     <textarea class="span8" type="text"  name="ausbildung_stelle" rows="2" cols="31">Master-Studium der Wirtschaftsinformatik</textarea></td> 
@@ -342,10 +342,10 @@ jQuery('textarea').autoResize();
                      <div class="row">
                      <div class="small-12 columns">
                      <label for="beruf_datum_1"></label>
-                     <input  id="beruf_datum_1" name="beruf_datum_1" value="10/09/2013" ></td>
+                     <input type="date" id="beruf_datum_1" name="beruf_datum_1" ></td>
                 <td width="25%">
                      <label for="beruf_datum_2"></label>
-                     <input  id="beruf_datum_2" name="beruf_datum_2" value="heute" ></td>
+                     <input type="date" id="beruf_datum_2" name="beruf_datum_2"></td>
                 <td width="25%">
                      <label for="beruf_stelle"></label>
                      <textarea class="span8" type="text"  name="beruf_stelle" rows="1" cols="31">codecentric AG,Karlsruhe</textarea></td>
@@ -359,10 +359,10 @@ jQuery('textarea').autoResize();
                      <div class="row">
                      <div class="small-12 columns">
                      <label for="beruf_datum_1"></label>
-                     <input  id="beruf_datum_1" name="beruf_datum_1" value="10/09/2009" ></td>
+                     <input type="date" id="beruf_datum_1" name="beruf_datum_1"  ></td>
                 <td width="25%">
                      <label for="beruf_datum_2"></label>
-                     <input  id="beruf_datum_2" name="beruf_datum_2" value="10/09/20010" ></td>
+                     <input type="date" id="beruf_datum_2" name="beruf_datum_2"></td>
                 <td width="25%">
                      <label for="beruf_stelle"></label>
                      <textarea class="span8" type="text"  name="beruf_stelle" rows="1" cols="31">Heinrich Heine GmbH</textarea></td>
@@ -376,10 +376,10 @@ jQuery('textarea').autoResize();
                      <div class="row">
                      <div class="small-12 columns">
                      <label for="beruf_datum_1"></label>
-                     <input  id="beruf_datum_1" name="beruf_datum_1" value="10/09/2007" ></td>
+                     <input type="date" id="beruf_datum_1" name="beruf_datum_1"></td>
                 <td width="25%">
                      <label for="beruf_datum_2"></label>
-                     <input  id="beruf_datum_2" name="beruf_datum_2" value="10/09/2008" ></td>
+                     <input type="date" id="beruf_datum_2" name="beruf_datum_2" ></td>
                 <td width="25%">
                      <label for="beruf_stelle"></label>
                      <textarea class="span8" type="text"  name="beruf_stelle" rows="1" cols="31">Forschungszentrum für Informatik(FZI)</textarea></td>
@@ -526,7 +526,7 @@ jQuery('textarea').autoResize();
                     <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input  id="projekte_datum1" name="projekte_datum1" value="2015" ></td>
+                     <input type="date" id="projekte_datum1" name="projekte_datum1" ></td>
                      </div> 
                  <td width="25%">
                      <div class="row">
@@ -544,7 +544,7 @@ jQuery('textarea').autoResize();
 					 <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input  id="projekte_datum2" name="projekte_datum2" value="heute"></td>
+                     <input type="date" id="projekte_datum2" name="projekte_datum2" ></td>
                      </div>
                  <td width="25%">
                      <div class="row">
@@ -590,7 +590,7 @@ jQuery('textarea').autoResize();
                     <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input  id="projekte_datum1" name="projekte_datum1" value="2015" ></td>
+                     <input type="date" id="projekte_datum1" name="projekte_datum1" ></td>
                      </div> 
                  <td width="25%">
                      <div class="row">
@@ -608,7 +608,7 @@ jQuery('textarea').autoResize();
 					 <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input  id="projekte_datum2" name="projekte_datum2" value="heute"></td>
+                     <input type="date" id="projekte_datum2" name="projekte_datum2"></td>
                      </div>
                  <td width="25%">
                      <div class="row">
@@ -654,7 +654,7 @@ jQuery('textarea').autoResize();
                     <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input  id="projekte_datum1" name="projekte_datum1" value="01/02/2014" ></td>
+                     <input type="date" id="projekte_datum1" name="projekte_datum1"></td>
                      </div> 
                  <td width="25%">
                      <div class="row">
@@ -672,7 +672,7 @@ jQuery('textarea').autoResize();
 					 <div class="row">
                      <div class="small-12 columns">
                      <label for="projekte_datum1"></label>
-                     <input  id="projekte_datum2" name="projekte_datum2" value="01/06/14"></td>
+                     <input type="date" id="projekte_datum2" name="projekte_datum2" ></td>
                      </div>
                  <td width="25%">
                      <div class="row">
