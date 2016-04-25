@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,15 +30,13 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy;
+
 
 public class CreatePDF extends PdfPageEventHelper {
-	//BaseColor.CYAN 
+	
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	public static final String IMAGE_CODECENTRIC = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/codecentric-ag.gif";
-	public static final String IMAGE_MAIN = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf3.png";
-	public static final String IMAGE_CODECENTRIC_BOTTOM_SMALL = "/home/rody/CVgenerator_NEW/CVGenerator/src/main/webapp/resources/images/for_pdf0.png";
+	public static String current_url;
 	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23,Font.BOLD);
 	private static Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
@@ -49,6 +49,9 @@ public class CreatePDF extends PdfPageEventHelper {
 	
 	public CreatePDF(User user){
 		 this.user = user;
+		 Path currentRelativePath = Paths.get("");
+		 current_url = currentRelativePath.toAbsolutePath().toString();
+		 current_url+="/src/main/webapp/resources/images/";
 	}
 	
 	
@@ -56,7 +59,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		
       try {
     	    pagenumber++;
-    	    Image image = Image.getInstance(IMAGE_CODECENTRIC);
+    	    Image image = Image.getInstance(current_url+"codecentric-ag.gif");
 			image.setAbsolutePosition(330, 720);
 			image.scaleToFit(200, 200);
 		if (pagenumber > 1){
@@ -66,7 +69,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		    document.add(preface);
 			
 		}else{
-			    Image image_small_title = Image.getInstance(IMAGE_CODECENTRIC_BOTTOM_SMALL);
+			    Image image_small_title = Image.getInstance(current_url+"for_pdf0.png");
 				image_small_title.setAbsolutePosition(360, 720);
 				image_small_title.scaleToFit(200, 200);
 				document.add(image_small_title);
@@ -146,7 +149,7 @@ public class CreatePDF extends PdfPageEventHelper {
 	    table.setWidths(columnWidths); 
 	    document.add(new Paragraph(" ", TIME_ROMAN));
 
-    	 Image image = Image.getInstance(IMAGE_MAIN);
+    	 Image image = Image.getInstance(current_url+"for_pdf3.png");
          image.setAbsolutePosition(0, 0);
          image.scaleToFit(1610, 870);
     	 try {

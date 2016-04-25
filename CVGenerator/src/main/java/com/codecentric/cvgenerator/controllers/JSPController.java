@@ -34,10 +34,21 @@ public class JSPController {
 		 logger.info("Hey man if you see this !!!");
 		 
 		 
+		ModelAndView modelAndView = new ModelAndView("jsp-spring-boot");
+	  
+	  return modelAndView;
+	}
+	
+	@RequestMapping("/test")
+    public ModelAndView jspSpringboot_test() {
+		 logger.info("Hey man if you see this !!!");
+		 
+		 
 		ModelAndView modelAndView = new ModelAndView("test");
 	  
 	  return modelAndView;
 	}
+	
 	
 	
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
