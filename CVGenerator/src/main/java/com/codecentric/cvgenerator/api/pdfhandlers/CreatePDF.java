@@ -96,17 +96,17 @@ public class CreatePDF extends PdfPageEventHelper {
 			
 			addMetaData(document);
 
-			addTitleCV(document,writer);
+		//	addTitleCV(document,writer);
 			
 			addPerson(document);
 
-			addAusbildung(document);
+		//	addAusbildung(document);
 			
-			addBeruf(document);
+		//	addBeruf(document);
 			
-			addFachkenntnisse(document);
+		//	addFachkenntnisse(document);
 			
-			addProjecte(document);
+		//	addProjecte(document);
 		
 		
 			document.close();
@@ -121,7 +121,7 @@ public class CreatePDF extends PdfPageEventHelper {
 
 	}
 
-    private void addTitleCV(Document document,PdfWriter writer) throws MalformedURLException, IOException, DocumentException {
+   /* private void addTitleCV(Document document,PdfWriter writer) throws MalformedURLException, IOException, DocumentException {
     	PdfContentByte canvas = writer.getDirectContentUnder();
     	PdfPTable table = new PdfPTable(3);
 	    table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
@@ -160,7 +160,7 @@ public class CreatePDF extends PdfPageEventHelper {
 			e.printStackTrace();
 		}
     }
-	
+	*/
 	private void addMetaData(Document document) {
 		document.addTitle("Generate PDF report");
 		document.addSubject("Generate PDF report");
@@ -207,7 +207,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		
 
 	}
-	
+	/*
 	private void addAusbildung(Document document)
 			throws DocumentException {
 		
@@ -348,7 +348,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		  document.add(preface);
 		  document.add(table);
      }
-  
+  */
 	private void creteEmptyLine(Paragraph paragraph, int number) {
 		for (int i = 0; i < number; i++) {
 			paragraph.add(new Paragraph(" "));

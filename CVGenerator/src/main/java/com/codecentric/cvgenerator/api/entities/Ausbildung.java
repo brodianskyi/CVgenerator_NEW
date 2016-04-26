@@ -1,10 +1,12 @@
 package com.codecentric.cvgenerator.api.entities;
 
 public class Ausbildung {
+	    
 	    private String ausbildung_datum_1;
 	    private String ausbildung_datum_2;
 	    private String ausbildung_ort;
 	    private String ausbildung_stelle;
+	    
 	    
 	    public String getAusbildung_datum_1() {
 			return ausbildung_datum_1;

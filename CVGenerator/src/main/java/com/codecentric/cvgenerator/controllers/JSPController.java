@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +23,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
+import com.codecentric.cvgenerator.model.UserDao;
+
+
 
 @Controller
 public class JSPController {
 	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
-     
+	 @Autowired
+	 private UserDao userDao;
    
 	
 	@RequestMapping("/home")
@@ -59,10 +64,10 @@ public class JSPController {
 	  final ServletContext servletContext = request.getSession().getServletContext();
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
+	    
         
 	    CreatePDF create_document = new CreatePDF(userID); 
-	    
-	    
+	 
 	    String fileName = "JavaHonk.pdf";
 	    response.setContentType("application/pdf");
 	    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
@@ -74,13 +79,21 @@ public class JSPController {
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
 	        OutputStream os = response.getOutputStream();
 	        baos.writeTo(os);
+	        create(userID);
 	        os.flush();
 	    } catch (Exception e1) {
 	        e1.printStackTrace();
-	    }
-        
-        
+	    } 
   }
+  
+	public String create(User user) {
+		 try {
+	         userDao.save(user);//Save instance in database  
+	        }catch (Exception e) {
+	        	return "Error creating the user: " + e.toString();
+	        }
+		 return "User succesfully created! (id = " + user.getId() + ")"; 
+	}
   
   private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 

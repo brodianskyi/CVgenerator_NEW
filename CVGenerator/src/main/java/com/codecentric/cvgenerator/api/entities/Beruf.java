@@ -1,6 +1,7 @@
 package com.codecentric.cvgenerator.api.entities;
 
 public class Beruf {
+	    
 	    private String beruf_datum_1;
 	    private String beruf_datum_2;
 	    private String beruf_position;

@@ -1,6 +1,7 @@
 package com.codecentric.cvgenerator.api.entities;
 
 public class Fach {
+	    
 	    private String fach_gebiet;
 	    private String fach_kenntnisse;
 		
