@@ -1,5 +1,6 @@
 package com.codecentric.cvgenerator.api.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "user_new")
+@Table(name = "users")
 public class User {
    
 	@Id
@@ -37,8 +38,8 @@ public class User {
     @NotNull
     private String email;
    
- //   @OneToMany(mappedBy = "user") 
- //   private List<Ausbildung> ausbildung;
+    @OneToMany(mappedBy = "user") 
+    private List<Ausbildung> ausbildung;
     
     public User(){};
     
@@ -119,14 +120,23 @@ public class User {
 		this.email = email;
 	}
 
-/*	public List<Ausbildung> getAusbildung() {
+	public List<Ausbildung> getAusbildung() {
 		return ausbildung;
 	}
 
 	public void setAusbildung(List<Ausbildung> ausbildung) {
 		this.ausbildung = ausbildung;
 	}
- */   
+
+	public void addAusbildung(Ausbildung ausbildung) {
+		if(this.ausbildung == null) {
+			this.ausbildung = new ArrayList<Ausbildung>();
+		} else {
+			this.ausbildung.add(ausbildung);			
+		}
+		
+	}
+    
    
     
     

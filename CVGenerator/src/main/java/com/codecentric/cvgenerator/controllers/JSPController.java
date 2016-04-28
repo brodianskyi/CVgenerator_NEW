@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.codecentric.cvgenerator.api.entities.Ausbildung;
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
+import com.codecentric.cvgenerator.model.AusbildungDao;
 import com.codecentric.cvgenerator.model.UserDao;
 
 
@@ -34,6 +35,8 @@ public class JSPController {
 	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	 @Autowired
 	 private UserDao userDao;
+	 @Autowired
+	 private AusbildungDao ausbildungDao;
    
 	
 	@RequestMapping("/home")
@@ -82,21 +85,32 @@ public class JSPController {
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
 	        OutputStream os = response.getOutputStream();
 	        baos.writeTo(os);
-	        create(ausbildung);
+	        addUserData(userID);
+	        addAusbildungData(ausbildung);
 	        os.flush();
 	    } catch (Exception e1) {
 	        e1.printStackTrace();
 	    } 
   }
   
-	public String create(Ausbildung ausbildung) {
+	public String addAusbildungData(Ausbildung ausbildung) {
 		 try {
-			 userDao.save(ausbildung);
+			 ausbildungDao.save(ausbildung);
+	
+		    }catch (Exception e) {
+	        	return "Error creating ausbildung table: " + e.toString();
+	        }
+		 return "Ausbildung succesfully created! (id = " + ausbildung.getAusbildung_id() + ")"; 
+	}
+	
+	public String addUserData(User user) {
+		 try {
+			 userDao.save(user);
 	
 		    }catch (Exception e) {
 	        	return "Error creating the user: " + e.toString();
 	        }
-		 return "User succesfully created! (id = " + ausbildung.getAusbildung_id() + ")"; 
+		 return "User succesfully created! (id = " + user.getUser_id() + ")"; 
 	}
   
   private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {

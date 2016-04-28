@@ -1,5 +1,6 @@
 package com.codecentric.cvgenerator.api.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -14,23 +15,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "ausbildung_first")
+@Table (name = "ausbildung")
 public class Ausbildung {
 	   
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private long ausbildung_id;
 	    @ElementCollection
-	    @Column(name="ausbildung_datum_begin")
+	    @Column(name="AUSBILDUNG_DATE")
 	    @CollectionTable(name ="AUSBILDUNG_DATE", joinColumns={@JoinColumn(name="ausbildung_id")})
-	    private List<String> ausbildung_datum_1;
-	    private String ausbildung_datum_2;
+	    private List<String> ausbildung_datum_1 = new ArrayList<String>();
+	 /*   @ElementCollection
+	    @Column(name="AUSBILDUNG_DATE_2")
+	    @CollectionTable(name ="AUSBILDUNG_DATE_2", joinColumns={@JoinColumn(name="ausbildung_id")})
+	    private ArrayList<String> ausbildung_datum_2 = new ArrayList<String>(); 
+	  */
 	    private String ausbildung_ort;
 	    private String ausbildung_stelle;
 	   
-	//    @ManyToOne
-	//    @JoinColumn(name = "user_id")
-	//    private User user;
+	    @ManyToOne
+	    @JoinColumn(name = "user_id")
+	    private User user;
 	    
 	    public Ausbildung(){};
 	    public Ausbildung(long ausbildung_id){
@@ -52,13 +57,15 @@ public class Ausbildung {
 			this.ausbildung_datum_1 = ausbildung_datum_1;
 		}
 
-		public String getAusbildung_datum_2() {
+		
+	/* public ArrayList<String> getAusbildung_datum_2() {
 			return ausbildung_datum_2;
 		}
-
-		public void setAusbildung_datum_2(String ausbildung_datum_2) {
+		public void setAusbildung_datum_2(ArrayList<String> ausbildung_datum_2) {
 			this.ausbildung_datum_2 = ausbildung_datum_2;
 		}
+	*/
+			
 
 		public String getAusbildung_ort() {
 			return ausbildung_ort;
@@ -76,14 +83,14 @@ public class Ausbildung {
 			this.ausbildung_stelle = ausbildung_stelle;
 		}
 
-	/*	public User getUser() {
+		public User getUser() {
 			return user;
 		}
 
 		public void setUser(User user) {
 			this.user = user;
 		}
-	 */   
+	    
 	    
 	  
 	
