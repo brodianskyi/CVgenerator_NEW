@@ -14,12 +14,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_new")
 public class User {
    
 	@Id
-	@Column(name = "user_id")
-    private long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long user_id;
     @NotNull
 	private String name;
     @NotNull
@@ -37,17 +37,22 @@ public class User {
     @NotNull
     private String email;
    
-    @OneToMany(mappedBy = "user") 
-    private List<Ausbildung> ausbildung;
+ //   @OneToMany(mappedBy = "user") 
+ //   private List<Ausbildung> ausbildung;
     
-    public User() { }
+    public User(){};
+    
+    public User(long user_id) {
+    	this.user_id = user_id;
+    }
 
-	public long getId() {
-		return id;
+
+	public long getUser_id() {
+		return user_id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getName() {
@@ -114,14 +119,14 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Ausbildung> getAusbildung() {
+/*	public List<Ausbildung> getAusbildung() {
 		return ausbildung;
 	}
 
 	public void setAusbildung(List<Ausbildung> ausbildung) {
 		this.ausbildung = ausbildung;
 	}
-    
+ */   
    
     
     

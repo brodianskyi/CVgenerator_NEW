@@ -1,8 +1,11 @@
 package com.codecentric.cvgenerator.api.entities;
 
+import java.util.List;
+
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,39 +14,41 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "ausbildung")
+@Table (name = "ausbildung_first")
 public class Ausbildung {
 	   
 	    @Id
-	    @Column(name = "ausbildung_id")
-	    private int id;
-	    
-	    private String ausbildung_datum_1;
+	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    private long ausbildung_id;
+	    @ElementCollection
+	    @Column(name="ausbildung_datum_begin")
+	    @CollectionTable(name ="AUSBILDUNG_DATE", joinColumns={@JoinColumn(name="ausbildung_id")})
+	    private List<String> ausbildung_datum_1;
 	    private String ausbildung_datum_2;
 	    private String ausbildung_ort;
 	    private String ausbildung_stelle;
 	   
-	    @ManyToOne
-	    @JoinColumn(name = "user_id")
-	    private User user;
+	//    @ManyToOne
+	//    @JoinColumn(name = "user_id")
+	//    private User user;
 	    
-	    public Ausbildung(){
-	    	
+	    public Ausbildung(){};
+	    public Ausbildung(long ausbildung_id){
+	    	this.ausbildung_id = ausbildung_id;
 	    }
 
-		public int getId() {
-			return id;
+		
+        public long getAusbildung_id() {
+			return ausbildung_id;
 		}
-
-		public void setId(int id) {
-			this.id = id;
+		public void setAusbildung_id(long ausbildung_id) {
+			this.ausbildung_id = ausbildung_id;
 		}
-
-		public String getAusbildung_datum_1() {
+		public List<String> getAusbildung_datum_1() {
 			return ausbildung_datum_1;
 		}
 
-		public void setAusbildung_datum_1(String ausbildung_datum_1) {
+		public void setAusbildung_datum_1(List<String> ausbildung_datum_1) {
 			this.ausbildung_datum_1 = ausbildung_datum_1;
 		}
 
@@ -71,14 +76,14 @@ public class Ausbildung {
 			this.ausbildung_stelle = ausbildung_stelle;
 		}
 
-		public User getUser() {
+	/*	public User getUser() {
 			return user;
 		}
 
 		public void setUser(User user) {
 			this.user = user;
 		}
-	    
+	 */   
 	    
 	  
 	

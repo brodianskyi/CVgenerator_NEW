@@ -82,21 +82,21 @@ public class JSPController {
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
 	        OutputStream os = response.getOutputStream();
 	        baos.writeTo(os);
-	        create(userID);
+	        create(ausbildung);
 	        os.flush();
 	    } catch (Exception e1) {
 	        e1.printStackTrace();
 	    } 
   }
   
-	public String create(User user) {
+	public String create(Ausbildung ausbildung) {
 		 try {
-			 userDao.save(user);
-	      
+			 userDao.save(ausbildung);
+	
 		    }catch (Exception e) {
 	        	return "Error creating the user: " + e.toString();
 	        }
-		 return "User succesfully created! (id = " + user.getId() + ")"; 
+		 return "User succesfully created! (id = " + ausbildung.getAusbildung_id() + ")"; 
 	}
   
   private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
