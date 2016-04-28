@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashSet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.codecentric.cvgenerator.api.entities.Ausbildung;
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
 import com.codecentric.cvgenerator.model.UserDao;
@@ -58,16 +60,17 @@ public class JSPController {
 	
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
     public void result(@ModelAttribute("user")User userID,
+    		@ModelAttribute("ausbildung")Ausbildung ausbildung,
     		HttpServletRequest request,
     		HttpServletResponse response) throws IOException {
 		
 	  final ServletContext servletContext = request.getSession().getServletContext();
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
-	    
+	    logger.info("aaaaaaaaaaaaaa  "+ausbildung.getAusbildung_datum_1());
         
 	    CreatePDF create_document = new CreatePDF(userID); 
-	 
+	  
 	    String fileName = "JavaHonk.pdf";
 	    response.setContentType("application/pdf");
 	    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
@@ -88,8 +91,9 @@ public class JSPController {
   
 	public String create(User user) {
 		 try {
-	         userDao.save(user);//Save instance in database  
-	        }catch (Exception e) {
+			 userDao.save(user);
+	      
+		    }catch (Exception e) {
 	        	return "Error creating the user: " + e.toString();
 	        }
 		 return "User succesfully created! (id = " + user.getId() + ")"; 
