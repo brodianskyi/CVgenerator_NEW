@@ -24,9 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codecentric.cvgenerator.api.entities.Ausbildung;
 import com.codecentric.cvgenerator.api.entities.User;
+import com.codecentric.cvgenerator.api.entities.helpers.AusbildungHelper;
 import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
 import com.codecentric.cvgenerator.model.AusbildungDao;
 import com.codecentric.cvgenerator.model.UserDao;
+
 
 
 
@@ -63,15 +65,14 @@ public class JSPController {
 	
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
     public void result(@ModelAttribute("user")User userID,
-    		@ModelAttribute("ausbildung")Ausbildung ausbildung,
+    		@ModelAttribute("ausbildung_helper")AusbildungHelper ausbildungHelper,
     		HttpServletRequest request,
     		HttpServletResponse response) throws IOException {
 		
 	  final ServletContext servletContext = request.getSession().getServletContext();
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
-	    logger.info("aaaaaaaaaaaaaa  "+ausbildung.getAusbildung_datum_1());
-        
+	
 	    CreatePDF create_document = new CreatePDF(userID); 
 	  
 	    String fileName = "JavaHonk.pdf";
@@ -79,28 +80,40 @@ public class JSPController {
 	    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
 
 	    try {
-
+	    	Ausbildung ausbildung = null;
 	        create_document.createPDF(temperotyFilePath+"\\"+fileName);
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
 	        OutputStream os = response.getOutputStream();
 	        baos.writeTo(os);
+	        
+	        for(int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++){
+	        	
+	        	ausbildung = new Ausbildung(ausbildungHelper.getAusbildung_begin().get(i), 
+	        			ausbildungHelper.getAusbildung_end().get(i), 
+	        			ausbildungHelper.getAusbildung_ort().get(i), 
+	        			ausbildungHelper.getAusbildung_stelle().get(i));
+	        	        userID.addAusbildung(ausbildung);
+	        }
+	      
+	  
 	        addUserData(userID);
-	        addAusbildungData(ausbildung);
+	        addAusbildungData(userID);
 	        os.flush();
 	    } catch (Exception e1) {
 	        e1.printStackTrace();
 	    } 
   }
   
-	public String addAusbildungData(Ausbildung ausbildung) {
+	public String addAusbildungData(User user) {
 		 try {
-			 ausbildungDao.save(ausbildung);
-	
+			
+			 ausbildungDao.save(user.getAusbildung());
+			
 		    }catch (Exception e) {
 	        	return "Error creating ausbildung table: " + e.toString();
 	        }
-		 return "Ausbildung succesfully created! (id = " + ausbildung.getAusbildung_id() + ")"; 
+		 return "Ausbildung succesfully created!!!"; 
 	}
 	
 	public String addUserData(User user) {
