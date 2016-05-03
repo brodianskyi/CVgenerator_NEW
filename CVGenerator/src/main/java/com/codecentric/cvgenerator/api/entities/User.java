@@ -1,22 +1,17 @@
 package com.codecentric.cvgenerator.api.entities;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name = "users")
@@ -43,8 +38,9 @@ public class User {
     @NotNull
     private String email;
    
-    @OneToMany(mappedBy = "user") 
-    private Set<Ausbildung> ausbildung = new HashSet<Ausbildung>();
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="user_id")	
+    private List<Ausbildung> ausbildung = new ArrayList<Ausbildung>();
     
     public User(){};
     
@@ -120,19 +116,19 @@ public class User {
 		this.email = email;
 	}
 
-
-	public Set<Ausbildung> getAusbildung() {
+    public List<Ausbildung> getAusbildung() {
 		return ausbildung;
 	}
 
-	public void setAusbildung(Set<Ausbildung> ausbildung) {
+	public void setAusbildung(List<Ausbildung> ausbildung) {
 		this.ausbildung = ausbildung;
 	}
 
 	public void addAusbildung(Ausbildung ausbildung) {
-	
-		this.ausbildung.add(ausbildung);
-	}
+	 
+		   this.ausbildung.add(ausbildung);
+	     
+	 }
 		
 }
     

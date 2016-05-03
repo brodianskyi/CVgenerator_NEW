@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.codecentric.cvgenerator.api.entities.User;
+import com.codecentric.cvgenerator.api.entities.helpers.AusbildungHelper;
 import com.codecentric.cvgenerator.utils.stringutils.StringTokenizer;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
@@ -42,13 +43,15 @@ public class CreatePDF extends PdfPageEventHelper {
 	private static Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
 	private StringTokenizer stringTokenizer = new StringTokenizer();
     private User user;
+    private AusbildungHelper ausbildungHelper;
     private int pagenumber;
 	/**
 	 * @param args
 	 */
 	
-	public CreatePDF(User user){
+	public CreatePDF(User user, AusbildungHelper ausbildungHelper){
 		 this.user = user;
+		 this.ausbildungHelper = ausbildungHelper;
 		 Path currentRelativePath = Paths.get("");
 		 current_url = currentRelativePath.toAbsolutePath().toString();
 		 current_url+="/src/main/webapp/resources/images/";
@@ -100,7 +103,7 @@ public class CreatePDF extends PdfPageEventHelper {
 			
 			addPerson(document);
 
-		//	addAusbildung(document);
+			addAusbildung(document);
 			
 		//	addBeruf(document);
 			
@@ -207,7 +210,7 @@ public class CreatePDF extends PdfPageEventHelper {
 		
 
 	}
-	/*
+	
 	private void addAusbildung(Document document)
 			throws DocumentException {
 		
@@ -221,7 +224,7 @@ public class CreatePDF extends PdfPageEventHelper {
         table.setWidthPercentage(90);
         table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
         
-        Map<Integer, String> map_for_datum1 = stringTokenizer.getCommaValues(user.getAusbildung_datum_1(),",");
+    /*    Map<Integer, String> map_for_datum1 = stringTokenizer.getCommaValues(user.getAusbildung_datum_1(),",");
 		Map<Integer, String> map_for_datum2 = stringTokenizer.getCommaValues(user.getAusbildung_datum_2(),",");
 		Map<Integer, String> map_for_ort = stringTokenizer.getCommaValues(user.getAusbildung_ort(),",,");
 		Map<Integer, String> map_for_stelle = stringTokenizer.getCommaValues(user.getAusbildung_stelle(),",,");
@@ -234,13 +237,22 @@ public class CreatePDF extends PdfPageEventHelper {
 			table.addCell("");
 			table.addCell(map_for_ort.get(i));
 		 }
+		*/
+		  for(int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++){
+			  table.addCell(stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_begin().get(i),"-") + " / "
+		                  + stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_begin().get(i),"-"));
+			  table.addCell(ausbildungHelper.getAusbildung_stelle().get(i));
+			  createEmptyCell(table,1);
+			  table.addCell(ausbildungHelper.getAusbildung_ort().get(i));
+			  
+		  }
 		float[] columnWidths = new float[] {30f, 50f};
 		table.setWidths(columnWidths);
 		document.add(preface);
 		document.add(table);
 		
 	}
-	
+	/*
 	private void addBeruf(Document document)
 	        throws DocumentException{
 		

@@ -73,7 +73,7 @@ public class JSPController {
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
 	
-	    CreatePDF create_document = new CreatePDF(userID); 
+	    CreatePDF create_document = new CreatePDF(userID,ausbildungHelper); 
 	  
 	    String fileName = "JavaHonk.pdf";
 	    response.setContentType("application/pdf");
@@ -93,7 +93,7 @@ public class JSPController {
 	        			ausbildungHelper.getAusbildung_end().get(i), 
 	        			ausbildungHelper.getAusbildung_ort().get(i), 
 	        			ausbildungHelper.getAusbildung_stelle().get(i));
-	        	        userID.addAusbildung(ausbildung);
+	        	        userID.addAusbildung(ausbildung); 
 	        }
 	      
 	  

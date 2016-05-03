@@ -27,7 +27,9 @@ public class Ausbildung {
 	    private String ausbildung_stelle; 
 	    
 	    @ManyToOne
-	    @JoinColumn(name = "user_id")
+	    @JoinColumn(name = "user_id", 
+                insertable=false, updatable=false, 
+                nullable=false)
 	    private User user;
 	    
 	    public Ausbildung(){};
@@ -81,18 +83,8 @@ public class Ausbildung {
 			return ausbildung_stelle;
 		}
 		public void setAusbildung_stelle(String ausbildung_stelle) {
+			
 			this.ausbildung_stelle = ausbildung_stelle;
 		}
-		
-	    
-	    
 
-		
-       
-	    
-	  
-	
-		
-	   
-		
-}
+ }
