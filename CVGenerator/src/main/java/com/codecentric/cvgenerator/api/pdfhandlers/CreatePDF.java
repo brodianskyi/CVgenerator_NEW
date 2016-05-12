@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.api.entities.helpers.AusbildungHelper;
+import com.codecentric.cvgenerator.api.entities.helpers.BerufHelper;
 import com.codecentric.cvgenerator.utils.stringutils.StringTokenizer;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
@@ -44,14 +45,16 @@ public class CreatePDF extends PdfPageEventHelper {
 	private StringTokenizer stringTokenizer = new StringTokenizer();
     private User user;
     private AusbildungHelper ausbildungHelper;
+    private BerufHelper berufHelper;
     private int pagenumber;
 	/**
 	 * @param args
 	 */
 	
-	public CreatePDF(User user, AusbildungHelper ausbildungHelper){
+	public CreatePDF(User user, AusbildungHelper ausbildungHelper, BerufHelper berufHelper){
 		 this.user = user;
 		 this.ausbildungHelper = ausbildungHelper;
+		 this.berufHelper = berufHelper;
 		 Path currentRelativePath = Paths.get("");
 		 current_url = currentRelativePath.toAbsolutePath().toString();
 		 current_url+="/src/main/webapp/resources/images/";
@@ -99,13 +102,13 @@ public class CreatePDF extends PdfPageEventHelper {
 			
 			addMetaData(document);
 
-		//	addTitleCV(document,writer);
+			addTitleCV(document,writer);
 			
 			addPerson(document);
 
 			addAusbildung(document);
 			
-		//	addBeruf(document);
+			addBeruf(document);
 			
 		//	addFachkenntnisse(document);
 			
@@ -124,7 +127,8 @@ public class CreatePDF extends PdfPageEventHelper {
 
 	}
 
-   /* private void addTitleCV(Document document,PdfWriter writer) throws MalformedURLException, IOException, DocumentException {
+    private void addTitleCV(Document document,PdfWriter writer) throws MalformedURLException, IOException, DocumentException {
+    	
     	PdfContentByte canvas = writer.getDirectContentUnder();
     	PdfPTable table = new PdfPTable(3);
 	    table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
@@ -137,7 +141,7 @@ public class CreatePDF extends PdfPageEventHelper {
 	    table.addCell("");
 	    table.addCell("");
 	    createEmptyCell(table,1);
-	    table.addCell(new Paragraph( stringTokenizer.getCommaValues(" " + user.getBeruf_position(),",,").get(1), TIME_ROMAN_MAIN));
+	    table.addCell(new Paragraph(" " + berufHelper.getBeruf_position().get(0), TIME_ROMAN_MAIN));
 	    table.addCell("");
 	    table.addCell("");
 	    
@@ -159,11 +163,11 @@ public class CreatePDF extends PdfPageEventHelper {
     		 canvas.addImage(image);
     		 document.add(table);
 		} catch (DocumentException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }
-	*/
+	
 	private void addMetaData(Document document) {
 		document.addTitle("Generate PDF report");
 		document.addSubject("Generate PDF report");
@@ -189,10 +193,16 @@ public class CreatePDF extends PdfPageEventHelper {
         table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
         
         table.addCell("Geburtsdatum ");
-        table.addCell(user.getGeburtsdatum());
-			
-        table.addCell("Nationalität");
+        table.addCell(stringTokenizer.getRightdate(user.getGeburtsdatum(),"-")); 
+        
+        table.addCell("Wohnort ");
+		table.addCell(user.getWohnort());
+		
+		table.addCell("Nationalität");
 		table.addCell(user.getNationalitaet());
+			
+        table.addCell("Sprachen");
+		table.addCell(user.getSprachen());
 		
 		table.addCell("Telefon");
 		table.addCell(user.getTelefon());
@@ -223,36 +233,21 @@ public class CreatePDF extends PdfPageEventHelper {
 		PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(90);
         table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-        
-    /*    Map<Integer, String> map_for_datum1 = stringTokenizer.getCommaValues(user.getAusbildung_datum_1(),",");
-		Map<Integer, String> map_for_datum2 = stringTokenizer.getCommaValues(user.getAusbildung_datum_2(),",");
-		Map<Integer, String> map_for_ort = stringTokenizer.getCommaValues(user.getAusbildung_ort(),",,");
-		Map<Integer, String> map_for_stelle = stringTokenizer.getCommaValues(user.getAusbildung_stelle(),",,");
-	    int count = map_for_datum1.size();
-		for(int i = 1 ; i < count + 1; i++)
-		{
-	
-			table.addCell(stringTokenizer.getRightdate(map_for_datum1.get(i),"-") + " / " + stringTokenizer.getRightdate(map_for_datum2.get(i),"-"));
-			table.addCell(map_for_stelle.get(i));
-			table.addCell("");
-			table.addCell(map_for_ort.get(i));
-		 }
-		*/
-		  for(int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++){
+        for(int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++)
+           {
 			  table.addCell(stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_begin().get(i),"-") + " / "
-		                  + stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_begin().get(i),"-"));
+		                  + stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_end().get(i),"-"));
 			  table.addCell(ausbildungHelper.getAusbildung_stelle().get(i));
 			  createEmptyCell(table,1);
 			  table.addCell(ausbildungHelper.getAusbildung_ort().get(i));
-			  
-		  }
+			}
 		float[] columnWidths = new float[] {30f, 50f};
 		table.setWidths(columnWidths);
 		document.add(preface);
 		document.add(table);
 		
 	}
-	/*
+	
 	private void addBeruf(Document document)
 	        throws DocumentException{
 		
@@ -264,28 +259,21 @@ public class CreatePDF extends PdfPageEventHelper {
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(90);
         table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-        
-    	Map<Integer, String> map_for_beruf_datum1 = stringTokenizer.getCommaValues(user.getBeruf_datum_1(),",");
-		Map<Integer, String> map_for_beruf_datum2 = stringTokenizer.getCommaValues(user.getBeruf_datum_2(),",");
-		Map<Integer, String> map_for_position = stringTokenizer.getCommaValues(user.getBeruf_position(),",,");
-		Map<Integer, String> map_for_stelle = stringTokenizer.getCommaValues(user.getBeruf_stelle(),",,");
-        
-		for(int i = 1 ; i < map_for_beruf_datum1.size()+1 ; i++)
+        for(int i = 0 ; i < berufHelper.getBeruf_begin().size() ; i++)
 		{
-			
-			table.addCell(stringTokenizer.getRightdate(map_for_beruf_datum1.get(i),"-") + " / " + stringTokenizer.getRightdate(map_for_beruf_datum2.get(i),"-"));
-			table.addCell(map_for_position.get(i));
-			table.addCell("");
-			table.addCell(map_for_stelle.get(i));
+		    table.addCell(stringTokenizer.getRightdate(berufHelper.getBeruf_begin().get(i),"-") + " / "
+					    + stringTokenizer.getRightdate(berufHelper.getBeruf_end().get(i),"-"));
+			table.addCell(berufHelper.getBeruf_position().get(i));
+			createEmptyCell(table, 1);
+			table.addCell(berufHelper.getBeruf_stelle().get(i));
 		}
-		
 		float[] columnWidths = new float[] {30f, 50f};
 		table.setWidths(columnWidths);
 		document.add(preface);
 		document.add(table);
 	 } 
 	 
-	
+	/*
 	private void addFachkenntnisse(Document document)
 			throws DocumentException {
 		
