@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -46,6 +48,14 @@ public class User {
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="user_id")	
     private List<Beruf> beruf = new ArrayList<Beruf>();
+    
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="user_id")	
+    private List<Fach> fach = new ArrayList<Fach>();
+    
+    @OneToMany(cascade={CascadeType.ALL})
+    @JoinColumn(name="user_id")	
+    private List<Projekte> projekte = new ArrayList<Projekte>();
     
 	    public User(){};
 	    
@@ -144,6 +154,31 @@ public class User {
 		public void addBeruf(Beruf beruf) {
 			 this.beruf.add(beruf);
 		  
+		}
+
+		public List<Fach> getFach() {
+			return fach;
+		}
+
+		public void setFach(List<Fach> fach) {
+			this.fach = fach;
+		}
+		
+		public void addFach(Fach fach) {
+			this.fach.add(fach);
+		}
+
+		
+        public List<Projekte> getProjekte() {
+			return projekte;
+		}
+
+		public void setProjekte(List<Projekte> projekte) {
+			this.projekte = projekte;
+		}
+
+		public void addProjekte(Projekte projekte){
+			this.projekte.add(projekte);
 		}
 	
 	

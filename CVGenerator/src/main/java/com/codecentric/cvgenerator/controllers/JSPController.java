@@ -7,10 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -26,15 +23,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.codecentric.cvgenerator.api.entities.Ausbildung;
 import com.codecentric.cvgenerator.api.entities.Beruf;
+import com.codecentric.cvgenerator.api.entities.Fach;
+import com.codecentric.cvgenerator.api.entities.Projekte;
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.api.entities.helpers.AusbildungHelper;
 import com.codecentric.cvgenerator.api.entities.helpers.BerufHelper;
+import com.codecentric.cvgenerator.api.entities.helpers.FachHelper;
+import com.codecentric.cvgenerator.api.entities.helpers.ProjekteHelper;
 import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
 import com.codecentric.cvgenerator.model.AusbildungDao;
 import com.codecentric.cvgenerator.model.BerufDao;
+import com.codecentric.cvgenerator.model.FachDao;
+import com.codecentric.cvgenerator.model.ProjekteDao;
 import com.codecentric.cvgenerator.model.UserDao;
 
 
@@ -49,6 +51,10 @@ public class JSPController {
 	 private AusbildungDao ausbildungDao;
 	 @Autowired
 	 private BerufDao berufDao;
+	 @Autowired
+	 private FachDao fachDao;
+	 @Autowired
+	 private ProjekteDao projekteDao;
    
 	
 	@RequestMapping("/home")
@@ -90,7 +96,9 @@ public class JSPController {
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
     public void result(@ModelAttribute("user")User user,
     		@ModelAttribute("ausbildung_helper")AusbildungHelper ausbildungHelper,
-    		@ModelAttribute("beruf_helper")BerufHelper berufHelper,		
+    		@ModelAttribute("beruf_helper")BerufHelper berufHelper,	
+    		@ModelAttribute("fach_helper")FachHelper fachHelper,
+    		@ModelAttribute("projekte_helper")ProjekteHelper projekteHelper,
     		HttpServletRequest request,
     		HttpServletResponse response) throws IOException {
 		
@@ -98,7 +106,7 @@ public class JSPController {
 	  final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	  final String temperotyFilePath = tempDirectory.getAbsolutePath();
 	
-	    CreatePDF create_document = new CreatePDF(user,ausbildungHelper,berufHelper); 
+	    CreatePDF create_document = new CreatePDF(user,ausbildungHelper,berufHelper,fachHelper,projekteHelper); 
 	  
 	    String fileName = "JavaHonk.pdf";
 	    response.setContentType("application/pdf");
@@ -107,6 +115,8 @@ public class JSPController {
 	    try {
 	    	Ausbildung ausbildung = null;
 	    	Beruf beruf = null;
+	    	Fach fach = null;
+	    	Projekte projekte = null;
 	        create_document.createPDF(temperotyFilePath+"\\"+fileName);
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
@@ -128,9 +138,28 @@ public class JSPController {
 	        			berufHelper.getBeruf_position().get(i));
 	        	        user.addBeruf(beruf);
 	        }
+            for(int i = 0; i < fachHelper.getFach_kenntnisse().size(); i++){
+	        	
+	        	fach = new Fach(fachHelper.getFach_gebiet().get(i),
+	        			fachHelper.getFach_kenntnisse().get(i));
+	        	        user.addFach(fach);
+	        }
+            for(int i = 0; i < projekteHelper.getProjekte_begin().size(); i++){
+	        	
+	        	projekte = new Projekte(projekteHelper.getProjekte_begin().get(i),
+	        			 projekteHelper.getProjekte_kunde().get(i),
+	        			 projekteHelper.getProjekte_end().get(i),
+	        			 projekteHelper.getProjekte_thematik().get(i),
+	        			 projekteHelper.getProjekte_rolle().get(i),
+	        			 projekteHelper.getProjekte_technologie().get(i));
+	        	         user.addProjekte(projekte);
+	        }
 	        
+            user.addProjekte(projekte);
 	        addUserData(user);
 	        addAusbildungData(user);
+	        addFachData(user);
+	        addProjekteData(user);
 	        
 	        os.flush();
 	    } catch (Exception e1) {
@@ -170,7 +199,31 @@ public class JSPController {
 	        }
 		 return "Beruf succesfully created!!!"; 
 	}
+	
+	public String addFachData(User user) {
+		 try {
+			
+			 fachDao.save(user.getFach());
+			
+		    }catch (Exception e) {
+	        	return "Error creating Fach Table: " + e.toString();
+	        }
+		 return "Fach succesfully created!!!"; 
+	}
   
+	public String addProjekteData(User user) {
+		 try {
+			
+			 projekteDao.save(user.getProjekte());
+			
+			
+		    }catch (Exception e) {
+	        	return "Error creating Project Table: " + e.toString();
+	        }
+		 return "Project succesfully created!!!"; 
+	}
+	
+	
   private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 
 		InputStream inputStream = null;
