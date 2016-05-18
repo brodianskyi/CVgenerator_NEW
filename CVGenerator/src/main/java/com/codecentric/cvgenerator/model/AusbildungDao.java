@@ -12,5 +12,10 @@ import com.codecentric.cvgenerator.api.entities.User;
 public interface AusbildungDao extends CrudRepository<Ausbildung, Long> {
 	 
 	    @Query("SELECT a From User u JOIN u.ausbildung a WHERE u.name = :userName") 
-		List<Ausbildung> findAllAusbildungByUserName(@Param("userName") String userName);
+		List<Ausbildung> findAllAusbildungByUserName(@Param("userName") String userName); 
+	    
+	    @Query("SELECT a From User u JOIN u.ausbildung a WHERE u.vorname = :userVorname") 
+		List<Ausbildung> findAllAusbildungByUserVorname(@Param("userVorname") String userVorname); 
+
+
 }
