@@ -25,7 +25,7 @@ public class HelloController {
 	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	 @RequestMapping("/")
 	    public String index() {
-		    logger.info("Bananaphone pu-pu-pi-dup-pi-dup !!!");
+		    logger.info("Bananaphone !!!");
 	       
 		return "CV GENERATOR ";
 	  }
