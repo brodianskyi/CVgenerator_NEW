@@ -28,42 +28,42 @@ public interface UserDao extends CrudRepository<User, Long> {
 	User findUserByAusbildungEnd(@Param("ausbildungEnd")String ausbildungEnd); 
 	
 	//Beruf
-//	@Query("SELECT u From Beruf b JOIN b.user b WHERE b.beruf_position = :berufPosition")
-//	User findUserByBerufPosition(@Param("berufPosition")String berufPosition); 
+	@Query("SELECT u From Beruf b JOIN b.user u WHERE b.beruf_position = :berufPosition")
+	User findUserByBerufPosition(@Param("berufPosition")String berufPosition); 
 	
-	@Query("SELECT u From Beruf b JOIN b.user b WHERE b.beruf_stelle = :berufStelle")
+	@Query("SELECT u From Beruf b JOIN b.user u WHERE b.beruf_stelle = :berufStelle")
 	User findUserByBerufStelle(@Param("berufStelle")String berufStelle);
 	
-//	@Query("SELECT u From Beruf b JOIN b.user b WHERE b.beruf_begin = :berufBegin")
-//	User findUserByBerufBegin(@Param("berufBegin")String berufBegin); 
+	@Query("SELECT u From Beruf b JOIN b.user u WHERE b.beruf_begin = :berufBegin")
+	User findUserByBerufBegin(@Param("berufBegin")String berufBegin); 
 	
-	@Query("SELECT u From Beruf b JOIN b.user b WHERE b.beruf_end = :berufEnd")
+	@Query("SELECT u From Beruf b JOIN b.user u WHERE b.beruf_end = :berufEnd")
 	User findUserByBerufEnd(@Param("berufEnd")String berufEnd);
 	
 	//Fach
-//	@Query("SELECT u From Fach f JOIN f.user f WHERE f.fach_gebiet = :fachGebiet")
-//	User findUserByFachGebiet(@Param("fachGebiet")String fachGebiet);
+	@Query("SELECT u From Fach f JOIN f.user u WHERE f.fach_gebiet = :fachGebiet")
+	User findUserByFachGebiet(@Param("fachGebiet")String fachGebiet);
 	
-	@Query("SELECT u From Fach f JOIN f.user f WHERE f.fach_kenntnisse = :fachKenntnisse")
+	@Query("SELECT u From Fach f JOIN f.user u WHERE f.fach_kenntnisse = :fachKenntnisse")
 	User findUserByFachKenntnisse(@Param("fachKenntnisse")String fachKenntnisse);
 	
 	//Projekte
-	@Query("SELECT u From Projekte p JOIN p.user p WHERE p.projekte_begin = :projekteBegin")
+	@Query("SELECT u From Projekte p JOIN p.user u WHERE p.projekte_begin = :projekteBegin")
 	User findUserByProjekteBegin(@Param("projekteBegin")String projekteBegin);
 	
-//	@Query("SELECT u From Projekte p JOIN p.user p WHERE p.projekte_end= :projekteEnd")
-//	User findUserByProjekteEnd(@Param("projekteEnd")String projekteEnd);
+	@Query("SELECT u From Projekte p JOIN p.user u WHERE p.projekte_end= :projekteEnd")
+	User findUserByProjekteEnd(@Param("projekteEnd")String projekteEnd);
 	
-//	@Query("SELECT u From Projekte p JOIN p.user p WHERE p.projekte_kunde = :projekteKunde")
-//	User findUserByProjekteKunde(@Param("projekteKunde")String projekteKunde);
+	@Query("SELECT u From Projekte p JOIN p.user u WHERE p.projekte_kunde = :projekteKunde")
+	User findUserByProjekteKunde(@Param("projekteKunde")String projekteKunde);
 	
-//	@Query("SELECT u From Projekte p JOIN p.user p WHERE p.projekte_rolle = :projekteRolle")
-//	User findUserByProjekteRolle(@Param("projekteRolle")String projekteRolle);
+	@Query("SELECT u From Projekte p JOIN p.user u WHERE p.projekte_rolle = :projekteRolle")
+	User findUserByProjekteRolle(@Param("projekteRolle")String projekteRolle);
 	
-	@Query("SELECT u From Projekte p JOIN p.user p WHERE p.projekte_technologie = :projekteTechnologie")
+	@Query("SELECT u From Projekte p JOIN p.user u WHERE p.projekte_technologie = :projekteTechnologie")
 	User findUserByProjekteTechnologie(@Param("projekteTechnologie")String projekteTechnologie);
 	
-	@Query("SELECT u From Projekte p JOIN p.user p WHERE p.projekte_thematik = :projekteThematik")
+	@Query("SELECT u From Projekte p JOIN p.user u WHERE p.projekte_thematik = :projekteThematik")
 	User findUserByProjekteThematik(@Param("projekteThematik")String projekteThematik);
 
 	

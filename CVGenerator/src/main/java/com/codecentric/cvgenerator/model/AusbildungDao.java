@@ -16,6 +16,6 @@ public interface AusbildungDao extends CrudRepository<Ausbildung, Long> {
 	    
 	    @Query("SELECT a From User u JOIN u.ausbildung a WHERE u.vorname = :userVorname") 
 		List<Ausbildung> findAllAusbildungByUserVorname(@Param("userVorname") String userVorname); 
-
+         
 
 }

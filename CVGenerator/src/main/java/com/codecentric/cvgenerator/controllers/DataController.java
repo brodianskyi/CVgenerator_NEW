@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.codecentric.cvgenerator.api.entities.Ausbildung;
+import com.codecentric.cvgenerator.api.entities.Beruf;
+import com.codecentric.cvgenerator.api.entities.Fach;
+import com.codecentric.cvgenerator.api.entities.Projekte;
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.model.AusbildungDao;
 import com.codecentric.cvgenerator.model.BerufDao;
@@ -30,8 +35,10 @@ public class DataController {
 	 @Autowired
 	 private ProjekteDao projekteDao;
 	
-     //Ausbildung methods 
-	 @RequestMapping(value = "/findAusbildungenByUserName/{userName}")
+    
+	 @RequestMapping(value = "/findAusbildungenByUserName/{userName}",
+			         method = RequestMethod.GET,
+			         produces = "application/json;charset=UTF-8")
      public @ResponseBody User findAusbildungenByUserName(@PathVariable("userName") String userName) {
 		   
 		   List<Ausbildung> list =  ausbildungDao.findAllAusbildungByUserName(userName);
@@ -51,7 +58,67 @@ public class DataController {
 	 return user; 	 
      }
 	 //--------------------------------------------------------------------------
-	 //User methods
+	 @RequestMapping(value = "/findAllBerufByUserName/{userName}")
+     public @ResponseBody User findAllBerufByUserName(@PathVariable("userName") String userName) {
+		   
+		   List<Beruf> list =  berufDao.findAllBerufByUserName(userName);
+		   User user = new User();
+		   user.setBeruf(list);
+	  
+	 return user; 	 
+     }
+	 
+	 @RequestMapping(value = "/findAllBerufByUserVorname/{userVorname}")
+     public @ResponseBody User findAllBerufByUserVorname(@PathVariable("userVorname") String userVorname) {
+		   
+		   List<Beruf> list =  berufDao.findAllBerufByUserVorname(userVorname);
+		   User user = new User();
+		   user.setBeruf(list);
+	  
+	 return user; 	 
+     }
+	 //--------------------------------------------------------------------------
+	 @RequestMapping(value = "/findAllFachByUserName/{userName}")
+     public @ResponseBody User findAllFachByUserName(@PathVariable("userName") String userName) {
+		   
+		   List<Fach> list =  fachDao.findAllFachByUserName(userName);
+		   User user = new User();
+		   user.setFach(list);
+	  
+	 return user; 	 
+     }
+	 
+	 @RequestMapping(value = "/findAllFachByUserVorname/{userVorname}")
+     public @ResponseBody User findAllFachByUserVorname(@PathVariable("userVorname") String userVorname) {
+		   
+		   List<Fach> list =  fachDao.findAllFachByUserVorname(userVorname);
+		   User user = new User();
+		   user.setFach(list);
+	  
+	 return user; 	 
+     }
+	//--------------------------------------------------------------------------
+	 @RequestMapping(value = "/findAllProjekteByUserName/{userName}")
+     public @ResponseBody User findAllProjekteByUserName(@PathVariable("userName") String userName) {
+		   
+		   List<Projekte> list =  projekteDao.findAllProjekteByUserName(userName);
+		   User user = new User();
+		   user.setProjekte(list);
+	  
+	 return user; 	 
+     }
+	 
+	 @RequestMapping(value = "/findAllProjekteByUserVorname/{userVorname}")
+     public @ResponseBody User findAllProjekteByUserVorname(@PathVariable("userVorname") String userVorname) {
+		   
+		   List<Projekte> list =  projekteDao.findAllProjekteByUserVorname(userVorname);
+		   User user = new User();
+		   user.setProjekte(list);
+	  
+	 return user; 	 
+     }
+	 
+	
 	 @RequestMapping(value = "/findUserByAusbildungOrt/{ausOrt}")
 	 public @ResponseBody User findUserByAusbildungOrt(@PathVariable("ausOrt") String ausOrt) {
 		   
@@ -84,9 +151,9 @@ public class DataController {
 	   return user; 	 
      }
 	 
-	 //User with Beruf
+	
 	 
-	 /*	 @RequestMapping(value = "/findUserByBerufPosition/{berufPosition}")
+	 	 @RequestMapping(value = "/findUserByBerufPosition/{berufPosition}")
 	 public @ResponseBody User findUserByBerufPosition(@PathVariable("berufPosition") String berufPosition) {
 		   
 		   User user = userDao.findUserByBerufPosition(berufPosition);
@@ -102,7 +169,7 @@ public class DataController {
 	   return user; 	 
      }
 	 
-/*	 @RequestMapping(value = "/findUserByBerufBegin/{berufBegin}")
+	 @RequestMapping(value = "/findUserByBerufBegin/{berufBegin}")
 	 public @ResponseBody User findUserByBerufBegin(@PathVariable("berufBegin") String berufBegin) {
 		   
 		   User user = userDao.findUserByBerufBegin(berufBegin);
@@ -118,7 +185,7 @@ public class DataController {
 	   return user; 	 
      }
 	 
-	 //User Fach
+	 
 	 @RequestMapping(value = "/findUserByFachGebiet/{fachGebiet}")
 	 public @ResponseBody User findUserByFachGebiet(@PathVariable("fachGebiet") String fachGebiet) {
 		   
@@ -135,7 +202,7 @@ public class DataController {
 	   return user; 	 
      }
 	 
-	 //User Projekte
+
 	 @RequestMapping(value = "/findUserByProjekteBegin/{projekteBegin}")
 	 public @ResponseBody User findUserByProjekteBegin(@PathVariable("projekteBegin") String projekteBegin) {
 		   
@@ -185,5 +252,5 @@ public class DataController {
 	   return user; 	 
      }
   	 
-*/	
+	
 }
