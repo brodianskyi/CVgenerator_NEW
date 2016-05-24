@@ -31,6 +31,7 @@ import com.codecentric.cvgenerator.api.entities.helpers.BerufHelper;
 import com.codecentric.cvgenerator.api.entities.helpers.FachHelper;
 import com.codecentric.cvgenerator.api.entities.helpers.ProjekteHelper;
 import com.codecentric.cvgenerator.api.pdfhandlers.CreatePDF;
+import com.codecentric.cvgenerator.api.pdfhandlers.DataSaver;
 import com.codecentric.cvgenerator.model.AusbildungDao;
 import com.codecentric.cvgenerator.model.BerufDao;
 import com.codecentric.cvgenerator.model.FachDao;
@@ -122,73 +123,20 @@ public class JSPController {
 						projekteHelper.getProjekte_technologie().get(i));
 				user.addProjekte(projekte);
 			}
-
-			user.addProjekte(projekte);
-			addUserData(user);
-			addAusbildungData(user);
-			addFachData(user);
-			addProjekteData(user);
+			DataSaver dataSaver = new DataSaver(); 
+			dataSaver.addUserData(user,userDao);
+			dataSaver.addAusbildungData(user,ausbildungDao);
+			dataSaver.addBerufData(user,berufDao);
+			dataSaver.addFachData(user,fachDao);
+			dataSaver.addProjekteData(user,projekteDao);
 
 			os.flush();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
-
-	public String addUserData(User user) {
-		try {
-			userDao.save(user);
-
-		} catch (Exception e) {
-			return "Error creating the User Table: " + e.toString();
-		}
-		return "User succesfully created! (id = " + user.getUser_id() + ")";
-	}
-
-	public String addAusbildungData(User user) {
-		try {
-
-			ausbildungDao.save(user.getAusbildung());
-
-		} catch (Exception e) {
-			return "Error creating Ausbildung Table: " + e.toString();
-		}
-		return "Ausbildung succesfully created!!!";
-	}
-
-	public String addBerufData(User user) {
-		try {
-
-			berufDao.save(user.getBeruf());
-
-		} catch (Exception e) {
-			return "Error creating Beruf Table: " + e.toString();
-		}
-		return "Beruf succesfully created!!!";
-	}
-
-	public String addFachData(User user) {
-		try {
-
-			fachDao.save(user.getFach());
-
-		} catch (Exception e) {
-			return "Error creating Fach Table: " + e.toString();
-		}
-		return "Fach succesfully created!!!";
-	}
-
-	public String addProjekteData(User user) {
-		try {
-
-			projekteDao.save(user.getProjekte());
-
-		} catch (Exception e) {
-			return "Error creating Project Table: " + e.toString();
-		}
-		return "Project succesfully created!!!";
-	}
-
+	
+	
 	private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 
 		InputStream inputStream = null;

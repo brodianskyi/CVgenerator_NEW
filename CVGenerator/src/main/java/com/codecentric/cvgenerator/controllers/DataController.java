@@ -53,7 +53,6 @@ public class DataController {
 
 		return user;
 	}
-	// --------------------------------------------------------------------------
 
 	@RequestMapping(value = "/findAllBerufByUserName/{userName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody User findAllBerufByUserName(@PathVariable("userName") String userName) {
@@ -75,7 +74,6 @@ public class DataController {
 		return user;
 	}
 
-	// --------------------------------------------------------------------------
 	@RequestMapping(value = "/findAllFachByUserName/{userName}")
 	public @ResponseBody User findAllFachByUserName(@PathVariable("userName") String userName) {
 
@@ -117,7 +115,6 @@ public class DataController {
 		return user;
 	}
 
-	// ----------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/findUserByAusbildungOrt/{ausOrt}")
 	public @ResponseBody User findUserByAusbildungOrt(@PathVariable("ausOrt") String ausOrt) {
 
