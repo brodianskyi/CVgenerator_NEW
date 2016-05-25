@@ -29,7 +29,7 @@ public class Fach {
 	private User user;
 
 	public Fach() {
-	};
+	}
 
 	public Fach(String fach_gebiet, String fach_kenntnisse) {
 

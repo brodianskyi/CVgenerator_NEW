@@ -30,7 +30,7 @@ public class Ausbildung {
 	private User user;
 
 	public Ausbildung() {
-	};
+	}
 
 	public Ausbildung(String ausbildung_begin, String ausbildung_end, String ausbildung_ort, String ausbildung_stelle) {
 

@@ -31,7 +31,7 @@ public class Beruf {
 	private User user;
 
 	public Beruf() {
-	};
+	}
 
 	public Beruf(String beruf_begin, String beruf_end, String beruf_stelle, String beruf_position) {
 

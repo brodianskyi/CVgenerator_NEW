@@ -3,11 +3,8 @@ package com.codecentric.cvgenerator.utils.stringutils;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class StringTokenizer {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	private String CommaTocken = "";
 
 	public String getRightdate(String str, String tocken) {

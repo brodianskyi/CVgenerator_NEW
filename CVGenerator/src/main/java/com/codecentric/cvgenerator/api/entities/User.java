@@ -54,7 +54,7 @@ public class User {
 	private List<Projekte> projekte = new ArrayList<Projekte>();
 
 	public User() {
-	};
+	}
 
 	public long getUser_id() {
 		return user_id;

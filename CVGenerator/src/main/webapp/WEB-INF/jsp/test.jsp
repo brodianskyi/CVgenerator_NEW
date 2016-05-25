@@ -370,7 +370,24 @@ jQuery('textarea').autoResize();
                      <label for="beruf_position"></label>
                      <textarea class="span8" type="text"  name="beruf_position" rows="1" cols="31">BI & DWH Engineer</textarea></td>    
                      </div>  
-             </tr>   
+             </tr>
+             <tr>
+                <td width="25%">
+                     <div class="row">
+                     <div class="small-12 columns">
+                     <label for="beruf_begin"></label>
+                     <input type="date" id="beruf_begin" name="beruf_begin"  ></td>
+                <td width="25%">
+                     <label for="beruf_end"></label>
+                     <input type="date" id="beruf_end" name="beruf_end"></td>
+                <td width="25%">
+                     <label for="beruf_stelle"></label>
+                     <textarea class="span8" type="text"  name="beruf_stelle" rows="1" cols="31">NTT Data Deutschland, Ettlingen/Frankfurt</textarea></td>
+                <td width="25%">
+                     <label for="beruf_position"></label>
+                     <textarea class="span8" type="text"  name="beruf_position" rows="1" cols="31">Technical Consultant</textarea></td>    
+                     </div>  
+             </tr>      
              <tr>
                 <td width="25%">
                      <div class="row">
@@ -460,7 +477,7 @@ jQuery('textarea').autoResize();
                      <div class="row">
                      <div class="small-12 columns">
 		             <label for="fach_kenntnisse"></label>
-		             <textarea id="kenntnisse" class="span8" type="text"  name="fach_kenntnisse" rows="6" cols="31">Java (JavaEE, JPA, Hibernate, JSF, Richfaces), PHP (Symfony), C#SQL, XML, Business Process Model and Notation (BPMN), BusinessProcess Execution Language (BPEL), Eclipse RCP</textarea>
+		             <textarea id="kenntnisse" class="span8" type="text"  name="fach_kenntnisse" rows="6" cols="31">Java (JavaEE, JPA, Hibernate, JSF, Richfaces), PHP (Symfony), C#SQL, XML, Business Process Model and Notation (BPMN), BusinessProcess Execution Language (BPEL), Eclipse RCP, EAI, SOA, DevOps, Business Process Management, ERM, BAM, CEP, ETL,Komponententests, Integrationstests, Black-Boxing, Regressionstests,White-Box Tests, Lasttests, SoapUI, Jmeter, Citrus, Junit, SQL, XML, XPATH, XSL(T), XSD, RAML, TeX</textarea>
 		        </td>        
                      </div>    
                 <td width="25%"></td>

@@ -94,7 +94,6 @@ public class DataController {
 		return user;
 	}
 
-	// --------------------------------------------------------------------------
 	@RequestMapping(value = "/findAllProjekteByUserName/{userName}")
 	public @ResponseBody User findAllProjekteByUserName(@PathVariable("userName") String userName) {
 

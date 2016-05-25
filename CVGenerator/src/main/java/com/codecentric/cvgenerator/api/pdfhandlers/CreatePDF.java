@@ -35,11 +35,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class CreatePDF extends PdfPageEventHelper {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	private static final Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23, Font.BOLD);
+	private static final Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23, Font.BOLD);
+	private static final Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
+	
 	public static String current_url;
-	private static Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23, Font.BOLD);
-	private static Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23, Font.BOLD);
-	private static Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
 	private StringTokenizer stringTokenizer = new StringTokenizer();
 	private User user;
 	private AusbildungHelper ausbildungHelper;
