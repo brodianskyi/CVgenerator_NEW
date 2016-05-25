@@ -44,7 +44,7 @@ public class UserForBerufSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
+	
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
@@ -60,7 +60,6 @@ public class UserForBerufSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
@@ -69,36 +68,5 @@ public class UserForBerufSectionTest extends CvGeneratorApplicationTests {
 
 	}
 
-	@Test
-	public void findUserByBerufBeginTest() throws Exception {
-
-		ResultActions resultActions = mockMvc.perform(get("/data/findUserByBerufBegin/2016-02-01"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
-
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
-		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
-		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
-		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.sprachen").value("Russisch,Deutsch,Englisch,Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.email").value("brodianskyi@gmail.com"));
-
-	}
-
-	@Test
-	public void findUserByBerufEnd() throws Exception {
-
-		ResultActions resultActions = mockMvc.perform(get("/data/findUserByBerufEnd/2016-03-25"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
-
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
-		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
-		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
-		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.sprachen").value("Russisch,Deutsch,Englisch,Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.email").value("brodianskyi@gmail.com"));
-
-	}
 
 }

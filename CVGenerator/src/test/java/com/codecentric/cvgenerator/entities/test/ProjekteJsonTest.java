@@ -43,11 +43,10 @@ public class ProjekteJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..projekte_id").value(1));
-		resultActions.andExpect(jsonPath("$..projekte_begin").value("2016-05-01"));
+		
 		resultActions.andExpect(jsonPath("$..projekte_kunde").value("projekte_kunde_test"));
-		resultActions.andExpect(jsonPath("$..projekte_end").value("2016-05-20"));
-		resultActions.andExpect(jsonPath("$..projekte_thematik").value("projekte_thematik_test"));
+	    resultActions.andExpect(jsonPath("$..projekte_thematik").value("projekte_thematik_test"));
+	    resultActions.andExpect(jsonPath("$..projekte_rolle").value("projekte_rolle_test"));
 		resultActions.andExpect(jsonPath("$..projekte_technologie").value("projekte_technologie_test"));
 
 	}
@@ -59,11 +58,9 @@ public class ProjekteJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..projekte_id").value(1));
-		resultActions.andExpect(jsonPath("$..projekte_begin").value("2016-05-01"));
 		resultActions.andExpect(jsonPath("$..projekte_kunde").value("projekte_kunde_test"));
-		resultActions.andExpect(jsonPath("$..projekte_end").value("2016-05-20"));
-		resultActions.andExpect(jsonPath("$..projekte_thematik").value("projekte_thematik_test"));
+        resultActions.andExpect(jsonPath("$..projekte_thematik").value("projekte_thematik_test"));
+        resultActions.andExpect(jsonPath("$..projekte_rolle").value("projekte_rolle_test"));
 		resultActions.andExpect(jsonPath("$..projekte_technologie").value("projekte_technologie_test"));
 
 	}

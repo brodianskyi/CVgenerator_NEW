@@ -488,7 +488,7 @@ jQuery('textarea').autoResize();
 								<div class="small-12 columns">
 									<label for="fach_kenntnisse"></label>
 									<textarea id="kenntnisse" class="span8" type="text"
-										name="fach_kenntnisse" rows="6" cols="31">Java (JavaEE, JPA, Hibernate, JSF, Richfaces), PHP (Symfony), C#SQL, XML, Business Process Model and Notation (BPMN), BusinessProcess Execution Language (BPEL), Eclipse RCP, EAI, SOA, DevOps, Business Process Management, ERM, BAM, CEP, ETL,Komponententests, Integrationstests, Black-Boxing, Regressionstests,White-Box Tests, Lasttests, SoapUI, Jmeter, Citrus, Junit, SQL, XML, XPATH, XSL(T), XSD, RAML, TeX</textarea>
+										name="fach_kenntnisse" rows="6" cols="31">Java (JavaEE, JPA, Hibernate, JSF, Richfaces), PHP (Symfony), C#SQL, XML, Business Process Model and Notation (BPMN), BusinessProcess Execution Language (BPEL), Eclipse RCP, White-Box Tests, Lasttests, SoapUI, Jmeter, Junit, SQL</textarea>
 						</td>
 						</div>
 						<td width="25%"></td>

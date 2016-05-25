@@ -38,45 +38,13 @@ public class UserForProjekteSectionTest extends CvGeneratorApplicationTests {
 	 */
 
 	@Test
-	public void findUserByProjekteBeginTest() throws Exception {
-
-		ResultActions resultActions = mockMvc.perform(get("/data/findUserByProjekteBegin/2016-05-01"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
-
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
-		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
-		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
-		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.sprachen").value("Russisch,Deutsch,Englisch,Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.email").value("brodianskyi@gmail.com"));
-
-	}
-
-	@Test
-	public void findUserByProjekteEndTest() throws Exception {
-
-		ResultActions resultActions = mockMvc.perform(get("/data/findUserByProjekteEnd/2016-05-20"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
-
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
-		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
-		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
-		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.sprachen").value("Russisch,Deutsch,Englisch,Ukrainisch"));
-		resultActions.andExpect(jsonPath("$.email").value("brodianskyi@gmail.com"));
-
-	}
-
-	@Test
 	public void findUserByProjekteKundeTest() throws Exception {
 
 		ResultActions resultActions = mockMvc.perform(get("/data/findUserByProjekteKunde/projekte_kunde_test"))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
+	
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
@@ -92,7 +60,7 @@ public class UserForProjekteSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
+		
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
@@ -109,7 +77,7 @@ public class UserForProjekteSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
+		
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
@@ -125,7 +93,7 @@ public class UserForProjekteSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
+		
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));

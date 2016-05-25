@@ -41,9 +41,7 @@ public class AusbildungJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..ausbildung_id").value(1));
-		resultActions.andExpect(jsonPath("$..ausbildung_begin").value("2015-01-15"));
-		resultActions.andExpect(jsonPath("$..ausbildung_end").value("2016-01-28"));
+		
 		resultActions.andExpect(jsonPath("$..ausbildung_ort").value("ausbildung_ort_test"));
 		resultActions.andExpect(jsonPath("$..ausbildung_stelle").value("ausbildung_studiumsstelle_test"));
 
@@ -56,9 +54,6 @@ public class AusbildungJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..ausbildung_id").value(1));
-		resultActions.andExpect(jsonPath("$..ausbildung_begin").value("2015-01-15"));
-		resultActions.andExpect(jsonPath("$..ausbildung_end").value("2016-01-28"));
 		resultActions.andExpect(jsonPath("$..ausbildung_ort").value("ausbildung_ort_test"));
 		resultActions.andExpect(jsonPath("$..ausbildung_stelle").value("ausbildung_studiumsstelle_test"));
 

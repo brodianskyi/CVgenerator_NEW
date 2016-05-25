@@ -40,7 +40,7 @@ public class FachJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..fach_id").value(1));
+	
 		resultActions.andExpect(jsonPath("$..fach_gebiet").value("fach_gebiet_test"));
 		resultActions.andExpect(jsonPath("$..fach_kenntnisse").value("fach_kenntnisse_test"));
 
@@ -53,7 +53,7 @@ public class FachJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..fach_id").value(1));
+		
 		resultActions.andExpect(jsonPath("$..fach_gebiet").value("fach_gebiet_test"));
 		resultActions.andExpect(jsonPath("$..fach_kenntnisse").value("fach_kenntnisse_test"));
 

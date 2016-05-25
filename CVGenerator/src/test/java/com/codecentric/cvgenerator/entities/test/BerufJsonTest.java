@@ -41,9 +41,7 @@ public class BerufJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..beruf_id").value(1));
-		resultActions.andExpect(jsonPath("$..beruf_begin").value("2016-02-01"));
-		resultActions.andExpect(jsonPath("$..beruf_end").value("2016-03-25"));
+	
 		resultActions.andExpect(jsonPath("$..beruf_position").value("beruf_position_test"));
 		resultActions.andExpect(jsonPath("$..beruf_stelle").value("arbeitsstelle_test"));
 
@@ -56,9 +54,7 @@ public class BerufJsonTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$..beruf_id").value(1));
-		resultActions.andExpect(jsonPath("$..beruf_begin").value("2016-02-01"));
-		resultActions.andExpect(jsonPath("$..beruf_end").value("2016-03-25"));
+		
 		resultActions.andExpect(jsonPath("$..beruf_position").value("beruf_position_test"));
 		resultActions.andExpect(jsonPath("$..beruf_stelle").value("arbeitsstelle_test"));
 

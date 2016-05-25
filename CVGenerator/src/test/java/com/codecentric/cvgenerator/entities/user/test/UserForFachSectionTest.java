@@ -44,7 +44,7 @@ public class UserForFachSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
+		
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
@@ -60,7 +60,6 @@ public class UserForFachSectionTest extends CvGeneratorApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.parseMediaType("application/json;charset=UTF-8")));
 
-		resultActions.andExpect(jsonPath("$.user_id").value(1));
 		resultActions.andExpect(jsonPath("$.name").value("Brodianskyi"));
 		resultActions.andExpect(jsonPath("$.vorname").value("Pavel"));
 		resultActions.andExpect(jsonPath("$.nationalitaet").value("Ukrainisch"));
