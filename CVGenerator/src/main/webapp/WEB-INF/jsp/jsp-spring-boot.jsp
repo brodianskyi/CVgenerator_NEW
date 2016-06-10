@@ -234,15 +234,16 @@ jQuery('textarea').autoResize();
  
     popo0.remove();
     anzahl = anzahl -1;
+    
 }
   function go() {
-	  
- 
+      
+	
 	anzahl = anzahl + 1; 
-  
 	var papaTable = document.getElementById('popo0-parent') 
 	var sd = document.createElement('div'); 
-	sd.innerHTML = '<table id="popo0new-'+ anzahl +'" name="table_2"><tr><td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_begin"></label><input type="date" id="ausbildung_begin" name="ausbildung_begin" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_end"></label><input type="date" id="ausbildung_end" name="ausbildung_end" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> <td width="25%"><label for="ausbildung_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    </div></td></tr></table>';
+	sd.innerHTML = '<table id="popo0new-'+ anzahl +'" name="table_2"><tr><input type="hidden" id="ausbildung_click"  name="ausbildung_click" value ="0"><td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_begin"></label><input type="date" id="ausbildung_begin" name="ausbildung_begin" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_end"></label><input type="date" id="ausbildung_end" name="ausbildung_end" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> <td width="25%"><label for="ausbildung_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    </div></td></tr></table>';
+	
 	cnt = papaTable.childElementCount - 2 
 	console.log(papaTable)
 	papaTable.appendChild(sd)
@@ -252,6 +253,7 @@ jQuery('textarea').autoResize();
 			<div id="popo0-parent">
 				<table name="table_2">
 					<tr>
+					    <input type="hidden" id="ausbildung_hidden"  name="ausbildung_hidden" value ="0">
 						<td width="25%">
 							<div class="row">
 								<div class="small-12 columns">
@@ -259,6 +261,7 @@ jQuery('textarea').autoResize();
 										id="ausbildung_begin" name="ausbildung_begin"
 										placeholder="Anfangsjahr, DD-MM-YYYY">
 						</td>
+						
 						<td width="25%"><label for="ausbildung_end"></label> <input
 							type="date" id="ausbildung_end" name="ausbildung_end"
 							placeholder="Endungsjahr, DD-MM-YYYY"></td>
@@ -277,9 +280,10 @@ jQuery('textarea').autoResize();
 			<table name="table_2_0">
 				<tr>
 					<td width="25%">
-						<button class="plus" type="button" onclick="go()">Add</button>
+						<button class="plus" type="button"  onclick="go()">Add</button>
 						<button class="delete" type="button" onclick="remove_0()">Delete
 						</button>
+						    
 					</td>
 					<td width="25%"></td>
 					<td width="25%"></td>
@@ -305,7 +309,7 @@ jQuery('textarea').autoResize();
 	  
   var papaTable = document.getElementById('popo1-parent') 
   var sd = document.createElement('div'); 
-  sd.innerHTML ='<table id="popo1new-'+ anzahl +'" name="table_3"><tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="beruf_begin"></label><input type="date" id="beruf_begin" name="beruf_begin" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_end"></label><input type="date" id="beruf_end" name="beruf_end" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td><td width="25%"> <label for="beruf_position"></label><textarea class="span8" type="text" placeholder="Position" name="beruf_position" rows="1" cols="31"></textarea></td>  </div></tr></table>';
+  sd.innerHTML ='<table id="popo1new-'+ anzahl +'" name="table_3"><tr> <input type="hidden" id="beruf_click"  name="beruf_click" value ="0"> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="beruf_begin"></label><input type="date" id="beruf_begin" name="beruf_begin" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_end"></label><input type="date" id="beruf_end" name="beruf_end" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td><td width="25%"> <label for="beruf_position"></label><textarea class="span8" type="text" placeholder="Position" name="beruf_position" rows="1" cols="31"></textarea></td>  </div></tr></table>';
   cnt = papaTable.childElementCount - 2 
   console.log(papaTable)
   papaTable.appendChild(sd)
@@ -315,6 +319,7 @@ jQuery('textarea').autoResize();
 			<div id="popo1-parent">
 				<table name="table_3">
 					<tr>
+					    <input type="hidden" id="beruf_hidden"  name="beruf_hidden" value ="0">
 						<td width="25%">
 							<div class="row">
 								<div class="small-12 columns">
@@ -366,7 +371,7 @@ jQuery('textarea').autoResize();
   
   var papaTable = document.getElementById('popo2-parent') 
   var sd = document.createElement('div'); 
-  sd.innerHTML ='<table id="popo2new-'+ anzahl +'" name="table_4"><tr><td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr></table>';
+  sd.innerHTML ='<table id="popo2new-'+ anzahl +'" name="table_4"><tr> <input type="hidden" id="fach_click"  name="fach_click" value ="0"> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr></table>';
   cnt = papaTable.childElementCount - 2 
   console.log(papaTable)
   papaTable.appendChild(sd)
@@ -376,6 +381,7 @@ jQuery('textarea').autoResize();
 			<div id="popo2-parent">
 				<table id="popo2-0" name="table_4">
 					<tr>
+					<input type="hidden" id="fach_hidden"  name="fach_hidden" value ="0">
 						<td width="25%">
 							<div class="row">
 								<div class="small-12 columns">
@@ -427,13 +433,14 @@ jQuery('textarea').autoResize();
   anzahl = anzahl + 1;
   var papaTable = document.getElementById('popo3-0').parentNode
   var sd = document.createElement('div');
-  sd.innerHTML ='<table id="popo3new-' + anzahl +'" name="table_5"><tr> <td width="25%"><div class="row"> <div class="small-12 columns"><label for="projekte_begin"></label><input type="date" id="projekte_begin" name="projekte_begin" placeholder="Anfang, MM-YYYY" ></td> </div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label> </td><td width="25%"><textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea>  </div></td><td width="25%"></td> </tr><tr><td width="25%"><div class="row"><div class="small-12 columns"> <label for="projekte_end"></label> <input type="date" id="projekte_end" name="projekte_end" placeholder="Endung, MM-YYYY" ></td></div> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label> </td> <td width="25%"> <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </div></td><td width="25%"></td> </tr> <tr><td width="25%"></td> <td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_rolle">Rolle</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>  </div> </td> <td width="25%"></td> </tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_technologie">Technologie</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea></div> </td><td width="25%"></td></tr></table>';
-  cnt = papaTable.childElementCount -2
+  sd.innerHTML ='<table id="popo3new-' + anzahl +'" name="table_5"><tr><input type="hidden" id="projekte_click"  name="projekte_click" value ="0">   <td width="25%"><div class="row"> <div class="small-12 columns"><label for="projekte_begin"></label><input type="date" id="projekte_begin" name="projekte_begin" placeholder="Anfang, MM-YYYY" ></td> </div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label> </td><td width="25%"><textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea>  </div></td><td width="25%"></td> </tr><tr><td width="25%"><div class="row"><div class="small-12 columns"> <label for="projekte_end"></label> <input type="date" id="projekte_end" name="projekte_end" placeholder="Endung, MM-YYYY" ></td></div> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label> </td> <td width="25%"> <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </div></td><td width="25%"></td> </tr> <tr><td width="25%"></td> <td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_rolle">Rolle</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>  </div> </td> <td width="25%"></td> </tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_technologie">Technologie</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea></div> </td><td width="25%"></td></tr></table>';
+  cnt = papaTable.childElementCount -2 
   papaTable.insertBefore(sd, papaTable.children[cnt])
 }
  </script>
 			<table id="popo3-0" name="table_5">
 				<tr>
+				<input type="hidden" id="projekte_hidden"  name="projekte_hidden" value ="0">
 					<td width="25%">
 						<div class="row">
 							<div class="small-12 columns">

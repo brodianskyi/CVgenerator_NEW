@@ -39,7 +39,7 @@ public class CreatePDF extends PdfPageEventHelper {
 	private static final Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 23, Font.BOLD);
 	private static final Font TIME_ROMAN_MAIN = new Font(Font.FontFamily.TIMES_ROMAN, 23, Font.BOLD);
 	private static final Font TIME_ROMAN_BIG = new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD);
-	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	public static String current_url;
 	private StringTokenizer stringTokenizer = new StringTokenizer();
 	private User user;
@@ -237,6 +237,8 @@ public class CreatePDF extends PdfPageEventHelper {
 
 		table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 		for (int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++) {
+			 logger.info("ausbildung_ort = " +  ausbildungHelper.getAusbildung_ort().get(i)+ "i= " + i);
+			 logger.info("ausbildung_ort = " +  ausbildungHelper.getAusbildung_stelle().get(i)+ "i = " + i);
 			table.addCell(stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_begin().get(i), "-") + " / "
 					+ stringTokenizer.getRightdate(ausbildungHelper.getAusbildung_end().get(i), "-"));
 			table.addCell(ausbildungHelper.getAusbildung_stelle().get(i));

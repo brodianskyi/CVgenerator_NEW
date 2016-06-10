@@ -7,10 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,6 +54,7 @@ public class JSPController {
 	private FachDao fachDao;
 	@Autowired
 	private ProjekteDao projekteDao;
+	
 
 	@RequestMapping("/home")
 	public ModelAndView jspSpringboot() {
@@ -83,7 +87,7 @@ public class JSPController {
 
 		CreatePDF create_document = new CreatePDF(user, ausbildungHelper, berufHelper, fachHelper, projekteHelper);
 
-		String fileName = "JavaHonk.pdf";
+		String fileName = "MyCV.pdf";
 		response.setContentType("application/pdf");
 		response.setHeader("Content-disposition", "attachment; filename=" + fileName);
 
@@ -92,49 +96,125 @@ public class JSPController {
 			Beruf beruf = null;
 			Fach fach = null;
 			Projekte projekte = null;
+			ArrayList<String> buff = new ArrayList<String>();
+			
+            String ausbildung_click=(String) request.getParameter("ausbildung_click");
+            if (ausbildung_click != null){
+				logger.info("Don't press the red button!!!");
+			} 
+			else {
+				 String ausbildung_stelle =(String) request.getParameter("ausbildung_stelle");
+				 buff.add(ausbildung_stelle);
+				 ausbildungHelper.setAusbildung_stelle(buff);
+				 buff.clear();
+				 String ausbildung_ort = (String) request.getParameter("ausbildung_ort");
+			     buff.add(ausbildung_ort);
+			     ausbildungHelper.setAusbildung_ort(buff);
+			}
+			for (int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++) {
+				 ausbildung = new Ausbildung(ausbildungHelper.getAusbildung_begin().get(i),
+				 ausbildungHelper.getAusbildung_end().get(i), 
+				 ausbildungHelper.getAusbildung_ort().get(i),
+				 ausbildungHelper.getAusbildung_stelle().get(i));
+				 user.addAusbildung(ausbildung); 
+			}
+			
+			String beruf_click=(String) request.getParameter("beruf_click");
+			if (beruf_click != null){
+				logger.info("Don't press the red button!!!");
+			} 
+			else {
+				 String beruf_stelle =(String) request.getParameter("beruf_stelle");
+				 buff.clear();
+				 buff.add(beruf_stelle);
+				 berufHelper.setBeruf_stelle(buff);
+				 buff.clear();
+				 String beruf_position = (String) request.getParameter("beruf_position");
+			     buff.add(beruf_position);
+			     berufHelper.setBeruf_position(buff);
+			    }
+			for (int i = 0; i < berufHelper.getBeruf_begin().size(); i++) {
+                 beruf = new Beruf(berufHelper.getBeruf_begin().get(i), 
+				 berufHelper.getBeruf_end().get(i),
+				 berufHelper.getBeruf_stelle().get(i), 
+				 berufHelper.getBeruf_position().get(i));
+				 user.addBeruf(beruf);
+			}
+			
+			String fach_click=(String) request.getParameter("fach_click");
+			if (fach_click != null){
+				logger.info("Don't press the red button!!!");
+			} 
+			else {
+				 String fach_gebiet =(String) request.getParameter("fach_gebiet");
+				 buff.clear();
+				 buff.add(fach_gebiet);
+				 fachHelper.setFach_gebiet(buff);
+				 buff.clear();
+				 String fach_kenntnisse = (String) request.getParameter("fach_kenntnisse");
+			     buff.add(fach_kenntnisse);
+			     fachHelper.setFach_kenntnisse(buff);
+			     }
+			for (int i = 0; i < fachHelper.getFach_kenntnisse().size(); i++) {
+                 fach = new Fach(fachHelper.getFach_gebiet().get(i), 
+                 fachHelper.getFach_kenntnisse().get(i));
+				 user.addFach(fach);
+			}
+			
+			
+			String projekte_click=(String) request.getParameter("projekte_click");
+			if (projekte_click != null){
+				logger.info("Don't press the red button!!!");
+			} 
+			else {
+				 String projekte_kunde = (String) request.getParameter("projekte_kunde");
+				 buff.clear();
+				 buff.add(projekte_kunde);
+				 projekteHelper.setProjekte_kunde(buff);
+				 buff.clear();
+				 String projekte_thematik = (String) request.getParameter("projekte_thematik");
+				 buff.clear();
+				 buff.add(projekte_thematik);
+				 projekteHelper.setProjekte_thematik(buff);
+				 buff.clear();
+				 String projekte_rolle = (String) request.getParameter("projekte_rolle");
+				 buff.clear();
+				 buff.add(projekte_rolle);
+				 projekteHelper.setProjekte_rolle(buff);
+				 buff.clear();
+				 String projekte_technologie = (String) request.getParameter("projekte_technologie");
+				 buff.clear();
+				 buff.add(projekte_technologie);
+				 projekteHelper.setProjekte_technologie(buff);
+		        }
+		    for (int i = 0; i < projekteHelper.getProjekte_begin().size(); i++) {
+                 projekte = new Projekte(projekteHelper.getProjekte_begin().get(i),
+				 projekteHelper.getProjekte_kunde().get(i), 
+				 projekteHelper.getProjekte_end().get(i),
+				 projekteHelper.getProjekte_thematik().get(i), 
+				 projekteHelper.getProjekte_rolle().get(i),
+				 projekteHelper.getProjekte_technologie().get(i));
+				 user.addProjekte(projekte);
+			}
 			create_document.createPDF(temperotyFilePath + "\\" + fileName);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			baos = convertPDFToByteArrayOutputStream(temperotyFilePath + "\\" + fileName);
 			OutputStream os = response.getOutputStream();
 			baos.writeTo(os);
-			for (int i = 0; i < ausbildungHelper.getAusbildung_begin().size(); i++) {
-
-				ausbildung = new Ausbildung(ausbildungHelper.getAusbildung_begin().get(i),
-						ausbildungHelper.getAusbildung_end().get(i), ausbildungHelper.getAusbildung_ort().get(i),
-						ausbildungHelper.getAusbildung_stelle().get(i));
-				user.addAusbildung(ausbildung);
-			}
-			for (int i = 0; i < berufHelper.getBeruf_begin().size(); i++) {
-
-				beruf = new Beruf(berufHelper.getBeruf_begin().get(i), berufHelper.getBeruf_end().get(i),
-						berufHelper.getBeruf_stelle().get(i), berufHelper.getBeruf_position().get(i));
-				user.addBeruf(beruf);
-			}
-			for (int i = 0; i < fachHelper.getFach_kenntnisse().size(); i++) {
-
-				fach = new Fach(fachHelper.getFach_gebiet().get(i), fachHelper.getFach_kenntnisse().get(i));
-				user.addFach(fach);
-			}
-			for (int i = 0; i < projekteHelper.getProjekte_begin().size(); i++) {
-
-				projekte = new Projekte(projekteHelper.getProjekte_begin().get(i),
-						projekteHelper.getProjekte_kunde().get(i), projekteHelper.getProjekte_end().get(i),
-						projekteHelper.getProjekte_thematik().get(i), projekteHelper.getProjekte_rolle().get(i),
-						projekteHelper.getProjekte_technologie().get(i));
-				user.addProjekte(projekte);
-			}
-			DataSaver dataSaver = new DataSaver();
+		/*	DataSaver dataSaver = new DataSaver();
 			dataSaver.addUserData(user, userDao);
 			dataSaver.addAusbildungData(user, ausbildungDao);
 			dataSaver.addBerufData(user, berufDao);
 			dataSaver.addFachData(user, fachDao);
 			dataSaver.addProjekteData(user, projekteDao);
-
+       */
 			os.flush();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
+	
+	
 
 	private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 
