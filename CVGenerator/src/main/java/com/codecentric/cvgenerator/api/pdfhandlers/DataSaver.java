@@ -14,7 +14,7 @@ public class DataSaver {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-/*	public String addUserData(User user, UserDao userDao) {
+	public String addUserData(User user, UserDao userDao) {
 		try {
 			userDao.save(user);
 
@@ -67,5 +67,5 @@ public class DataSaver {
 		}
 		return "Project succesfully created!!!";
 	}
-*/
+
 }

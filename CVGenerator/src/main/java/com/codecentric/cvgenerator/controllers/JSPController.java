@@ -201,13 +201,13 @@ public class JSPController {
 			baos = convertPDFToByteArrayOutputStream(temperotyFilePath + "\\" + fileName);
 			OutputStream os = response.getOutputStream();
 			baos.writeTo(os);
-		/*	DataSaver dataSaver = new DataSaver();
+			DataSaver dataSaver = new DataSaver();
 			dataSaver.addUserData(user, userDao);
 			dataSaver.addAusbildungData(user, ausbildungDao);
 			dataSaver.addBerufData(user, berufDao);
 			dataSaver.addFachData(user, fachDao);
 			dataSaver.addProjekteData(user, projekteDao);
-       */
+       
 			os.flush();
 		} catch (Exception e1) {
 			e1.printStackTrace();
