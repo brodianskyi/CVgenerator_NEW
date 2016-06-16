@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,6 +56,15 @@ public class JSPController {
 	@Autowired
 	private ProjekteDao projekteDao;
 	
+	
+	 @RequestMapping("/user_list.html")
+	    public ModelAndView getListUsersView() {
+		    logger.info("Received request to get user list view");
+	       // ModelMap model = new ModelMap();
+	       // model.addAttribute("users", userService.getList());
+	        return new ModelAndView("result");
+	    }
+	
 
 	@RequestMapping("/home")
 	public ModelAndView jspSpringboot() {
@@ -65,7 +75,7 @@ public class JSPController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping("/test.html")
 	public ModelAndView jspSpringboot_test() {
 
 		ModelAndView modelAndView = new ModelAndView("test");
