@@ -56,16 +56,6 @@ public class JSPController {
 	@Autowired
 	private ProjekteDao projekteDao;
 	
-	
-	 @RequestMapping("/user_list.html")
-	    public ModelAndView getListUsersView() {
-		    logger.info("Received request to get user list view");
-	       // ModelMap model = new ModelMap();
-	       // model.addAttribute("users", userService.getList());
-	        return new ModelAndView("result");
-	    }
-	
-
 	@RequestMapping("/home")
 	public ModelAndView jspSpringboot() {
 
@@ -75,7 +65,7 @@ public class JSPController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/test.html")
+	@RequestMapping("/test")
 	public ModelAndView jspSpringboot_test() {
 
 		ModelAndView modelAndView = new ModelAndView("test");

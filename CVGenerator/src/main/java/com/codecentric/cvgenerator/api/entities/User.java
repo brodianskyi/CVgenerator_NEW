@@ -12,6 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name = "users")
@@ -21,20 +28,35 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long user_id;
 	@NotNull
+	@NotEmpty(message = "Schreiben Sie bitte Ihr Name.")
+	@Size(max = 15,message = "Maximale Namenslänge ist 15 Zeichen")
 	private String name;
 	@NotNull
+	@NotEmpty(message = "Schreiben Sie bitte schreiben Sie Ihr Vorname.")
+	@Size(max = 15,message = "Maximale Vornamenslänge ist 15 Zeichen")
 	private String vorname;
 	@NotNull
+	@NotEmpty(message = "Falsch Format für Geburtsdatum")
+	@DateTimeFormat(pattern="DD-MM-YYYY")
 	private String geburtsdatum;
 	@NotNull
+	@NotEmpty(message = "Schreiben Sie bitte Ihren Wohnort.")
+	@Size(max = 15,message = "Maximale Wohnortslänge ist 15 Zeichen")
 	private String wohnort;
 	@NotNull
+	@NotEmpty(message = "Schreiben Sie bitte Ihre Nationalität.")
+	@Size(max = 15,message = "Die maximale Größe ist 25 Zeichen")
 	private String nationalitaet;
 	@NotNull
+	@NotEmpty(message = "Schreiben Sie bitte Ihre Sprachen.")
+	@Size(max = 15,message = "Die maximale Größe ist 30 Zeichen")
 	private String sprachen;
 	@NotNull
+	@Pattern(regexp= "[0-9]+",message = "Falsche Format für Telefonnummer.")
 	private String telefon;
 	@NotNull
+	@NotEmpty(message = "Schreiben Sie bitte Ihre Email.")
+	@Email(message = "Falsches E-Mail-Format.")
 	private String email;
 
 	@OneToMany(cascade = { CascadeType.ALL })

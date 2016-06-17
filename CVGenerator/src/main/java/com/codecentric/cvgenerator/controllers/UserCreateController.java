@@ -12,25 +12,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.codecentric.cvgenerator.api.entities.Helper;
+import com.codecentric.cvgenerator.api.entities.User;
 
 @Controller
 public class UserCreateController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@RequestMapping(value = "/user_create.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_create", method = RequestMethod.GET)
     public ModelAndView getCreateUserView() {
 		logger.info("Received request for user create view");
-        return new ModelAndView("user_create", "helper", new Helper());
+        return new ModelAndView("user_create", "user", new User());
     }
 
-    @RequestMapping(value = "/user_create.html", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute("helper") @Valid Helper helper, BindingResult result) {
+    @RequestMapping(value = "/user_create", method = RequestMethod.POST)
+    public String createUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
     	logger.info("----------- user_create.html -------------");
         if (result.hasErrors()) {
             return "user_create";
         }
        
-        return "redirect:/test.html";
+        return "redirect:/test";
     }
 
 }
