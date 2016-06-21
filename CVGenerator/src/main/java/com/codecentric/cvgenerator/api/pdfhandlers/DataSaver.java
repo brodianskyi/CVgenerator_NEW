@@ -10,7 +10,7 @@ import com.codecentric.cvgenerator.model.FachDao;
 import com.codecentric.cvgenerator.model.ProjekteDao;
 import com.codecentric.cvgenerator.model.UserDao;
 
-public class DataSaver {
+public class DataSaver { 
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

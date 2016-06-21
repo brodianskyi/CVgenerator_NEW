@@ -2,35 +2,36 @@ package com.codecentric.cvgenerator.forms;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserLoginForm {
 	
-	@NotNull
-	@NotEmpty(message = "Schreiben Sie bitte Ihr Username.")
-	private String name;
-	@NotEmpty(message = "Schreiben Sie bitte Ihr Password.")
-	private String password1;
-	private String password2;
+	@NotEmpty(message = "Schreiben Sie bitte Ihre Email.")
+	@Email(message = "Falsches E-Mail-Format.")
+	private String email;
 	
-	public String getName() {
-		return name;
+	@NotEmpty(message = "Schreiben Sie bitte Ihr Password.")
+	private String password;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getPassword1() {
-		return password1;
+
+	public String getPassword() {
+		return password;
 	}
-	public void setPassword1(String password1) {
-		this.password1 = password1;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getPassword2() {
-		return password2;
-	}
-	public void setPassword2(String password2) {
-		this.password2 = password2;
-	}
+	
+	
+	
 	
 	
 }

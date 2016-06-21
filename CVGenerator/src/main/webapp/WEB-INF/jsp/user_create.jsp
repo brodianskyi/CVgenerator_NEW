@@ -13,7 +13,8 @@
 </head>
 <body>
 <img src="/resources/images/codecentric-ag.gif" style="float: all; padding: 0 5px 5px 30px;" />
-<form:form method="POST" action="/user_create" modelAttribute="user">
+
+<form:form method="POST" action="/user_create" modelAttribute="user_created_form">
 <h1>Registrieren</h1>
     <form:errors path="" element="td"/>
     
@@ -38,7 +39,27 @@
 	   <td width="25%"></td>
 	   <td width="25%"></td>
 	</tr>
-     <tr>
+	 <tr>
+       <td width="25%"> Password erstellen </td>
+       <td width="25%"><form:input path="password_one"/></td>
+       <td width="25%"><form:errors path="password_one" cssClass="error"/></td>
+    </tr>
+    <tr>
+       <td width="25%"></td>
+	   <td width="25%"></td>
+	   <td width="25%"></td>
+	</tr>
+	  <tr>
+       <td width="25%"> Password bestätigen </td>
+       <td width="25%"><form:input path="password_two"/></td>
+       <td width="25%"><form:errors path="password_two" cssClass="error"/></td>
+    </tr>
+      <tr>
+       <td width="25%"></td>
+	   <td width="25%"></td>
+	   <td width="25%"></td>
+	</tr>
+	<tr>
        <td width="25%"> Geburtsdatum</td>
        <td width="25%"><form:input type="date" path="geburtsdatum" value="${vacancy.date}" pattern="DD-MM-YYYY"/></td>
        <td width="25%"><form:errors path="geburtsdatum" cssClass="error"/></td>

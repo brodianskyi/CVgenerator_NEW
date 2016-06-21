@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div align="center">
-		<h2>Spring MVC Form Validation Demo - Login Form</h2>
+		<h2>User Registration</h2>
 		<table border="0" width="90%">
 		<form:form method="POST" action="home"  modelAttribute="user">
 			    <tr>
@@ -56,8 +56,9 @@
 				</tr>
 				
 				<tr>
+					<tr>
 					<td></td>
-					<input type="submit"/>
+					<td align="center"><input type="submit" value="Register"/></td>
 					<td></td>
 				</tr>
 		</form:form>

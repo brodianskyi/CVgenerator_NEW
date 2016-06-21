@@ -3,6 +3,7 @@ package com.codecentric.cvgenerator.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,8 @@ public class DataController {
 	private FachDao fachDao;
 	@Autowired
 	private ProjekteDao projekteDao;
+	
+
 
 	@RequestMapping(value = "/findAusbildungenByUserName/{userName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody User findAusbildungenByUserName(@PathVariable("userName") String userName) {

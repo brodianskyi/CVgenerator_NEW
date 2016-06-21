@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codecentric.cvgenerator.forms.UserLoginForm;
 import com.codecentric.cvgenerator.service.UserService;
-import com.codecentric.cvgenerator.validator.UserLoginFormPasswordValidator;
+import com.codecentric.cvgenerator.validator.UserCreatePasswordValidator;
 
 
 
@@ -24,21 +24,7 @@ import com.codecentric.cvgenerator.validator.UserLoginFormPasswordValidator;
 @Controller
 public class UserLoginController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	private UserService userService;
-	private UserLoginFormPasswordValidator passwordValidator;
 	
-	@Inject
-	public UserLoginController (UserService userService, UserLoginFormPasswordValidator passwordValidator) {
-		 this.userService = userService;
-		 this.passwordValidator = passwordValidator;
-	}
-	
-	 @InitBinder("user_login_form")
-	 public void initBinder(WebDataBinder binder) {
-	        binder.addValidators(passwordValidator);
-	        
-	}
-
 	@RequestMapping(value = "/user_login", method = RequestMethod.GET)
 	public ModelAndView getLoginUserView() {
 
@@ -49,7 +35,7 @@ public class UserLoginController {
 	@RequestMapping(value = "/user_login", method = RequestMethod.POST)
 	public String loginUser(@ModelAttribute("user_login_form")@Valid UserLoginForm form, BindingResult result) {
 		 if (result.hasErrors()) {
-	          return "user_create";
+	          return "user_login";
 	     }
 	
 		return "redirect:/user_page";
