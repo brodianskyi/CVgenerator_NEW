@@ -9,7 +9,7 @@ import com.codecentric.cvgenerator.forms.UserCreateForm;
 import com.codecentric.cvgenerator.forms.UserLoginForm;
 
 @Component
-public class UserCreatePasswordValidator implements Validator{
+public class UserPasswordValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> clazz) {

@@ -2,6 +2,9 @@ package com.codecentric.cvgenerator.controllers;
 
 import javax.inject.Inject;
 import javax.persistence.NonUniqueResultException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -22,21 +25,18 @@ import com.codecentric.cvgenerator.exception.UserAlreadyExistsException;
 import com.codecentric.cvgenerator.forms.UserCreateForm;
 import com.codecentric.cvgenerator.model.UserDao;
 import com.codecentric.cvgenerator.service.UserService;
-import com.codecentric.cvgenerator.validator.UserCreatePasswordValidator;
-
-
-
+import com.codecentric.cvgenerator.validator.UserPasswordValidator;
 
 
 @Controller
 public class UserCreateController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserService userService;
-	private UserCreatePasswordValidator passwordValidator;
+	private UserPasswordValidator passwordValidator;
 
 	
 	@Inject
-    public UserCreateController(UserService userService, UserCreatePasswordValidator passwordValidator) {
+    public UserCreateController(UserService userService, UserPasswordValidator passwordValidator) {
         this.userService = userService;
         this.passwordValidator = passwordValidator;
         
@@ -56,18 +56,22 @@ public class UserCreateController {
 	
 
     @RequestMapping(value = "/user_create", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute("user_created_form") @Valid UserCreateForm form, BindingResult result) {
+    public String createUser(@ModelAttribute("user_created_form") @Valid UserCreateForm form, BindingResult result,
+    		HttpServletRequest request, HttpServletResponse response) {
     	logger.info("----------- user_create.html -------------"+form.getName());
         if (result.hasErrors()) {
             return "user_create";
         }
         try {
+        	 HttpSession userSession = request.getSession();
+        	 User user =  new User(form.getName(),
+         			form.getVorname(),form.getPassword_one(),
+         			form.getPassword_two(),form.getGeburtsdatum(),
+         			form.getWohnort(),form.getNationalitaet(),
+         			form.getSprachen(),form.getTelefon(),form.getEmail());
         	
-        	userService.save(new User(form.getName(),
-        			form.getVorname(),form.getPassword_one(),
-        			form.getPassword_two(),form.getGeburtsdatum(),
-        			form.getWohnort(),form.getNationalitaet(),
-        			form.getSprachen(),form.getTelefon(),form.getEmail()));
+        	userService.save(user);
+        	userSession.setAttribute("user", user);
         }catch (UserAlreadyExistsException e) {
         	logger.info ("Tried to create user with existing name", e);
         
@@ -82,7 +86,7 @@ public class UserCreateController {
             return "user_create";	
         }
        
-        return "redirect:/test";
+        return "redirect:/user_page";
     }
    
 
