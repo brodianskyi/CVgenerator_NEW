@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>UserPage</title>
 <style>
 	.error { 
 		color: red; font-weight: bold; 
@@ -15,6 +15,7 @@
 </style>
 </head>
 <body>
+ <img src="/resources/images/codecentric-ag.gif" style="float: all; padding: 0 5px 5px 30px;" />
  <jsp:useBean id="user" scope="session" class="com.codecentric.cvgenerator.api.entities.User"/>
  <%
     if (session.getAttribute("user") == null ){// Then new user, show join now

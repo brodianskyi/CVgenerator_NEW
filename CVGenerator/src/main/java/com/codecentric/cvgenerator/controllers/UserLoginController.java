@@ -37,6 +37,7 @@ public class UserLoginController {
 		 if (result.hasErrors()) {
 	          return "user_login";
 	     }
+		 
 	
 		return "redirect:/user_page";
 	}
