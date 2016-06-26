@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,6 +34,7 @@ import com.codecentric.cvgenerator.api.entities.Ausbildung;
 import com.codecentric.cvgenerator.api.entities.Beruf;
 import com.codecentric.cvgenerator.api.entities.Fach;
 import com.codecentric.cvgenerator.api.entities.Projekte;
+import com.codecentric.cvgenerator.api.entities.UploadFile;
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.api.entities.helpers.AusbildungHelper;
 import com.codecentric.cvgenerator.api.entities.helpers.BerufHelper;
@@ -39,8 +45,12 @@ import com.codecentric.cvgenerator.api.pdfhandlers.DataSaver;
 import com.codecentric.cvgenerator.model.AusbildungDao;
 import com.codecentric.cvgenerator.model.BerufDao;
 import com.codecentric.cvgenerator.model.FachDao;
+import com.codecentric.cvgenerator.model.FileUploadDao;
 import com.codecentric.cvgenerator.model.ProjekteDao;
 import com.codecentric.cvgenerator.model.UserDao;
+import com.codecentric.cvgenerator.service.FileUploadService;
+
+
 
 @Controller
 public class JSPController {
@@ -55,6 +65,13 @@ public class JSPController {
 	private FachDao fachDao;
 	@Autowired
 	private ProjekteDao projekteDao;
+	
+	private  FileUploadService fileUploadservice;
+	
+	@Inject
+	public JSPController(FileUploadService fileUploadservice){
+		this.fileUploadservice = fileUploadservice;
+	}
 	
 	@RequestMapping(value = "/cv_creator", method = RequestMethod.GET)
 	public ModelAndView jspSpringboot() {
@@ -72,7 +89,7 @@ public class JSPController {
 
 		return modelAndView;
 	}
-
+/*
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
 	public void result(@ModelAttribute("user") User user,
 			@ModelAttribute("ausbildung_helper") AusbildungHelper ausbildungHelper,
@@ -199,8 +216,24 @@ public class JSPController {
 			}
 			create_document.createPDF(temperotyFilePath + "\\" + fileName);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			baos = convertPDFToByteArrayOutputStream(temperotyFilePath + "\\" + fileName);
+		//	baos = convertPDFToByteArrayOutputStream(temperotyFilePath + "\\" + fileName);
+			
+			
+			//--------------------------
+			
+			byte[] file_data = baos.toByteArray();
+			UploadFile uploadFile = new UploadFile();
+            uploadFile.setFileName("MyCV");
+            uploadFile.setData(file_data);
+            fileUploadservice.save(uploadFile);        
+			
+          //--------------------------
+            
+            file_data = fileUploadservice.getFile().getData();
+            baos = convertor(file_data);
+          //--------------------------  
 			OutputStream os = response.getOutputStream();
+			
 			baos.writeTo(os);
 			DataSaver dataSaver = new DataSaver();
 			dataSaver.addUserData(user, userDao);
@@ -214,8 +247,32 @@ public class JSPController {
 			e1.printStackTrace();
 		}
 	}
+*/	
+	private ByteArrayOutputStream convertor(byte[] buffer) throws IOException{
+		
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    baos.write(buffer);
+	    
+	return baos;	
+		
+	}
 	
-	
+	@RequestMapping(value="/result", method=RequestMethod.POST)
+	public ResponseEntity<byte[]> getPDF1() {
+
+
+	    HttpHeaders headers = new HttpHeaders();
+
+	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+	    String filename = "pdf1.pdf";
+
+	    headers.add("content-disposition", "inline;filename=" + filename);
+
+	//    headers.setContentDispositionFormData(filename, filename);
+	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(fileUploadservice.getFile().getData(), headers, HttpStatus.OK);
+	    return response;
+	}
 
 	private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 
