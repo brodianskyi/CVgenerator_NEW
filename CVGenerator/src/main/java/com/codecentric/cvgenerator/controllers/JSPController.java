@@ -56,7 +56,7 @@ public class JSPController {
 	@Autowired
 	private ProjekteDao projekteDao;
 	
-	@RequestMapping("/home")
+	@RequestMapping(value = "/cv_creator", method = RequestMethod.GET)
 	public ModelAndView jspSpringboot() {
 
 		logger.info("Hey man if you see this !!!");

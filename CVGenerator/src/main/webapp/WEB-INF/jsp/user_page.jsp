@@ -142,15 +142,30 @@ function change_user_password() {
                
                  <div  style ="text-align: center; border-top: 20px #444 solid; padding: 10px 0px 10px 0px;" class="grid_12 MyCV">
                         
-                     <h1 style ="padding: 10px 0px 10px 0px;">My CV</h1>  
+                     <h1 style ="padding: 10px 0px 10px 60px;">My CV</h1>  
                     
                         <div id="CartTable" style="padding:10px 00px" class="grid_12">
+                        </div>
                                    
-                                    <div class="clear"></div>
-                       
-
-                  </div>
-                 </div>
+                            <div class="clear"></div>
+                          
+               </div>
+                 <div class="clear"></div>
+                    <div  style ="text-align: center; border-top: 20px #444 solid; padding: 10px 0px 10px 0px;" class="grid_9 push_1 Account">
+                        <div class="clear"></div>
+                        <h1 style ="padding: 10px 0px 30px 0px;">Create CV now</h1> 
+                         <div class="clear"></div>
+                         <form:form method="GET" action="cv_creator">  
+                               <div class="grid_7">
+                              
+		                             <input type="submit" id="greenBtn"  value="Create CV"/>
+				                
+				               </div>
+				                </form:form>  
+                        
+                        
+                       </div>   
+                        
                  <div class="clear"></div>
                     <div  style ="text-align: center; border-top: 20px #444 solid; padding: 10px 0px 10px 0px;" class="grid_9 push_1 Account">
                         <h1 style ="padding: 10px 0px 10px 0px;">User Account</h1>  
@@ -221,7 +236,7 @@ function change_user_password() {
                             </div>
                             <input type="hidden" id="message"  name="message" >
                             <div class="clear"></div><br/>
-                            <div class="grid_5">
+                            <div class="grid_7">
                                 <input type="submit"  id="greenBtn" name="change_info" value="Change Information" onclick="click_user_info();"/>
                             </div>
                             </form:form>
@@ -249,7 +264,7 @@ function change_user_password() {
                             </div>
                             <input type="hidden" id="message"  name="message" >
                             <div class="clear"></div><br/>
-                            <div class="grid_5">
+                            <div class="grid_7">
                                 <input type="submit"  id="greenBtn" name="change_password" value = "Change password" onclick="change_user_password();"/>
                             </div>
                           </form:form>
