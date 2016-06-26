@@ -9,12 +9,12 @@ import com.codecentric.cvgenerator.forms.UserCreateForm;
 import com.codecentric.cvgenerator.forms.UserLoginForm;
 
 @Component
-public class UserPasswordValidator implements Validator{
+public class UserCreateFormPasswordValidator implements Validator{
 
 	@Override
 	public boolean supports(Class<?> clazz) {
 		
-		return User.class.isAssignableFrom(clazz);
+		return UserCreateForm.class.isAssignableFrom(clazz);
 	}
 
 	@Override

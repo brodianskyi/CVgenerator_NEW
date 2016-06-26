@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.codecentric.cvgenerator.forms.UserLoginForm;
 import com.codecentric.cvgenerator.service.UserService;
-import com.codecentric.cvgenerator.validator.UserPasswordValidator;
+import com.codecentric.cvgenerator.validator.UserCreateFormPasswordValidator;
 
 
 

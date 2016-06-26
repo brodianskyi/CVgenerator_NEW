@@ -224,7 +224,7 @@ jQuery('textarea').autoResize();
 				</tr>
 			</table>
 			<h2>Ausbildung/Universität</h2>
-			<script>
+<script>
  
     var anzahl = 0;
     function remove_0() {

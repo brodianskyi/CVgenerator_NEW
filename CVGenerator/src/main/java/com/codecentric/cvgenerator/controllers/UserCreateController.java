@@ -25,18 +25,18 @@ import com.codecentric.cvgenerator.exception.UserAlreadyExistsException;
 import com.codecentric.cvgenerator.forms.UserCreateForm;
 import com.codecentric.cvgenerator.model.UserDao;
 import com.codecentric.cvgenerator.service.UserService;
-import com.codecentric.cvgenerator.validator.UserPasswordValidator;
+import com.codecentric.cvgenerator.validator.UserCreateFormPasswordValidator;
 
 
 @Controller
 public class UserCreateController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserService userService;
-	private UserPasswordValidator passwordValidator;
+	private UserCreateFormPasswordValidator passwordValidator;
 
 	
 	@Inject
-    public UserCreateController(UserService userService, UserPasswordValidator passwordValidator) {
+    public UserCreateController(UserService userService, UserCreateFormPasswordValidator passwordValidator) {
         this.userService = userService;
         this.passwordValidator = passwordValidator;
         
@@ -65,8 +65,8 @@ public class UserCreateController {
         try {
         	 HttpSession userSession = request.getSession();
         	 User user =  new User(form.getName(),
-         			form.getVorname(),form.getPassword_one(),
-         			form.getPassword_two(),form.getGeburtsdatum(),
+         			form.getVorname(),form.getPassword_two(),
+         			form.getGeburtsdatum(),
          			form.getWohnort(),form.getNationalitaet(),
          			form.getSprachen(),form.getTelefon(),form.getEmail());
         	

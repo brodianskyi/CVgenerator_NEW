@@ -10,8 +10,8 @@ import com.codecentric.cvgenerator.model.UserDao;
 public interface UserService {
 	
 	 User save(User user);
-	 int update(User user,String update_value);
-
+	 int  update(User user,String update_value,String flag);
+	 User findUserByName(String name);
 	 List<User> getList();
 
 }

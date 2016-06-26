@@ -58,41 +58,25 @@
                     Settings.slideDown(700);
                 });
                 MyUserInfo.click(function (){
-                	
-                	CV.slideDown(700);
+                    CV.slideDown(700);
                     Account.slideDown(700);
                     Settings.slideDown(700);
                 });
                 
             });
-            
-         
-            
-            
         </script>
         
     </head>
     <body>
-    
-<script>
-function click_user_info() {
-	document.getElementById("message").value="Info Changed";
-	alert("Info Changed");
-}
-function change_user_password() {
-	document.getElementById("message").value="Password Changed";
-	alert("Password Changed");
-}
-    </script>
         
         <%
         if (session.getAttribute("user") == null ){// Then new user, show join now
         %>
-            <jsp:include page="/resources/includedPage/logout.jsp"></jsp:include>
+            <jsp:include page="includesPage/joinNow.jsp"></jsp:include>
         <%
         }else {
         %>
-            <jsp:include page="/resources/includedPage/logout.jsp"></jsp:include>
+            <jsp:include page="includesPage/logout.jsp"></jsp:include>
         <%
         }
         
@@ -114,7 +98,7 @@ function change_user_password() {
            
         %>
 
-        <jsp:include page="/resources/includedPage/search_navigationbar.jsp"></jsp:include>
+        <jsp:include page="includesPage/_search_navigationbar.jsp"></jsp:include>
         
 
         <div class="container_16">
@@ -129,8 +113,7 @@ function change_user_password() {
                 </div>
             <div class="grid_13 push_3" id="whiteBox">
                 <div  class="grid_13">
-                    <h1  style ="text-align: center; padding: 10px 0px 0px 0px;">Hello <%= name %> <%= vorname %> </h1> 
-                     <h1  style ="text-align: center; padding: 10px 0px 0px 0px;"> ${message} </h1>  
+                    <h1  style ="text-align: center; padding: 10px 0px 0px 0px;">Hello <%= name %> <%= vorname %></h1>  
                     <p  style ="text-align: center;"> 
                        Enter in the personal information for your Account to have quick checkouts during any transaction 
                     </p>
@@ -139,7 +122,7 @@ function change_user_password() {
                 
             
                 <div id="whiteBox" class="grid_13 push_3">
-               
+                 
                  <div  style ="text-align: center; border-top: 20px #444 solid; padding: 10px 0px 10px 0px;" class="grid_12 MyCV">
                         
                      <h1 style ="padding: 10px 0px 10px 0px;">My CV</h1>  
@@ -219,18 +202,17 @@ function change_user_password() {
                                 <form:input path="email"/>
                                 <form:errors path="email" cssClass="error"/>
                             </div>
-                            <input type="hidden" id="message"  name="message" >
                             <div class="clear"></div><br/>
                             <div class="grid_5">
-                                <input type="submit"  id="greenBtn" name="change_info" value="Change Information" onclick="click_user_info();"/>
+                                <input type="submit" id="greenBtn" value="Change Information"/>
                             </div>
-                            </form:form>
+                           </form:form>
                             <div class="clear"></div><br/>
                        </div>
                  <div class="clear"></div>
                  <div  style ="text-align: center; border-top: 20px #444 solid; padding: 10px 0px 10px 0px;" class="grid_9 push_1 Settings">
                      <h1 style ="padding: 10px 0px 10px 0px;">Passwort ändern</h1>  
-                      <form:form method="POST" action="/change_password" modelAttribute="password_form">
+                       <form:form method="POST" action="/user_page" modelAttribute="user_page_form">
                            <div class="clear"></div><br/>
                              <div class="grid_3">
                                 Password erstellen
@@ -247,22 +229,18 @@ function change_user_password() {
                                 <form:input  type="password" path="password_two"/>
                                 <form:errors path="password_two" cssClass="error"/>
                             </div>
-                            <input type="hidden" id="message"  name="message" >
                             <div class="clear"></div><br/>
                             <div class="grid_5">
-                                <input type="submit"  id="greenBtn" name="change_password" value = "Change password" onclick="change_user_password();"/>
+                                <input type="submit" id="greenBtn" value="Change Information"/>
                             </div>
-                          </form:form>
-                         </div>
-                      
+                        </form:form>
                        
-                    </div>
+                    
                      
                     </div>
                  <div class="clear"></div>
-            
-           
-        
+                </div>
+        </div>
         <%
          }        
        %>

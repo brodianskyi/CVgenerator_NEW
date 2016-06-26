@@ -26,6 +26,10 @@ public interface UserDao extends CrudRepository<User, Long> {
     @Query("UPDATE User u SET u.name = :name WHERE u.user_id = :user_id")
     int updateUserName(@Param("user_id") long user_id, @Param("name") String name);
 	
+	@Modifying
+    @Query("UPDATE User u SET u.password = :password WHERE u.user_id = :user_id")
+    int updateUserPassword(@Param("user_id") long user_id, @Param("password") String password);
+	
 	@Query("Delete from User u where u.user_id = :user_id ")
 	int deleteUser(@Param("user_id") long user_id);
 	

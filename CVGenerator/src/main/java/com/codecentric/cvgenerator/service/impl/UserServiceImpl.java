@@ -56,11 +56,14 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	@Transactional
-	public int update(@NotNull @Valid final User user,String update_value){
+	public int update(@NotNull @Valid final User user,String update_value,String flag){
 		logger.info("Update {}",user);
-		int result;
-		result = userRepository.updateUserName(user.getUser_id(), update_value);
-		
+		int result = 0;
+		if (flag == "name"){
+		   result = userRepository.updateUserName(user.getUser_id(), update_value);
+		}else if (flag == "password"){
+			result = userRepository.updateUserPassword(user.getUser_id(), update_value);
+		}
 		
 	return result;
 		
@@ -72,5 +75,11 @@ public class UserServiceImpl implements UserService{
 		logger.info("Retrieving the list of all users");
 		return (List<User>) userRepository.findAll();
 	}
+	
 
+	@Override
+	@Transactional
+	public User findUserByName(String name){
+		return (User)userRepository.findByName(name);
+	}
 }

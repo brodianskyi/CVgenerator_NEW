@@ -35,7 +35,7 @@ public class DataController {
 	@Autowired
 	private ProjekteDao projekteDao;
 	
-
+    
 
 	@RequestMapping(value = "/findAusbildungenByUserName/{userName}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public @ResponseBody User findAusbildungenByUserName(@PathVariable("userName") String userName) {

@@ -15,10 +15,6 @@ public class UserPageForm {
 	@NotEmpty(message = "Schreiben Sie bitte schreiben Sie Ihr Vorname.")
 	@Size(max = 15,message = "Maximale Vornamenslänge ist 15 Zeichen")
 	private String vorname;
-	@NotEmpty(message = "Schreiben Sie bitte Ihr Password.")
-	private String password_one;
-	@NotEmpty(message = "Schreiben Sie bitte Ihr Password noch einmal.")
-	private String password_two;
 	@NotEmpty(message = "Falsch Format für Geburtsdatum")
 	@DateTimeFormat(pattern="DD-MM-YYYY")
 	private String geburtsdatum;
@@ -36,7 +32,18 @@ public class UserPageForm {
 	@NotEmpty(message = "Schreiben Sie bitte Ihre Email.")
 	@Email(message = "Falsches E-Mail-Format.")
 	private String email;
+
+	private String message;
 	
+	
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -48,18 +55,6 @@ public class UserPageForm {
 	}
 	public void setVorname(String vorname) {
 		this.vorname = vorname;
-	}
-	public String getPassword_one() {
-		return password_one;
-	}
-	public void setPassword_one(String password_one) {
-		this.password_one = password_one;
-	}
-	public String getPassword_two() {
-		return password_two;
-	}
-	public void setPassword_two(String password_two) {
-		this.password_two = password_two;
 	}
 	public String getGeburtsdatum() {
 		return geburtsdatum;

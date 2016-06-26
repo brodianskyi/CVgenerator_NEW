@@ -41,10 +41,7 @@ public class User {
 	private String vorname;
 	@NotNull
 	@NotEmpty(message = "Schreiben Sie bitte Ihr Password.")
-	private String password_one;
-	@NotNull
-	@NotEmpty(message = "Schreiben Sie bitte Ihr Password noch einmal.")
-	private String password_two;
+	private String password;
 	@NotNull
 	@NotEmpty(message = "Falsch Format für Geburtsdatum")
 	@DateTimeFormat(pattern="DD-MM-YYYY")
@@ -86,14 +83,13 @@ public class User {
 	private List<Projekte> projekte = new ArrayList<Projekte>();
 
 	public User() {}
-	public User(String name, String vorname, String password_one, String password_two,
+	public User(String name, String vorname, String password,
 			String geburtsdatum, String wohnort, String nationalitaet, String sprachen, String telefon, String email) {
 		
 		
 		this.name = name;
 		this.vorname = vorname;
-		this.password_one = password_one;
-		this.password_two = password_two;
+		this.password = password;
 		this.geburtsdatum = geburtsdatum;
 		this.wohnort = wohnort;
 		this.nationalitaet = nationalitaet;
@@ -127,22 +123,14 @@ public class User {
 		this.vorname = vorname;
 	}
 	
-	public String getPassword_one() {
-		return password_one;
-	}
+	
 
-	public void setPassword_one(String password_one) {
-		this.password_one = password_one;
+	public String getPassword() {
+		return password;
 	}
-
-	public String getPassword_two() {
-		return password_two;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public void setPassword_two(String password_two) {
-		this.password_two = password_two;
-	}
-
 	public String getGeburtsdatum() {
 		return geburtsdatum;
 	}
