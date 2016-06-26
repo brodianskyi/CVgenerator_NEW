@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.codecentric.cvgenerator.api.entities.User;
 import com.codecentric.cvgenerator.exception.UserAlreadyExistsException;
+import com.codecentric.cvgenerator.exception.UserNotCreateExceprion;
 import com.codecentric.cvgenerator.model.UserDao;
 import com.codecentric.cvgenerator.service.UserService;
 
@@ -33,7 +34,22 @@ public class UserServiceImpl implements UserService{
 	        this.userRepository = userRepository;
 	    }
 	
-
+	@Override
+	@Transactional
+	public User userLoginCheck(String email){
+		
+		User user = userRepository.findByEmail(email);
+	
+		
+		
+		if ( user == null) {
+			logger.info("------------!!!!!!!!USER NULL");
+			 throw new UserNotCreateExceprion(
+	                    String.format("There not user with this data."));
+		}
+		logger.info("------------LoginCheck {} for" + user.getName());
+		return user;
+    }
 
 	@Override
 	@Transactional
