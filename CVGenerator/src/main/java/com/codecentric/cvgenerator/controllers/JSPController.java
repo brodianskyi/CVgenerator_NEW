@@ -48,6 +48,7 @@ import com.codecentric.cvgenerator.model.FachDao;
 import com.codecentric.cvgenerator.model.FileUploadDao;
 import com.codecentric.cvgenerator.model.ProjekteDao;
 import com.codecentric.cvgenerator.model.UserDao;
+import com.codecentric.cvgenerator.service.AusbildungService;
 import com.codecentric.cvgenerator.service.FileUploadService;
 
 
@@ -66,14 +67,16 @@ public class JSPController {
 	@Autowired
 	private ProjekteDao projekteDao;
 	
-	private  FileUploadService fileUploadservice;
+	private final FileUploadService fileUploadservice;
+	private final AusbildungService ausbildungService;
 	
-	@Inject
-	public JSPController(FileUploadService fileUploadservice){
+	@Autowired
+	public JSPController(FileUploadService fileUploadservice,AusbildungService ausbildungService){
 		this.fileUploadservice = fileUploadservice;
+		this.ausbildungService = ausbildungService;
 	}
 	
-	@RequestMapping(value = "/cv_creator", method = RequestMethod.GET)
+	@RequestMapping(value = "/cv_creator_on", method = RequestMethod.GET)
 	public ModelAndView jspSpringboot() {
 
 		logger.info("Hey man if you see this !!!");
@@ -89,9 +92,9 @@ public class JSPController {
 
 		return modelAndView;
 	}
-/*
+
 	@RequestMapping(value = "/result", method = RequestMethod.POST)
-	public void result(@ModelAttribute("user") User user,
+	public void result(
 			@ModelAttribute("ausbildung_helper") AusbildungHelper ausbildungHelper,
 			@ModelAttribute("beruf_helper") BerufHelper berufHelper,
 			@ModelAttribute("fach_helper") FachHelper fachHelper,
@@ -102,7 +105,8 @@ public class JSPController {
 		final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 		final String temperotyFilePath = tempDirectory.getAbsolutePath();
         
-		
+		HttpSession userSession = request.getSession();
+		User user = ((User)userSession.getAttribute("user"));
 		CreatePDF create_document = new CreatePDF(user, ausbildungHelper, berufHelper, fachHelper, projekteHelper);
 
 		String fileName = "MyCV.pdf";
@@ -116,11 +120,13 @@ public class JSPController {
 			Projekte projekte = null;
 			ArrayList<String> buff = new ArrayList<String>();
 			
+			
+			
             String ausbildung_click=(String) request.getParameter("ausbildung_click");
             if (ausbildung_click != null){
 				logger.info("Don't press the red button!!!");
 			} 
-			else {
+			else {//if not pressed add ausbildung
 				 String ausbildung_stelle =(String) request.getParameter("ausbildung_stelle");
 				 buff.add(ausbildung_stelle);
 				 ausbildungHelper.setAusbildung_stelle(buff);
@@ -136,6 +142,7 @@ public class JSPController {
 				 ausbildungHelper.getAusbildung_stelle().get(i));
 				 user.addAusbildung(ausbildung); 
 			}
+			
 			
 			String beruf_click=(String) request.getParameter("beruf_click");
 			if (beruf_click != null){
@@ -216,38 +223,41 @@ public class JSPController {
 			}
 			create_document.createPDF(temperotyFilePath + "\\" + fileName);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		//	baos = convertPDFToByteArrayOutputStream(temperotyFilePath + "\\" + fileName);
+			baos = convertPDFToByteArrayOutputStream(temperotyFilePath + "\\" + fileName);
 			
 			
 			//--------------------------
 			
-			byte[] file_data = baos.toByteArray();
+	/*		byte[] file_data = baos.toByteArray();
 			UploadFile uploadFile = new UploadFile();
             uploadFile.setFileName("MyCV");
             uploadFile.setData(file_data);
             fileUploadservice.save(uploadFile);        
-			
+	*/		
           //--------------------------
             
-            file_data = fileUploadservice.getFile().getData();
-            baos = convertor(file_data);
+        //    file_data = fileUploadservice.getFile().getData();
+        //    baos = convertor(file_data);
           //--------------------------  
 			OutputStream os = response.getOutputStream();
 			
 			baos.writeTo(os);
-			DataSaver dataSaver = new DataSaver();
-			dataSaver.addUserData(user, userDao);
-			dataSaver.addAusbildungData(user, ausbildungDao);
+			ausbildungService.save(user.getAusbildung());
+		//	DataSaver dataSaver = new DataSaver();
+		//	dataSaver.addUserData(user, userDao);
+		/*	dataSaver.addAusbildungData(user, ausbildungDao);
 			dataSaver.addBerufData(user, berufDao);
 			dataSaver.addFachData(user, fachDao);
 			dataSaver.addProjekteData(user, projekteDao);
-       
+       */
+			
+			
 			os.flush();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
-*/	
+	
 	private ByteArrayOutputStream convertor(byte[] buffer) throws IOException{
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -257,7 +267,7 @@ public class JSPController {
 		
 	}
 	
-	@RequestMapping(value="/result", method=RequestMethod.POST)
+/*	@RequestMapping(value="/result", method=RequestMethod.POST)
 	public ResponseEntity<byte[]> getPDF1() {
 
 
@@ -273,7 +283,7 @@ public class JSPController {
 	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(fileUploadservice.getFile().getData(), headers, HttpStatus.OK);
 	    return response;
 	}
-
+*/
 	private ByteArrayOutputStream convertPDFToByteArrayOutputStream(String fileName) {
 
 		InputStream inputStream = null;
