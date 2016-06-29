@@ -96,7 +96,7 @@ function change_user_password() {
         <%
         }
         
-        if ((session.getAttribute("user") == null)) {
+        if ((session.getAttribute("user") == null)){
             response.sendRedirect("test.jsp");
         } else {
         user = (User) session.getAttribute("user");

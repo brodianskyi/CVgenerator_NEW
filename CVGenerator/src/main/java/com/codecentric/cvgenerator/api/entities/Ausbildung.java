@@ -1,6 +1,7 @@
 package com.codecentric.cvgenerator.api.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Ausbildung {
 	private String ausbildung_ort;
 	private String ausbildung_stelle;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", insertable = false, updatable = false, nullable = true
 	// referencedColumnName="user_id")
 	)

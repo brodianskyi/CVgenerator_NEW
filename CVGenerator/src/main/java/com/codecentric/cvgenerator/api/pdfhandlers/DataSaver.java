@@ -16,6 +16,7 @@ public class DataSaver {
 
 	public String addUserData(User user, UserDao userDao) {
 		try {
+			userDao.updateUserName(user.getUser_id(), user.getName());
 			userDao.save(user);
 
 		} catch (Exception e) {
@@ -35,7 +36,7 @@ public class DataSaver {
 		return "Ausbildung succesfully created!!!";
 	}
 
-	public String addBerufData(User user, BerufDao berufDao) {
+/*	public String addBerufData(User user, BerufDao berufDao) {
 		try {
 
 			berufDao.save(user.getBeruf());
@@ -67,5 +68,5 @@ public class DataSaver {
 		}
 		return "Project succesfully created!!!";
 	}
-
+*/
 }

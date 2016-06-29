@@ -71,15 +71,15 @@ public class User {
 	@JoinColumn(name = "user_id")
 	private List<Ausbildung> ausbildung = new ArrayList<Ausbildung>();
 
-	@OneToMany(cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.EAGER,cascade = { CascadeType.ALL })
 	@JoinColumn(name = "user_id")
 	private List<Beruf> beruf = new ArrayList<Beruf>();
 
-	@OneToMany(cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.EAGER,cascade = { CascadeType.ALL })
 	@JoinColumn(name = "user_id")
 	private List<Fach> fach = new ArrayList<Fach>();
 
-	@OneToMany(cascade = { CascadeType.ALL })
+	@OneToMany(fetch = FetchType.EAGER,cascade = { CascadeType.ALL })
 	@JoinColumn(name = "user_id")
 	private List<Projekte> projekte = new ArrayList<Projekte>();
 

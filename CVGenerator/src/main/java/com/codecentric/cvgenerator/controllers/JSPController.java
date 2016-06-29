@@ -50,6 +50,8 @@ import com.codecentric.cvgenerator.model.ProjekteDao;
 import com.codecentric.cvgenerator.model.UserDao;
 import com.codecentric.cvgenerator.service.AusbildungService;
 import com.codecentric.cvgenerator.service.FileUploadService;
+import com.codecentric.cvgenerator.service.UserService;
+import javax.persistence.EntityTransaction;
 
 
 
@@ -67,16 +69,19 @@ public class JSPController {
 	@Autowired
 	private ProjekteDao projekteDao;
 	
-	private final FileUploadService fileUploadservice;
-	private final AusbildungService ausbildungService;
+	private UserService userService;
 	
-	@Autowired
-	public JSPController(FileUploadService fileUploadservice,AusbildungService ausbildungService){
+	private final FileUploadService fileUploadservice;
+    private final AusbildungService ausbildungService;
+	
+    @Inject
+	public JSPController(FileUploadService fileUploadservice,AusbildungService ausbildungService,UserService userService){
+		this.userService = userService;
 		this.fileUploadservice = fileUploadservice;
 		this.ausbildungService = ausbildungService;
 	}
 	
-	@RequestMapping(value = "/cv_creator_on", method = RequestMethod.GET)
+	@RequestMapping(value = "/cv_creator", method = RequestMethod.GET)
 	public ModelAndView jspSpringboot() {
 
 		logger.info("Hey man if you see this !!!");
@@ -105,6 +110,7 @@ public class JSPController {
 		final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 		final String temperotyFilePath = tempDirectory.getAbsolutePath();
         
+		
 		HttpSession userSession = request.getSession();
 		User user = ((User)userSession.getAttribute("user"));
 		CreatePDF create_document = new CreatePDF(user, ausbildungHelper, berufHelper, fachHelper, projekteHelper);
@@ -242,11 +248,16 @@ public class JSPController {
 			OutputStream os = response.getOutputStream();
 			
 			baos.writeTo(os);
-			ausbildungService.save(user.getAusbildung());
+		//	ausbildungService.save(user.getAusbildung());
 		//	DataSaver dataSaver = new DataSaver();
 		//	dataSaver.addUserData(user, userDao);
-		/*	dataSaver.addAusbildungData(user, ausbildungDao);
-			dataSaver.addBerufData(user, berufDao);
+			logger.info(" ----------------------------- USER_ID " + user.getAusbildung().get(0).getUser().getUser_id());
+		
+			
+	        userService.update(user, user.getName(), "name");  
+	        ausbildungService.save(user.getAusbildung());
+	        //	dataSaver.addAusbildungData(user, ausbildungDao);
+		/*	dataSaver.addBerufData(user, berufDao);
 			dataSaver.addFachData(user, fachDao);
 			dataSaver.addProjekteData(user, projekteDao);
        */

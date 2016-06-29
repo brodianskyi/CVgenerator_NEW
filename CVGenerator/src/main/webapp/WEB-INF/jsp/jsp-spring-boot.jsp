@@ -1,77 +1,33 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="com.codecentric.cvgenerator.api.entities.User"%>
+<!DOCTYPE html>
+<html>
 <head>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<meta charset="utf-8">
-<title>HTML5 Lebenslauf</title>
-<link rel="stylesheet" media="screen" href="styles.css">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title> Lebenslauf </title>
+      <jsp:useBean id="user" scope="session" class="com.codecentric.cvgenerator.api.entities.User"/>
+         <link rel="shortcut icon" href="/resources/images/codecentric-ag.gif"/>
+		 <link rel="stylesheet" type="text/css" href="/resources/css/reset.css"/>
+		 <link rel="stylesheet" type="text/css" href="/resources/css/text.css"/>
+		 <link rel="stylesheet" type="text/css" href="/resources/css/960_16.css"/>
+		 <link rel="stylesheet" type="text/css" href="/resources/css/product.css"  />
+		 <link rel="stylesheet" type="text/css" href="/resources/css/lightbox.css"  />
+		 <link rel="stylesheet" type="text/css" href="/resources/css/styles.css"/>
+		  <script src="/resources/jquery/jquery-1.7.2.min.js"></script>
+          <script src="/resources/jquery/lightbox.js"></script>
+          <script src="/resources/jquery/myScript.js"></script>
 
 <style type="text/css">
-table {
-	width: 300px;
-	border-collapse: collapse;
-}
-
-td, th {
-	padding: 3px;
-	border: 0px solid black;
-}
-
-th {
-	background: #b0e0e6;
-}
-
-h2 {
-	color: #0DECDC
-}
-
-button {
-	color: #0DECDC;
-	width: 10em;
-	height: 2em;
-}
-
-body {
-	background-color: #FCFEFC;
-	color: #000000;
-}
-
-img { #message a {
-	/* display: block before hiding */ display:block;
-	display: none;
-	/* link is above all other elements */
-	z-index: 999;
-	/* link doesn't hide text behind it */
-	opacity: .8;
-	/* link stays at same place on page */
-	position: fixed;
-	/* link goes at the bottom of the page */
-	top: 100%;
-	margin-top: -80px; /* = height + preferred bottom margin */
-	/* link is centered */
-	left: 50%;
-	margin-left: -160px; /* = half of width */
-	/* round the corners (to your preference) */
-	-moz-border-radius: 24px;
-	-webkit-border-radius: 24px;
-	/* make it big and easy to see (size, style to preferences) */
-	width: 300px;
-	line-height: 48px;
-	height: 48px;
-	padding: 10px;
-	background-color: #000;
-	font-size: 24px;
-	text-align: center;
-	color: #fff;
-}
-
-textarea {
-	width: 400px;
-	height: 70px;
-	color: #0DECDC;
-}
+     #leftside {
+                cursor: pointer;
+                position: fixed;
+            }
+            .error { 
+		       color: red; font-weight: bold; 
+	       }
 </style>
 
 <script type="text/javascript" src="jquery/jquery.min.js"></script>
@@ -101,6 +57,8 @@ textarea {
 	});
 });
 </script>
+
+
 <script src="jquery/jquery-1.4.2.js"></script>
 <script src="jquery/autoresize.jquery.js"></script>
 
@@ -110,426 +68,139 @@ jQuery(function()
 jQuery('textarea').autoResize();	    
 });
 </script>
+ <%
+        if (session.getAttribute("user") == null ){// Then new user, show join now
+        %>
+            <jsp:include page="/resources/includedPage/logout.jsp"></jsp:include>
+        <%
+        }else {
+        %>
+            <jsp:include page="/resources/includedPage/logout.jsp"></jsp:include>
+        <%
+        
+        }
+        
+        if ((session.getAttribute("user") == null)){
+            response.sendRedirect("test.jsp");
+        } else {
+        user = (User) session.getAttribute("user");
+        %>
 
 </head>
 <body>
+   
 	<div id="top"></div>
-	<img src="/resources/images/codecentric-ag.gif"
-		style="float: all; padding: 0 5px 5px 30px;" />
-	<ul>
-		<form class="lebenslauf" action="result" method="post"
-			name="lebenslauf">
-
-			<h2>Zur Person</h2>
-			<table name="table_1">
-				<tr>
-					<td width="25%">Name
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="name"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="name" rows="1" cols="17"></textarea>
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">Vorname
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="vorname"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="vorname" rows="1" cols="17"></textarea>
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				<tr>
-					<td width="25%">Geburtsdatum
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="geburtsdatum"></label>
-					</td>
-					<td width="25%"><input type="date" name="geburtsdatum"
-						placeholder="DD-MM-YYYY" cols="17" />
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">Wohnort
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="wohnort"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="wohnort" rows="1" cols="17"></textarea>
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">Nationalität
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="nationalitaet"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="nationalitaet" rows="1" cols="17"></textarea>
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">Sprachen
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="sprachen"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="sprachen" rows="1" cols="17"
-							title="Füllen Sie diese Feld durch das Komma aus"></textarea>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-				</div>
-				</td>
-				<td width="25%"></td>
-				<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">Telefon
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="telefon"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="telefon" rows="1" cols="17"></textarea>
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">Email
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="email"></label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="email" rows="1" cols="17"></textarea>
-						</div></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-			<h2>Ausbildung/Universität</h2>
-<script>
- 
-    var anzahl = 0;
-    function remove_0() {
- 
-    var popo0 = document.getElementById('popo0new-' + anzahl);
-    //var sd = document.createElement('table_2');
- 
-    popo0.remove();
-    anzahl = anzahl -1;
-    
-}
-  function go() {
-      
-	
-	anzahl = anzahl + 1; 
-	var papaTable = document.getElementById('popo0-parent') 
-	var sd = document.createElement('div'); 
-	sd.innerHTML = '<table id="popo0new-'+ anzahl +'" name="table_2"><tr><input type="hidden" id="ausbildung_click"  name="ausbildung_click" value ="0"><td width="25%"><div class="row"><div class="small-12 columns"><label for="ausbildung_begin"></label><input type="date" id="ausbildung_begin" name="ausbildung_begin" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_end"></label><input type="date" id="ausbildung_end" name="ausbildung_end" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="ausbildung_stelle"></label><textarea class="span8" type="text" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></td> <td width="25%"><label for="ausbildung_ort"></label><textarea class="span8" type="text" placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></td>    </div></td></tr></table>';
-	
-	cnt = papaTable.childElementCount - 2 
-	console.log(papaTable)
-	papaTable.appendChild(sd)
-}
-
- </script>
-			<div id="popo0-parent">
-				<table name="table_2">
-					<tr>
-					    <input type="hidden" id="ausbildung_hidden"  name="ausbildung_hidden" value ="0">
-						<td width="25%">
-							<div class="row">
-								<div class="small-12 columns">
-									<label for="ausbildung_begin"></label> <input type="date"
-										id="ausbildung_begin" name="ausbildung_begin"
-										placeholder="Anfangsjahr, DD-MM-YYYY">
-						</td>
-						
-						<td width="25%"><label for="ausbildung_end"></label> <input
-							type="date" id="ausbildung_end" name="ausbildung_end"
-							placeholder="Endungsjahr, DD-MM-YYYY"></td>
-						<td width="25%"><label for="ausbildung_stelle"></label> <textarea
-								class="span8" type="text"
-								placeholder="Ausbildungs-, Studiumsstelle"
-								name="ausbildung_stelle" rows="1" cols="31"></textarea></td>
-						<td width="25%"><label for="ausbildung_ort"></label> <textarea
-								class="span8" type="text" placeholder="Ort"
-								name="ausbildung_ort" rows="1" cols="31"></textarea></td>
-						</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<table name="table_2_0">
-				<tr>
-					<td width="25%">
-						<button class="plus" type="button"  onclick="go()">Add</button>
-						<button class="delete" type="button" onclick="remove_0()">Delete
-						</button>
-						    
-					</td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-			<h2>Berufserfahrung</h2>
-			<script>
- 
- var anzahl = 0;
- function remove_1() {
- 
- var popo1 = document.getElementById('popo1new-' + anzahl);
- //var sd = document.createElement('table_3');
- 
- popo1.remove();
- anzahl = anzahl -1;
-}
-  function go_1() {
-	 
-  
-  anzahl = anzahl + 1;  
-	  
-  var papaTable = document.getElementById('popo1-parent') 
-  var sd = document.createElement('div'); 
-  sd.innerHTML ='<table id="popo1new-'+ anzahl +'" name="table_3"><tr> <input type="hidden" id="beruf_click"  name="beruf_click" value ="0"> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="beruf_begin"></label><input type="date" id="beruf_begin" name="beruf_begin" placeholder="Anfangsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_end"></label><input type="date" id="beruf_end" name="beruf_end" placeholder="Endungsjahr, DD-MM-YYYY" ></td><td width="25%"><label for="beruf_stelle"></label><textarea class="span8" type="text" placeholder="Arbeitsstelle" name="beruf_stelle" rows="1" cols="31"></textarea></td><td width="25%"> <label for="beruf_position"></label><textarea class="span8" type="text" placeholder="Position" name="beruf_position" rows="1" cols="31"></textarea></td>  </div></tr></table>';
-  cnt = papaTable.childElementCount - 2 
-  console.log(papaTable)
-  papaTable.appendChild(sd)
-}
-  
- </script>
-			<div id="popo1-parent">
-				<table name="table_3">
-					<tr>
-					    <input type="hidden" id="beruf_hidden"  name="beruf_hidden" value ="0">
-						<td width="25%">
-							<div class="row">
-								<div class="small-12 columns">
-									<label for="beruf_begin"></label> <input type="date"
-										id="beruf_begin" name="beruf_begin"
-										placeholder="Anfangsjahr, DD-MM-YYYY">
-						</td>
-						<td width="25%"><label for="beruf_end"></label> <input
-							type="date" id="beruf_end" name="beruf_end"
-							placeholder="Endungsjahr, DD-MM-YYYY"></td>
-						<td width="25%"><label for="beruf_stelle"></label> <textarea
-								class="span8" type="text" placeholder="Arbeitsstelle"
-								name="beruf_stelle" rows="1" cols="31"></textarea></td>
-						<td width="25%"><label for="beruf_position"></label> <textarea
-								class="span8" type="text" placeholder="Position"
-								name="beruf_position" rows="1" cols="31"></textarea></td>
-						</div>
-					</tr>
-				</table>
-			</div>
-			<table name="table_3_0">
-				<tr>
-					<td width="25%">
-						<button class="plus" type="button" onclick="go_1()">Add</button>
-						<button class="delete" type="button" onclick="remove_1()">Delete
-						</button>
-					</td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-			<h2>Fachkenntnisse</h2>
-			<script>
- 
- var anzahl = 0;
- function remove_2() {
- 
- var popo2 = document.getElementById('popo2new-' + anzahl);
- //var sd = document.createElement('table_4');
- 
- popo2.remove();
- anzahl = anzahl -1;
-}
-  	 
-  function go_2() {
-	  
-  anzahl = anzahl + 1;  
-  
-  var papaTable = document.getElementById('popo2-parent') 
-  var sd = document.createElement('div'); 
-  sd.innerHTML ='<table id="popo2new-'+ anzahl +'" name="table_4"><tr> <input type="hidden" id="fach_click"  name="fach_click" value ="0"> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="fach_gebiet"></label><textarea id="gebiet" class="span8" type="text" placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea></td>   </div><td width="25%"><div class="row"> <div class="small-12 columns"> <label for="fach_kenntnisse"></label> <textarea id="kenntnisse" class="span8" type="text" placeholder="Kenntnisse" name="fach_kenntnisse" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </td>  </div> <td width="25%"></td><td width="25%"></td></tr></table>';
-  cnt = papaTable.childElementCount - 2 
-  console.log(papaTable)
-  papaTable.appendChild(sd)
-}
-       
- </script>
-			<div id="popo2-parent">
-				<table id="popo2-0" name="table_4">
-					<tr>
-					<input type="hidden" id="fach_hidden"  name="fach_hidden" value ="0">
-						<td width="25%">
-							<div class="row">
-								<div class="small-12 columns">
-									<label for="fach_gebiet"></label>
-									<textarea id="gebiet" class="span8" type="text"
-										placeholder="Gebiet" name="fach_gebiet" rows="1" cols="31"></textarea>
-						</td>
-						</div>
-						<td width="25%">
-							<div class="row">
-								<div class="small-12 columns">
-									<label for="fach_kenntnisse"></label>
-									<textarea id="kenntnisse" class="span8" type="text"
-										placeholder="Kenntnisse" name="fach_kenntnisse" rows="1"
-										cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>
-						</td>
-						</div>
-						<td width="25%"></td>
-						<td width="25%"></td>
-					</tr>
-				</table>
-			</div>
-			<table name="table_4_0">
-				<tr>
-					<td width="25%">
-						<button class="plus" type="button" onclick="go_2()">Add</button>
-						<button class="delete" type="button" onclick="remove_2()">Delete
-						</button>
-					</td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-
-			<h2>Projekte</h2>
-			<script>
-  var anzahl = 0;
-  function remove_3() {
-  
-  var popo3 = document.getElementById('popo3new-' + anzahl);
-  //var sd = document.createElement('table_5');
-  
-  popo3.remove();
-  anzahl = anzahl -1;
-}
-  function go_3() {
-	  
-  anzahl = anzahl + 1;
-  var papaTable = document.getElementById('popo3-0').parentNode
-  var sd = document.createElement('div');
-  sd.innerHTML ='<table id="popo3new-' + anzahl +'" name="table_5"><tr><input type="hidden" id="projekte_click"  name="projekte_click" value ="0">   <td width="25%"><div class="row"> <div class="small-12 columns"><label for="projekte_begin"></label><input type="date" id="projekte_begin" name="projekte_begin" placeholder="Anfang, MM-YYYY" ></td> </div> <td width="25%"><div class="row"><div class="small-12 columns"><label for="projekte_kunde">Kunde</label> </td><td width="25%"><textarea class="span8" type="text" name="projekte_kunde" rows="1" cols="31"></textarea>  </div></td><td width="25%"></td> </tr><tr><td width="25%"><div class="row"><div class="small-12 columns"> <label for="projekte_end"></label> <input type="date" id="projekte_end" name="projekte_end" placeholder="Endung, MM-YYYY" ></td></div> <td width="25%"> <div class="row"><div class="small-12 columns"><label for="projekte_thematik">Thematik</label> </td> <td width="25%"> <textarea class="span8" type="text" name="projekte_thematik" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea> </div></td><td width="25%"></td> </tr> <tr><td width="25%"></td> <td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_rolle">Rolle</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_rolle" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea>  </div> </td> <td width="25%"></td> </tr><tr><td width="25%"></td><td width="25%"> <div class="row"><div class="small-12 columns"> <label for="projekte_technologie">Technologie</label></td><td width="25%"><textarea class="span8" type="text" name="projekte_technologie" rows="1" cols="31" title="Füllen Sie diese Feld durch das Komma aus"></textarea></div> </td><td width="25%"></td></tr></table>';
-  cnt = papaTable.childElementCount -2 
-  papaTable.insertBefore(sd, papaTable.children[cnt])
-}
- </script>
-			<table id="popo3-0" name="table_5">
-				<tr>
-				<input type="hidden" id="projekte_hidden"  name="projekte_hidden" value ="0">
-					<td width="25%">
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="projekte_begin"></label> <input type="date"
-									id="projekte_begin" name="projekte_begin"
-									placeholder="Anfang, MM-YYYY">
-					</td>
-					</div>
-					<td width="25%">
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="projekte_kunde">Kunde</label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="projekte_kunde" rows="1" cols="31"></textarea>
-						</div></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%">
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="projekte_end"></label> <input type="date"
-									id="projekte_end" name="projekte_end"
-									placeholder="Endung, MM-YYYY">
-					</td>
-					</div>
-					<td width="25%">
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="projekte_thematik">Thematik</label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="projekte_thematik" rows="1" cols="31"
-							title="Füllen Sie diese Feld durch das Komma aus"></textarea>
-						</div></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%"></td>
-					<td width="25%">
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="projekte_rolle">Rolle</label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="projekte_rolle" rows="1" cols="31"
-							title="Füllen Sie diese Feld durch das Komma aus"></textarea>
-						</div></td>
-					<td width="25%"></td>
-				</tr>
-				<tr>
-					<td width="25%"></td>
-					<td width="25%">
-						<div class="row">
-							<div class="small-12 columns">
-								<label for="projekte_technologie">Technologie</label>
-					</td>
-					<td width="25%"><textarea class="span8" type="text"
-							name="projekte_technologie" rows="1" cols="31"
-							title="Füllen Sie diese Feld durch das Komma aus"></textarea>
-						</div></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-			<table name="table_6">
-				<tr>
-					<td width="25%">
-						<button class="plus" type="button" onclick="go_3()">Add</button>
-						<button class="delete" type="button" onclick="remove_3()">Delete
-						</button>
-					<td width="25%"></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-			<table name="table_7">
-				<tr>
-					<td width="25%"><input type="submit" value="Download PDF File" />
-					</td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-					<td width="25%"></td>
-				</tr>
-			</table>
-		</form>
-	</ul>
-	<div id="message">
-		<a href="#top">Scroll to top</a>
-	</div>
+	 <jsp:include page="/resources/includedPage/search_navigationbar.jsp"></jsp:include>
+	  <div class="container_16">
+            <div id="leftside" class="grid_3">
+                    <ul id="leftsideNav">
+                        <li><a id="userInfo"><strong>User Profile</strong></a></li>
+                        
+                        <li><a id="Account">Account</a></li>
+                        <li><a id="MyCV">My CV</a></li>
+                        <li><a id="Settings">Settings</a></li>
+                    </ul>
+                </div>
+                
+                <div class="grid_13 push_3" id="whiteBox">
+                <div  class="grid_13">
+                    <h1  style ="text-align: center; padding: 10px 0px 0px 0px;"></h1> 
+                     <h1  style ="text-align: center; padding: 10px 0px 0px 0px;">  </h1>  
+                    <p  style ="text-align: center;"> 
+                       Enter in the personal information for your Account to have quick checkouts during any transaction 
+                    </p>
+                </div>
+            </div>
+             
+             <div id="whiteBox" class="grid_13 push_3">
+                <form action="result" method="post" >
+                 <div  style ="text-align: center; border-top: 20px #444 solid; padding: 10px 0px 10px 0px;" class="grid_12 MyCV">
+                  <h1 style ="padding: 10px 0px 10px 40px;">Ausbildung</h1>
+                         <div class="clear"></div><br/>
+                <script>
+			 
+			    var anzahl = 0;
+			    function remove_0() {
+			 
+			    var popo0 = document.getElementById('popo0new-' + anzahl);
+			    //var sd = document.createElement('table_2');
+			 
+			    popo0.remove();
+			    anzahl = anzahl -1;
+			    
+			}
+			  function go() {
+			      
+				
+				anzahl = anzahl + 1; 
+				var papaTable = document.getElementById('popo0-parent') 
+				var sd = document.createElement('div'); 
+				sd.innerHTML = '<div id="popo0new-'+ anzahl +'"<div> <div name="loop_bildung" <div class="grid_3"> Ausbildung Begin   </div><div class="grid_8"> Ausbildung End </div> <div class="grid_6"><input type="date" id="ausbildung_begin" name="ausbildung_begin" placeholder="Anfangsjahr, DD-MM-YYYY"></div> <div class="grid_3"><input type="date" id="ausbildung_end" name="ausbildung_end" placeholder="Endungsjahr, DD-MM-YYYY"></div><div class="clear"></div><br/><div class="grid_3">Ausbildung Stelle</div><div class="grid_8">Ausbildung Ort</div><div class="grid_6"><textarea class="span8" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea></div><div class="grid_3"><textarea class="span8"  placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea></div><div class="clear"></div><br/></div></div> ';
+				
+				cnt = papaTable.childElementCount - 2 
+				console.log(papaTable)
+				papaTable.appendChild(sd)
+			}
+			 </script>
+			 
+			 
+						 <div id="popo0-parent">
+					      <div>     
+                          <div name="loop_bildung"> 
+                          
+                          <div class="grid_3">
+                                Ausbildung Begin
+                         </div>
+                          <div class="grid_8">
+                                Ausbildung End
+                         </div>
+                           
+                            <div class="grid_6">
+                               <input type="date" id="ausbildung_begin" name="ausbildung_begin" placeholder="Anfangsjahr, DD-MM-YYYY">
+                            </div>
+                            <div class="grid_3">
+                            <input type="date" id="ausbildung_end" name="ausbildung_end" placeholder="Endungsjahr, DD-MM-YYYY">
+                            </div>
+                             <div class="clear"></div><br/>
+                           
+                            <div class="grid_3">
+                                Ausbildung Stelle
+                            </div>
+                            <div class="grid_8">
+                                Ausbildung Ort
+                            </div>
+                            <div class="grid_6">
+                            <textarea class="span8" placeholder="Ausbildungs-, Studiumsstelle" name="ausbildung_stelle" rows="1" cols="31"></textarea>
+                            </div>
+                            <div class="grid_3">
+                            <textarea class="span8"  placeholder="Ort" name="ausbildung_ort" rows="1" cols="31"></textarea>
+                            </div>
+                             <div class="clear"></div><br/>
+                            </div>
+                            </div>    
+                      </div>       
+               
+               
+               <div id="pop">    
+                     <div class="clear"></div><br/>
+                        <div style ="padding: 0px 0px 50px 10px;" class="grid_3">
+                                <button type="button" id="greenBtn"   onclick="go()"><h3 style ="padding: 0px 0px 0px 0px;">Add Ausbildung</h3>   </button>
+                            </div>
+                            <div style ="padding: 0px 0px 0px 168px;" class="grid_3">
+                               <button type="button" id="greenBtn"   onclick="remove_0()"><h3 style ="padding: 0px 0px 0px 0px;">Delete Ausbildung</h3>   </button>
+                            </div>
+                    </div>   
+                    
+                    
+                    
+                     </div> 
+                     </form>     
+              </div> 
+           </div>        
+              
+	   
+	   <%
+         }        
+       %>
 </body>
 </html>

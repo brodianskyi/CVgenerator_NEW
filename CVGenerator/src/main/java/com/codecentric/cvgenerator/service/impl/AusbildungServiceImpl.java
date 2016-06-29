@@ -25,7 +25,7 @@ public class AusbildungServiceImpl implements AusbildungService{
 	
 	@Inject
 	public AusbildungServiceImpl(final AusbildungDao repository) {
-		
+	   	
        this.repository = repository;
 	}
 
@@ -34,7 +34,7 @@ public class AusbildungServiceImpl implements AusbildungService{
 	@Override
 	@Transactional
 	public void save(@NotNull @Valid List<Ausbildung> list) {
-		 
+		  
 		  repository.save(list);
 	}
 	
